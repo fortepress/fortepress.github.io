@@ -97,9 +97,41 @@
     </div>
   
     <div id="panel2" class="panel-content" style="display: none;">
-      <h3>Árlista</h3>
-      <p>Aktuális árainkat az alábbi képen láthatóak. A lista rendszeresen frissül. Ha egyedi igénye van, kérjen személyre szabott ajánlatot e-mailben vagy telefonon!</p>
+  <h3>Árlista</h3>
+  <p>Aktuális árainkat az alábbi kategóriák szerint tekintheti meg. A lista rendszeresen frissül. Egyedi igény esetén kérjen ajánlatot!</p>
+
+  <div style="margin-bottom: 10px;">
+    <button onclick="toggleSubpanel('subpanel1')">Egyoldalas szórólap</button>
+    <button onclick="toggleSubpanel('subpanel2')">Kétoldalas szórólap</button>
+  </div>
+
+  <div id="subpanel1" style="display: none; margin-top: 10px; padding-left: 10px;">
+    <h4>Egyoldalas szórólap</h4>
+    <button onclick="toggleSubpanel('subpanel1a')">Egyszínes</button>
+    <button onclick="toggleSubpanel('subpanel1b')">Négyszínes</button>
+
+    <div id="subpanel1a" style="display: none; margin-top: 10px;">
+      <p><strong>Egyszínes:</strong><br></p>
     </div>
+
+    <div id="subpanel1b" style="display: none; margin-top: 10px;">
+      <p><strong>Négyszínes:</strong></p>
+    </div>
+  </div>
+
+  <div id="subpanel2" style="display: none; margin-top: 10px; padding-left: 10px;">
+    <h4>Kétoldalas szórólap</h4>
+    <button onclick="toggleSubpanel('subpanel2a')">Egyszínes</button>
+    <button onclick="toggleSubpanel('subpanel2b')">Négyszínes</button>
+
+    <div id="subpanel2a" style="display: none; margin-top: 10px;">
+      <p><strong>Egyszínes:</strong><br></p>
+    </div>
+
+    <div id="subpanel2b" style="display: none; margin-top: 10px;">
+      <p><strong>Négyszínes:</strong><br></p>
+    </div>
+  </div>
   
     <div id="panel3" class="panel-content" style="display: none;">
       <h3>Kapcsolat</h3>

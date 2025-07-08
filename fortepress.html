@@ -96,45 +96,47 @@
       <p>Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek, kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával. A budapesti Forte-Press Bt. több, mint 30 éve szolgálja ki hazai és külföldi partnereit – kis példányszámtól a több százezres mennyiségig. 4 színes Heidelberg nyomdagépünk, 1 színes nyomdagépeink és egyéb berendezéseink, valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.</p>
     </div>
   
-    <div id="panel2" class="panel-content" style="display: none;">
-      <h3>Árlista</h3>
-        <p>Aktuális árainkat az alábbi kategóriák szerint tekintheti meg. A lista rendszeresen frissül. Egyedi igény esetén kérjen ajánlatot!</p>
+    <div id="panel2" class="panel-content" style="display: none; margin: 10px auto; padding: 10px 15px;">
+  <h3 style="margin: 10px 0;">Árlista</h3>
+  <p style="margin: 6px 0;">
+    Aktuális árainkat az alábbi kategóriák szerint tekintheti meg. A lista rendszeresen frissül. Egyedi igény esetén kérjen ajánlatot!
+  </p>
 
-    <div style="margin-bottom: 10px;">
-      <button onclick="toggleSubpanel('subpanel1')">Egyoldalas szórólap</button>
-      <button onclick="toggleSubpanel('subpanel2')">Kétoldalas szórólap</button>
+  <div style="margin: 6px 0;">
+    <button onclick="toggleSubpanel('subpanel1')" style="margin: 2px; padding: 6px 12px;">Egyoldalas szórólap</button>
+    <button onclick="toggleSubpanel('subpanel2')" style="margin: 2px; padding: 6px 12px;">Kétoldalas szórólap</button>
+  </div>
+
+  <div id="subpanel1" style="display: none;">
+    <h4 style="margin: 8px 0;">Egyoldalas szórólap</h4>
+    <button onclick="toggleSubpanel('subpanel1a')" style="margin: 2px; padding: 6px 12px;">Egyszínes</button>
+    <button onclick="toggleSubpanel('subpanel1b')" style="margin: 2px; padding: 6px 12px;">Négyszínes</button>
+
+    <div id="subpanel1a" style="display: none; margin-top: 6px;">
+      <p style="margin: 4px 0;"><strong>Egyszínes:</strong></p>
+      <img src="egyoldalas egyszínes.png" alt="Egyoldalas egyszínes szórólap árak" style="max-width: 100%; margin: 4px 0;">
     </div>
 
-     <div id="subpanel1" style="display: none">
-       <h4>Egyoldalas szórólap</h4>
-         <button onclick="toggleSubpanel('subpanel1a')">Egyszínes</button>
-         <button onclick="toggleSubpanel('subpanel1b')">Négyszínes</button>
+    <div id="subpanel1b" style="display: none; margin-top: 6px;">
+      <p style="margin: 4px 0;"><strong>Négyszínes:</strong></p>
+      <img src="egyoldalas negyszínes.png" alt="Egyoldalas négyszínes szórólap árak" style="max-width: 100%; margin: 4px 0;">
+    </div>
+  </div>
 
-       <div id="subpanel1a" style="display: none; margin-top: 4px;">
-         <p><strong>Egyszínes:</strong></p>
-           <img src="egyoldalas egyszínes.png" alt="Egyoldalas egyszínes szórólap árak" style="max-width: 100%;">
-       </div>
+  <div id="subpanel2" style="display: none; margin-top: 6px;">
+    <h4 style="margin: 8px 0;">Kétoldalas szórólap</h4>
+    <button onclick="toggleSubpanel('subpanel2a')" style="margin: 2px; padding: 6px 12px;">Egyszínes</button>
+    <button onclick="toggleSubpanel('subpanel2b')" style="margin: 2px; padding: 6px 12px;">Négyszínes</button>
 
-       <div id="subpanel1b" style="display: none; margin-top: 4px;">
-         <p><strong>Négyszínes:</strong></p>
-           <img src="egyoldalas negyszínes.png" alt="Egyoldalas négyszínes szórólap árak" style="max-width: 100%;">
-       </div>
-     </div>
+    <div id="subpanel2a" style="display: none; margin-top: 6px;">
+      <p style="margin: 4px 0;"><strong>Egyszínes:</strong></p>
+      <img src="ketoldalas egyszínes.png" alt="Kétoldalas egyszínes szórólap árak" style="max-width: 100%; margin: 4px 0;">
+    </div>
 
-     <div id="subpanel2" style="display: none">
-       <h4>Kétoldalas szórólap</h4>
-         <button onclick="toggleSubpanel('subpanel2a')">Egyszínes</button>
-         <button onclick="toggleSubpanel('subpanel2b')">Négyszínes</button>
-
-     <div id="subpanel2a" style="display: none; margin-top: 4px;">
-       <p><strong>Egyszínes:</strong></p>
-       <img src="ketoldalas egyszínes.png" alt="Kétoldalas egyszínes szórólap árak" style="max-width: 100%;">
-     </div>
-
-     <div id="subpanel2b" style="display: none; margin-top: 4px;">
-       <p><strong>Négyszínes:</strong></p>
-       <img src="ketoldalas negyszínes.png" alt="Kétoldalas négyszínes szórólap árak" style="max-width: 100%;">
-     </div>
+    <div id="subpanel2b" style="display: none; margin-top: 6px;">
+      <p style="margin: 4px 0;"><strong>Négyszínes:</strong></p>
+      <img src="ketoldalas negyszínes.png" alt="Kétoldalas négyszínes szórólap árak" style="max-width: 100%; margin: 4px 0;">
+    </div>
   </div>
 </div>
   

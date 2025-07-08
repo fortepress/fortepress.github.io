@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Szórólapkészítés, szórólap gyártás, nyomda Budapesten – Forte-Press Bt.">
+  <meta name="keywords" content="szórólap, szórólapkészítés, szórólap nyomtatás, szórólap gyártás, nyomda, nyomdai szolgáltatás, ofszet nyomás, 4 színes nyomda, heidelberg nyomdagép">
+  <meta name="author" content="Forte-Press Bt.">
+  <title>Forte-Press Bt. | Szórólapkészítés gyorsan és profin</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f7f7f7; color: #333; }
+    header { background: #003366; color: white; padding: 20px; text-align: center; }
+    nav { background: #0055a5; text-align: center; padding: 10px; }
+    nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
+    .hero {
+      background: url('heidelberg_gtov.jpg') center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2rem;
+      text-shadow: 2px 2px 5px #000;
+    }
+    .content { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
+    .highlight { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .highlight h2 { color: #003366; }
+    footer {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+    .contact a { color: #fff; text-decoration: underline; }
+    .gif-container { text-align: center; margin-top: 20px; }
+    .pdf-frame { width: 100%; height: 600px; border: none; }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 30px;
+      justify-content: center;
+    }
+    .gallery img {
+      max-width: 220px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Forte-Press Bt.</h1>
+    <p>Professzionális szórólapkészítés – gyorsan, pontosan, kedvező áron</p>
+  </header>
+
+  <nav>
+    <a href="#rolunk">Rólunk</a>
+    <a href="#arlista">Árlista</a>
+    <a href="#kapcsolat">Kapcsolat</a>
+  </nav>
+
+  <div class="hero">
+    <div>Szórólapgyártás a legjobb minőségben</div>
+  </div>
+
+  <div class="content">
+    <section class="highlight" id="rolunk">
+      <h2>Miért a Forte-Press?</h2>
+      <p>Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek, kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával. A budapesti Forte-Press Bt. több, mint 30 éve szolgálja ki hazai és külföldi partnereit – kis példányszámtól a több százezres mennyiségig. 4 színes Heidelberg nyomdagépünk, 1 színes nyomdagépeink és egyéb berendezéseink, valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.</p>
+      <ul>
+        <li>Gyors, akár 1-2 napos határidők</li>
+        <li>Szakmai támogatás: grafikákkal, szórólap-terjesztéssel kapcsolatos tanácsadás</li>
+        <li>Versenyképes árak: (A/6 méretű szórólapok már nettó 1,25 Ft/db ártól) </li>
+        <li>Minőségi papíralapanyagok</li>
+        <li>Tapasztalt nyomdász csapat</li>
+      </ul>
+    </section>
+
+    <section class="highlight" id="arlista">
+      <h2>Árlista</h2>
+      <p>Aktuális árainkat az alábbi PDF fájl tartalmazza. A lista rendszeresen frissül. Ha egyedi igénye van, kérjen személyre szabott ajánlatot e-mailben vagy telefonon!</p>
+    </section>
+
+    <section class="highlight" id="kapcsolat">
+      <h2>Kapcsolat</h2>
+      <p>Vegye fel velünk a kapcsolatot egyszerűen:</p>
+      <p><strong>Telefon:</strong> <a href="tel:+36301234567">+36 30 123 4567</a></p>
+      <p><strong>E-mail:</strong> <a href="mailto:fortepressnyomda@gmail.com">fortepressnyomda@gmail.com</a></p>
+      <p><strong>Cím:</strong> Budapest, XIV. kerület – személyes átvétel előzetes egyeztetés alapján</p>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 Forte-Press Bt. | Minden jog fenntartva
+  </footer>
+</body>
+</html>

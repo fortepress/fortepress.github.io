@@ -22,6 +22,11 @@
       font-size: 2rem;
       text-shadow: 2px 2px 5px #000;
     }
+    .hero-szoveg {
+      font-size: 32px;
+      font-weight: bold;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+    }
     .content { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
     .highlight { background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
     .highlight h2 { color: #003366; }
@@ -32,9 +37,6 @@
       padding: 15px;
       margin-top: 40px;
     }
-    .contact a { color: #fff; text-decoration: underline; }
-    .gif-container { text-align: center; margin-top: 20px; }
-    .pdf-frame { width: 100%; height: 600px; border: none; }
     .gallery {
       display: flex;
       flex-wrap: wrap;
@@ -46,6 +48,35 @@
       max-width: 220px;
       border-radius: 6px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .panel-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 40px 0;
+    }
+    .panel {
+      flex: 1;
+      min-width: 280px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .panel button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #0055a5;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .panel button:hover {
+      background: #003366;
     }
   </style>
 </head>
@@ -62,68 +93,46 @@
   </nav>
 
   <div class="hero">
-  <div class="hero-szoveg">Szórólapgyártás a legjobb minőségben</div>
-   </div>
-
-<style>
-.hero {
-  background-image: url("heidelberg_gtov.png");
-  background-size: cover;
-  background-position: center;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-szoveg {
-  color: white;
-  font-size: 32px;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
-}
-</style>
+    <div class="hero-szoveg">Szórólapgyártás a legjobb minőségben</div>
+  </div>
   
   <div class="content">
     <section class="highlight" id="rolunk">
       <h2>Miért a Forte-Press?</h2>
-      <p>Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek, kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával. A budapesti Forte-Press Bt. több, mint 30 éve szolgálja ki hazai és külföldi partnereit – kis példányszámtól a több százezres mennyiségig. 4 színes Heidelberg nyomdagépünk, 1 színes nyomdagépeink és egyéb berendezéseink, valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.</p>
-      <ul>
-        <li>Gyors, akár 1-2 napos határidők</li>
-        <li>Szakmai támogatás: grafikákkal, szórólap-terjesztéssel kapcsolatos tanácsadás</li>
-        <li>Versenyképes árak: (A/6 méretű szórólapok már nettó 1,25 Ft/db ártól) </li>
-        <li>Minőségi papíralapanyagok</li>
-        <li>Tapasztalt nyomdász csapat</li>
-      </ul>
+      <p>Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek, kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával...</p>
     </section>
 
-    <div style="margin: 20px;">
-      <div style="margin-bottom: 20px; border: 1px solid #ccc; border-radius: 8px; padding: 16px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <div class="panel-container">
+      <div class="panel">
         <h3>Panel 1</h3>
         <p>Itt az első alablak tartalma.</p>
-    </div>
-
-    <div style="border: 1px solid #ccc; border-radius: 8px; padding: 16px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+        <button>Tovább</button>
+      </div>
+      <div class="panel">
         <h3>Panel 2</h3>
         <p>Itt a második alablak tartalma.</p>
+        <button>Részletek</button>
+      </div>
+      <div class="panel">
+        <h3>Panel 3</h3>
+        <p>Itt a harmadik alablak tartalma.</p>
+        <button>Kapcsolat</button>
+      </div>
     </div>
-</div>
 
-<div style="display: flex; justify-content: center;">
-  <img src="vagogep3.jpg" alt="Felvágott papírívek" style="width: 200px; margin: 10px;">
-  <img src="papirivek.jpg" alt="Papírívek" style="width: 200px; margin: 10px;">
-  <img src="vagogep.png" alt="Vágógép" style="width: 200px; margin: 10px;">
-</div>
-
+    <div class="gallery">
+      <img src="vagogep3.jpg" alt="Felvágott papírívek">
+      <img src="papirivek.jpg" alt="Papírívek">
+      <img src="vagogep.png" alt="Vágógép">
+    </div>
 
     <section class="highlight" id="arlista">
       <h2>Árlista</h2>
-      <p>Aktuális árainkat az alábbi képen láthatják. A lista rendszeresen frissül. Ha egyedi igénye van, kérjen személyre szabott ajánlatot e-mailben vagy telefonon!</p>
+      <p>Aktuális árainkat az alábbi képen láthatják...</p>
     </section>
 
     <section class="highlight" id="kapcsolat">
       <h2>Kapcsolat</h2>
-      <p>Vegye fel velünk a kapcsolatot egyszerűen:</p>
       <p><strong>Telefon:</strong> <a href="tel:+36209236130">+36 20 923 6130</a></p>
       <p><strong>E-mail:</strong> <a href="mailto:fortepressnyomda@gmail.com">fortepressnyomda@gmail.com</a></p>
       <p><strong>Cím:</strong> Budapest, XIV. kerület – személyes átvétel előzetes egyeztetés alapján</p>

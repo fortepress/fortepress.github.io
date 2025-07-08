@@ -171,6 +171,15 @@
       document.getElementById('panel3').style.display = 'none';
       document.getElementById('panel' + panelNumber).style.display = 'block';
     }
+
+    function toggleSubpanel(id) {
+      const subpanel = document.getElementById(id);
+      if (subpanel.style.display === 'none' || subpanel.style.display === '') {
+        subpanel.style.display = 'block';
+      } else {
+        subpanel.style.display = 'none';
+      }
+    }
   </script>
 </body>
 </html>

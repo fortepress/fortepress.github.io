@@ -1,3 +1,5 @@
+# A HTML kódot tartalmazó fájl létrehozása és mentése
+html_code = """
 <!DOCTYPE html>
 <html lang="hu">
 <head>
@@ -78,7 +80,6 @@
       margin-bottom: 10px;
     }
 
-    /* Árak almenü stílusa */
     nav.almenu {
       margin-top: 15px;
       margin-bottom: 15px;
@@ -104,7 +105,6 @@
       text-decoration: none;
     }
 
-    /* Ár almenü tartalom */
     .ar-subsection {
       display: none;
     }
@@ -112,7 +112,6 @@
       display: block;
     }
 
-    /* Példaképek rugalmas elrendezés */
     .kepek {
       display: flex;
       gap: 10px;
@@ -147,29 +146,28 @@
   </section>
 
   <section id="arak">
-  <h2>Áraink</h2>
+    <h2>Áraink</h2>
 
-  <nav class="almenu">
-    <a href="#" id="toggleBtn" class="blue-button">Tovább</a>
-  </nav>
+    <nav class="almenu">
+      <a href="#" id="toggleBtn" class="blue-button">Tovább</a>
+    </nav>
 
-  <div id="tartalom" style="display: none; margin-top: 20px;">
-    <p class="kiemelt-arinfo">
-      A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,25 Ft-tól.<br>
-      Papírfajtától függően gyártunk olcsóbb és drágább szórólapokat is!<br>
-      A táblázatokban szereplő árak tájékoztató jellegűek, az árváltoztatás jogát fenntartjuk.<br>
-      A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!
-    </p>
+    <div id="tartalom" style="display: none; margin-top: 20px;">
+      <p class="kiemelt-arinfo">
+        A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,25 Ft-tól.<br>
+        Papírfajtától függően gyártunk olcsóbb és drágább szórólapokat is!<br>
+        A táblázatokban szereplő árak tájékoztató jellegűek, az árváltoztatás jogát fenntartjuk.<br>
+        A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!
+      </p>
 
-    <div class="kepek">
-      <img src="egyoldalas egyszínes.png" alt="Egyoldalas egyszínes szórólap" />
-      <img src="egyoldalas negyszínes.png" alt="Egyoldalas színes szórólap" />
-      <img src="ketoldalas egyszínes.png" alt="Kétoldalas egyszínes szórólap" />
-      <img src="ketoldalas negyszínes.png" alt="Kétoldalas színes szórólap" />
+      <div class="kepek">
+        <img src="egyoldalas egyszínes.png" alt="Egyoldalas egyszínes szórólap" />
+        <img src="egyoldalas negyszínes.png" alt="Egyoldalas színes szórólap" />
+        <img src="ketoldalas egyszínes.png" alt="Kétoldalas egyszínes szórólap" />
+        <img src="ketoldalas negyszínes.png" alt="Kétoldalas színes szórólap" />
+      </div>
     </div>
-  </div>
-
-</section>
+  </section>
 
   <section id="kapcsolat">
     <h2>Kapcsolat</h2>

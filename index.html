@@ -1,54 +1,64 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Forte-Press Bt. - Szórólapkészítés</title>
-  <meta name="description" content="Szórólapkészítés, névjegykártya, plakát, cégtábla és minden, ami nyomtatás. Forte-Press Bt. - gyors és igényes nyomdai szolgáltatás Zuglóban.">
-  <meta name="robots" content="index, follow">
   <style>
     body {
       font-family: Arial, sans-serif;
-      line-height: 1.6;
       margin: 0;
       padding: 0;
       background-color: #f4f4f4;
     }
+
     header {
       background-color: #003366;
       color: #fff;
       padding: 20px;
       text-align: center;
     }
+
     nav {
       background-color: #0055a5;
       display: flex;
       justify-content: center;
     }
+
     nav a {
       color: white;
       padding: 14px 20px;
       text-decoration: none;
-      display: block;
+      cursor: pointer;
     }
+
     nav a:hover {
       background-color: #003f7f;
     }
+
     .container {
-      padding: 20px;
       max-width: 900px;
       margin: auto;
       background-color: #fff;
+      padding: 20px;
     }
+
+    section {
+      display: none;
+    }
+
+    section.active {
+      display: block;
+    }
+
     footer {
       background-color: #003366;
       color: #fff;
       text-align: center;
       padding: 10px;
-      position: relative;
-      bottom: 0;
-      width: 100%;
+      margin-top: 20px;
     }
+
     iframe {
       width: 100%;
       max-width: 600px;
@@ -61,24 +71,31 @@
 
 <header>
   <h1>Forte-Press Bt.</h1>
-  <p>Professzionális szórólapkészítés – gyorsan, pontosan, kedvező áron 1994 óta</p>
+  <p>Szórólapkészítés – gyorsan, igényesen, korrekt áron</p>
 </header>
 
 <nav>
-  <a href="#rolunk">Rólunk</a>
-  <a href="#arak">Árak</a>
-  <a href="#kapcsolat">Kapcsolat</a>
+  <a onclick="showSection('szolgaltatasok')">Szolgáltatások</a>
+  <a onclick="showSection('arak')">Árak</a>
+  <a onclick="showSection('kapcsolat')">Kapcsolat</a>
 </nav>
 
 <div class="container">
-  <section id="rolunk">
-    <h2>Rólunk</h2>
-    <p>Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek, kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával. A budapesti Forte-Press Bt. több, mint 30 éve szolgálja ki hazai és külföldi partnereit – kis példányszámtól a több százezres mennyiségig. 4 színes Heidelberg nyomdagépünk, 1 színes nyomdagépeink és egyéb berendezéseink, valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.</p>
+  <section id="szolgaltatasok" class="active">
+    <h2>Szolgáltatásaink</h2>
+    <ul>
+      <li>Szórólap tervezés és nyomtatás</li>
+      <li>Névjegykártya készítés</li>
+      <li>Plakát, molinó, roll-up</li>
+      <li>Cégtábla, ablakmatrica</li>
+      <li>Fekete-fehér és színes fénymásolás</li>
+      <li>Kötészet, laminálás, spirálozás</li>
+    </ul>
   </section>
 
   <section id="arak">
     <h2>Áraink</h2>
-    <p>Aktuális árainkat az alábbi kategóriák szerint tekintheti meg. A lista rendszeresen frissül. Egyedi igény esetén kérjen ajánlatot!</p>
+    <p>Kérjen egyedi árajánlatot az igényeinek megfelelően! Nagyobb példányszám esetén kedvezményt biztosítunk.</p>
   </section>
 
   <section id="kapcsolat">
@@ -101,6 +118,15 @@
 <footer>
   <p>&copy; 2025 Forte-Press Bt. Minden jog fenntartva.</p>
 </footer>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll("section").forEach(section => {
+      section.classList.remove("active");
+    });
+    document.getElementById(id).classList.add("active");
+  }
+</script>
 
 </body>
 </html>

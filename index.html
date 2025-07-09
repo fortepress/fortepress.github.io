@@ -5,6 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Forte-Press Bt.</title>
   <style>
+  /* Mobilbarát alapértelmezés */
+  html {
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    html {
+      font-size: 14px;
+    }
+
+    nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    nav a {
+      padding: 10px 15px;
+    }
+
+    .nav-contact {
+      margin-bottom: 10px;
+    }
+
+    .highlight-text {
+      font-size: 22px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    html {
+      font-size: 12px;
+    }
+
+    .highlight-text {
+      font-size: 18px;
+    }
+  }
   body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -302,11 +339,6 @@
         <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>WhatsApp kapcsolat
       </a>
     </p>
-    <p>
-  <a href="viber://chat?number=%2B36209236130" target="_blank" style="color: white; font-size: 20px; text-decoration: none;">
-    <i class="fab fa-viber" style="margin-right: 8px;"></i>Viber kapcsolat
-  </a>
-</p>
   </div>
   
   </div>

@@ -19,20 +19,21 @@
       text-align: center;
     }
 
-    nav {
+    nav.main-nav {
       background-color: #0055a5;
       display: flex;
       justify-content: center;
     }
 
-    nav a {
+    nav.main-nav a {
       color: white;
       padding: 14px 20px;
       text-decoration: none;
       cursor: pointer;
+      user-select: none;
     }
 
-    nav a:hover {
+    nav.main-nav a:hover {
       background-color: #003f7f;
     }
 
@@ -72,6 +73,31 @@
       font-weight: bold;
       margin-bottom: 10px;
     }
+
+    /* Árak almenü stílusa */
+    nav.almenu {
+      margin-top: 15px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    nav.almenu a {
+      margin-right: 15px;
+      color: #0055a5;
+      cursor: pointer;
+      text-decoration: underline;
+      user-select: none;
+    }
+    nav.almenu a:hover {
+      color: #003f7f;
+    }
+
+    /* Ár almenü tartalom */
+    .ar-subsection {
+      display: none;
+    }
+    .ar-subsection.active {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -81,35 +107,35 @@
   <p>Szórólapkészítés – gyorsan, igényesen, korrekt áron</p>
 </header>
 
-<section id="arak">
-  <h2>Áraink</h2>
-  <p class="kiemelt-arinfo">Minden megrendelésre egyedi árat adunk!</p>
-  <p>Aktuális árainkat az alábbi képen láthatóak. A lista rendszeresen frissül. Ha egyedi igénye van, kérjen személyre szabott ajánlatot e-mailben vagy telefonon!</p>
+<nav class="main-nav">
+  <a onclick="showSection('rolunk')">Rólunk</a>
+  <a onclick="showSection('arak')">Áraink</a>
+  <a onclick="showSection('kapcsolat')">Kapcsolat</a>
+</nav>
 
-  <nav class="almenu">
-    <a href="#" onclick="showArSection('szorolap'); return false;">Szórólapok</a>
-    <a href="#" onclick="showArSection('plakat'); return false;">Plakátok</a>
-    <a href="#" onclick="showArSection('egyeb'); return false;">Egyéb nyomtatványok</a>
-  </nav>
+<div class="container">
+  <section id="rolunk" class="active">
+    <h2>Rólunk</h2>
+    <p>Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek, kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával. A budapesti Forte-Press Bt. több, mint 30 éve szolgálja ki hazai és külföldi partnereit – kis példányszámtól a több százezres mennyiségig. 4 színes Heidelberg nyomdagépünk, 1 színes nyomdagépeink és egyéb berendezéseink, valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.</p>
+  </section>
 
-  <div id="szorolap" class="ar-subsection active">
-    <h3>Szórólapok árai</h3>
-    <p>A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,25 Ft-tól.<br>
-       Papírfajtától függően gyártunk olcsóbb és drágább szórólapokat is!<br>
-       A táblázatokban szereplő árak tájékoztató jellegűek, az árváltoztatás jogát fenntartjuk.<br>
-       A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!</p>
-  </div>
+  <section id="arak">
+    <h2>Áraink</h2>
+    <p class="kiemelt-arinfo">A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,25 Ft-tól.Papírfajtától függően gyártunk olcsóbb és drágább szórólapokat is!A táblázatokban szereplő árak tájékoztató jellegűek, az árváltoztatás jogát fenntartjuk. A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!</p>
+    <p>Aktuális árainkat az alábbi képen láthatóak. A lista rendszeresen frissül. Ha egyedi igénye van, kérjen személyre szabott ajánlatot e-mailben vagy telefonon!</p>
 
-  <div id="plakat" class="ar-subsection" style="display:none;">
-    <h3>Plakátok árai</h3>
-    <p>Itt megadhatod a plakátok árait, leírását, stb.</p>
-  </div>
+    <nav class="almenu">
+      <a href="#" onclick="showArSection('tovabb'); return false;">Tovább</a>
+    </nav>
 
-  <div id="egyeb" class="ar-subsection" style="display:none;">
-    <h3>Egyéb nyomtatványok árai</h3>
-    <p>Itt megadhatod az egyéb nyomtatványok árlistáját.</p>
-  </div>
-</section>
+    <div id="tovabb" class="ar-subsection active">
+      <h3>Tovább</h3>
+      <p>A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,25 Ft-tól.<br>
+         Papírfajtától függően gyártunk olcsóbb és drágább szórólapokat is!<br>
+         A táblázatokban szereplő árak tájékoztató jellegűek, az árváltoztatás jogát fenntartjuk.<br>
+         A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!</p>
+    </div>
+  </section>
 
   <section id="kapcsolat">
     <h2>Kapcsolat</h2>
@@ -138,6 +164,13 @@
       section.classList.remove("active");
     });
     document.getElementById(id).classList.add("active");
+  }
+
+  function showArSection(id) {
+    document.querySelectorAll('.ar-subsection').forEach(el => {
+      el.classList.remove('active');
+    });
+    document.getElementById(id).classList.add('active');
   }
 </script>
 

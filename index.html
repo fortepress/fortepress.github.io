@@ -141,40 +141,67 @@
   </div>
 </div>
 
-<div id="araink" class="content" style="background-image: url('papirivek.png');">
-  <div class="content-inner">
-    <h2>Áraink</h2>
+<div class="normal-text">Üdvözöljük az árlistánk oldalán!</div>
+  <div class="highlight-text">Kedvezményes árak korlátozott ideig!</div>
 
-    <h3>Egyoldalas egyszínes szórólap 60g/m2 papíron:</h3>
+  <button class="toggle-button" onclick="togglePanel()">Tovább</button>
+
+  <div class="panel" id="pricePanel">
+    <!-- Táblázat 1 -->
+    <h3>Kétoldalas egyszínes szórólap – A/6</h3>
     <table>
-      <tr><th>Példányszám</th><th>A/6</th></tr><tr><th>A/5</th><th>A/4</th></tr><tr><th>A/3</th><th>LA4</th></tr>
-      <tr><td>1000 db</td><td>7 000 Ft</td></tr><td>8 500 Ft</td></tr><td>11 500 Ft</td></tr><td>17 800 Ft</td></tr><td>7200 Ft</td></tr>
-      <tr><td>2000 db</td><td>8 500 Ft</td></tr><td>11 500 Ft</td></tr><td>17 800 Ft</td></tr><td>30 600 Ft</td></tr><td>9 300 Ft</td></tr>
-      <tr><td>5000 db</td><td>13 000 Ft</td></tr><td>21 000 Ft</td></tr><td>37 000 Ft</td></tr><td>69 000 Ft</td></tr><td>15 700 Ft</td></tr>
-      <tr><td>10000 db</td><td>21 000 Ft</td></tr><td>37 000 Ft</td></tr><td>69 000 Ft</td></tr><td>133 000 Ft</td></tr><td>2400 Ft</td></tr>
-      <tr><td>20000 db</td><td>37 000 Ft</td></tr><td>69 000 Ft</td></tr><td>133 000 Ft</td></tr><td>261 000 Ft</td></tr><td>47 700 Ft</td></tr>
-      <tr><td>50000 db</td><td>85 000 Ft</td></tr><td>165 000 Ft</td></tr><td>325 000 Ft</td></tr><td>645 000 Ft</td></tr><td>111 700 Ft</td></tr
-                                                                                                                                      
+      <tr><th>db</th><th>Ár</th></tr>
+      <tr><td>1000</td><td>6 700 Ft</td></tr>
+      <tr><td>2000</td><td>8 500 Ft</td></tr>
+      <tr><td>5000</td><td>13 500 Ft</td></tr>
+      <tr><td>10000</td><td>23 500 Ft</td></tr>
+      <tr><td>20000</td><td>38 500 Ft</td></tr>
+      <tr><td>50000</td><td>87 500 Ft</td></tr>
     </table>
 
-    <h3>Szórólapok A5</h3>
+    <!-- Táblázat 2 -->
+    <h3>Kétoldalas egyszínes szórólap – A/5</h3>
     <table>
-      <tr><th>Példányszám</th><th>Ár (nettó Ft)</th></tr>
-      <tr><td>1000 db</td><td>18 000 Ft</td></tr>
+      <tr><th>db</th><th>Ár</th></tr>
+      <tr><td>1000</td><td>8 500 Ft</td></tr>
+      <tr><td>2000</td><td>11 000 Ft</td></tr>
+      <tr><td>5000</td><td>21 500 Ft</td></tr>
+      <tr><td>10000</td><td>38 000 Ft</td></tr>
+      <tr><td>20000</td><td>71 000 Ft</td></tr>
+      <tr><td>50000</td><td>170 000 Ft</td></tr>
     </table>
 
-    <h3>Plakátok A3</h3>
+    <!-- Táblázat 3 -->
+    <h3>Kétoldalas egyszínes szórólap – A/4</h3>
     <table>
-      <tr><th>Példányszám</th><th>Ár (nettó Ft)</th></tr>
-      <tr><td>500 db</td><td>22 000 Ft</td></tr>
+      <tr><th>db</th><th>Ár</th></tr>
+      <tr><td>1000</td><td>11 600 Ft</td></tr>
+      <tr><td>2000</td><td>18 200 Ft</td></tr>
+      <tr><td>5000</td><td>38 000 Ft</td></tr>
+      <tr><td>10000</td><td>71 000 Ft</td></tr>
+      <tr><td>20000</td><td>137 000 Ft</td></tr>
+      <tr><td>50000</td><td>335 000 Ft</td></tr>
     </table>
 
-    <h3>Egyéb termékek</h3>
+    <!-- Táblázat 4 -->
+    <h3>Kétoldalas egyszínes szórólap – A/3</h3>
     <table>
-      <tr><td>Kérjen egyedi árajánlatot e-mailben vagy telefonon!</td></tr>
+      <tr><th>db</th><th>Ár</th></tr>
+      <tr><td>1000</td><td>18 200 Ft</td></tr>
+      <tr><td>2000</td><td>31 400 Ft</td></tr>
+      <tr><td>5000</td><td>71 000 Ft</td></tr>
+      <tr><td>10000</td><td>137 000 Ft</td></tr>
+      <tr><td>20000</td><td>269 000 Ft</td></tr>
+      <tr><td>50000</td><td>665 000 Ft</td></tr>
     </table>
   </div>
-</div>
+
+  <script>
+    function togglePanel() {
+      const panel = document.getElementById('pricePanel');
+      panel.style.display = panel.style.display === 'none' || panel.style.display === '' ? 'block' : 'none';
+    }
+  </script>
 
 <div id="kapcsolat" class="content" style="background-image: url('vagogep3.png');">
   <div class="content-inner">

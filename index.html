@@ -1,146 +1,160 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forte-Press Bt.</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
-        header {
-            background-color: #3b5d91;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-        nav {
-            background-color: #004080;
-            text-align: center;
-        }
-        nav a {
-            display: inline-block;
-            color: white;
-            padding: 15px 20px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            background-color: #003366;
-        }
-        .content {
-            display: none;
-            padding: 30px 40px;
-            background-color: white;
-            margin: 30px auto;
-            max-width: 900px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .content.active {
-            display: block;
-        }
-        footer {
-            background-color: #002b5e;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-    <script>
-        function showSection(id) {
-            var sections = document.querySelectorAll('.content');
-            sections.forEach(function(section) {
-                section.classList.remove('active');
-            });
-            document.getElementById(id).classList.add('active');
-        }
-        window.onload = function() {
-            showSection('rolunk'); // alapértelmezett rész
-        };
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Forte-Press Bt.</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+    header {
+      background-image: url('https://source.unsplash.com/1600x400/?printing');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+    }
+    nav {
+      background-color: #004080;
+      text-align: center;
+    }
+    nav a {
+      display: inline-block;
+      color: white;
+      padding: 15px 20px;
+      text-decoration: none;
+    }
+    nav a:hover {
+      background-color: #003366;
+    }
+    .content {
+      display: none;
+      padding: 30px 40px;
+      background-color: white;
+      margin: 30px auto;
+      max-width: 900px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .content.active {
+      display: block;
+    }
+    footer {
+      background-color: #002b5e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .section-image {
+      width: 100%;
+      max-height: 300px;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+  </style>
+  <script>
+    function showSection(id) {
+      var sections = document.querySelectorAll('.content');
+      sections.forEach(function(section) {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+    window.onload = function() {
+      showSection('rolunk'); // alapértelmezett rész
+    };
+  </script>
 </head>
 <body>
 
 <header>
-    <h1>Forte-Press Bt.</h1>
-    <p>Professzionális szórólapkészítés – gyorsan, pontosan, kedvező áron 1994 óta</p>
+  <h1>Forte-Press Bt.</h1>
+  <p>Professzionális szórólapkészítés – gyorsan, pontosan, kedvező áron 1994 óta</p>
 </header>
 
 <nav>
-    <a href="#" onclick="showSection('rolunk')">Rólunk</a>
-    <a href="#" onclick="showSection('araink')">Áraink</a>
-    <a href="#" onclick="showSection('kapcsolat')">Kapcsolat</a>
+  <a href="#" onclick="showSection('rolunk')">Rólunk</a>
+  <a href="#" onclick="showSection('araink')">Áraink</a>
+  <a href="#" onclick="showSection('kapcsolat')">Kapcsolat</a>
 </nav>
 
 <div id="rolunk" class="content">
-    <h2>Rólunk</h2>
-    <p>
-        Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek,
-        kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával.
-        A budapesti Forte-Press Bt. több, mint 30 éve szolgálja ki hazai és külföldi partnereit –
-        kis példányszámtól a több százezres mennyiségig.
-        4 színes Heidelberg nyomdagépeink, 1 színes nyomdagépeink és egyéb berendezéseink,
-        valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.
-    </p>
+  <img src="https://source.unsplash.com/900x300/?printing-press" alt="Nyomda" class="section-image"/>
+  <h2>Rólunk</h2>
+  <p>
+    Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek,
+    kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával.
+    A budapesti Forte-Press Bt. több, mint 30 éve szolgálja ki hazai és külföldi partnereit –
+    kis példányszámtól a több százezres mennyiségig.
+    4 színes Heidelberg nyomdagépeink, 1 színes nyomdagépeink és egyéb berendezéseink,
+    valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.
+  </p>
 </div>
 
 <div id="araink" class="content">
-    <h2>Áraink</h2>
-    <table>
-        <tr>
-            <th>Termék</th>
-            <th>Méret</th>
-            <th>Példányszám</th>
-            <th>Ár (nettó Ft)</th>
-        </tr>
-        <tr>
-            <td>Szórólap</td>
-            <td>A6</td>
-            <td>1000 db</td>
-            <td>12 000 Ft</td>
-        </tr>
-        <tr>
-            <td>Szórólap</td>
-            <td>A5</td>
-            <td>1000 db</td>
-            <td>18 000 Ft</td>
-        </tr>
-        <tr>
-            <td>Plakát</td>
-            <td>A3</td>
-            <td>500 db</td>
-            <td>22 000 Ft</td>
-        </tr>
-    </table>
+  <img src="https://source.unsplash.com/900x300/?flyer-design" alt="Árak" class="section-image"/>
+  <h2>Áraink</h2>
+
+  <h3>Szórólapok A6</h3>
+  <table>
+    <tr><th>Példányszám</th><th>Ár (nettó Ft)</th></tr>
+    <tr><td>1000 db</td><td>12 000 Ft</td></tr>
+  </table>
+
+  <h3>Szórólapok A5</h3>
+  <table>
+    <tr><th>Példányszám</th><th>Ár (nettó Ft)</th></tr>
+    <tr><td>1000 db</td><td>18 000 Ft</td></tr>
+  </table>
+
+  <h3>Plakátok A3</h3>
+  <table>
+    <tr><th>Példányszám</th><th>Ár (nettó Ft)</th></tr>
+    <tr><td>500 db</td><td>22 000 Ft</td></tr>
+  </table>
+
+  <h3>Egyéb termékek</h3>
+  <table>
+    <tr><td>Kérjen egyedi árajánlatot e-mailben vagy telefonon!</td></tr>
+  </table>
 </div>
 
 <div id="kapcsolat" class="content">
-    <h2>Kapcsolat</h2>
-    <p><strong>Cím:</strong> Budapest, XIV. kerület</p>
-    <p><strong>Telefon:</strong> +36 30 123 4567</p>
-    <p><strong>Email:</strong> fortepressnyomda@gmail.com</p>
+  <img src="https://source.unsplash.com/900x300/?contact" alt="Kapcsolat" class="section-image"/>
+  <h2>Kapcsolat</h2>
+  <p><strong>Cím:</strong> Budapest, XIV. kerület</p>
+  <p><strong>Telefon:</strong> +36 30 123 4567</p>
+  <p><strong>Email:</strong> fortepressnyomda@gmail.com</p>
+
+  <h3>Térkép</h3>
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10879.3681081276!2d19.1060784!3d47.5084898!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741dbec5b547efb%3A0x6c9028adf0597580!2sZugl%C3%B3%2C%20Budapest!5e0!3m2!1shu!2shu!4v1620000000000!5m2!1shu!2shu" 
+    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+  </iframe>
 </div>
 
 <footer>
-    © 2025 Forte-Press Bt. Minden jog fenntartva.
+  © 2025 Forte-Press Bt. Minden jog fenntartva.
 </footer>
 
 </body>

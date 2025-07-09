@@ -4,142 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Forte-Press Bt.</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      background-image: url('heidelberg_gtov.png');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      padding: 60px 0;
-      text-align: center;
-    }
+  <style>$1
 
     nav {
       background-color: #004080;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      color: white;
+      flex-wrap: wrap;
     }
 
-    nav a {
-      display: inline-block;
+    .nav-contact {
+      font-size: 14px;
       color: white;
-      padding: 15px 20px;
+    }
+
+    .nav-contact a {
+      color: white;
       text-decoration: none;
+      margin: 0 10px;
     }
-
-    nav a:hover {
-      background-color: #003366;
-    }
-
-    .content {
-      display: none;
-      padding: 60px 40px;
-      background-size: cover;
-      background-position: center;
-      color: white;
-      flex: 1;
-      position: relative;
-    }
-
-    .content::before {
-      content: "";
-      background: rgba(0, 0, 0, 0.5);
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 1;
-    }
-
-    .content-inner {
-      position: relative;
-      z-index: 2;
-      background-color: rgba(0,0,0,0.6);
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .content.active {
-      display: block;
-    }
-
-    footer {
-      background-color: #002b5e;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
-      background: white;
-      color: black;
-    }
-
-    th, td {
-      border: 1px solid #ccc;
-      padding: 10px;
-      text-align: center;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-
-    iframe {
-      border: none;
-      width: 100%;
-      height: 300px;
-      margin-top: 20px;
-    }
-
-    .normal-text {
-      font-size: 18px;
-      margin-bottom: 10px;
-      color: white;
-      background-color: rgba(0, 0, 0, 0.4);
-      padding: 10px;
-      border-radius: 8px;
-    }
-
-    .highlight-text {
-      color: red;
-      font-size: 30px;
-      background-color: #ffe5e5;
-      padding: 10px;
-      display: inline-block;
-      border-radius: 8px;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-
-    .toggle-button {
-      background-color: #007bff;
-      color: white;
-      padding: 10px 30px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-      margin: 20px auto;
-      display: block;
-    }
-
-    .panel {
-      display: none;
-      margin-top: 30px;
-    }
-  </style>
   <script>
     function showSection(id) {
       var sections = document.querySelectorAll('.content');
@@ -169,9 +55,17 @@
 </header>
 
 <nav>
-  <a href="#" onclick="showSection('rolunk')">Rólunk</a>
-  <a href="#" onclick="showSection('araink')">Áraink</a>
-  <a href="#" onclick="showSection('kapcsolat')">Kapcsolat</a>
+  <div class="nav-contact">
+    <a href="mailto:fortepressnyomda@gmail.com"><i class="fas fa-envelope"></i> fortepressnyomda@gmail.com</a>
+  </div>
+  <div>
+    <a href="#" onclick="showSection('rolunk')">Rólunk</a>
+    <a href="#" onclick="showSection('araink')">Áraink</a>
+    <a href="#" onclick="showSection('kapcsolat')">Kapcsolat</a>
+  </div>
+  <div class="nav-contact">
+    <a href="tel:+36209236130"><i class="fas fa-phone"></i> +36 20 923 6130</a>
+  </div>
 </nav>
 
 <div id="rolunk" class="content" style="background-image: url('vagogep.png');">
@@ -257,8 +151,8 @@
   <div class="content-inner">
     <h2>Kapcsolat</h2>
     <p><strong>Cím:</strong> 1144 Budapest, Zalán utca 77</p>
-    <p><strong>Telefon:</strong> +36 30 123 4567</p>
-    <p><strong>Email:</strong> fortepressnyomda@gmail.com</p>
+    <p><strong>Telefon:</strong> <a href="tel:+36209236130" style="color: white;">+36 20 923 6130</a></p>
+    <p><strong>Email:</strong> <a href="mailto:fortepressnyomda@gmail.com" style="color: white;">fortepressnyomda@gmail.com</a></p>
 
     <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 20px;">
   <div style="flex: 0 0 55%;">
@@ -279,11 +173,6 @@
         <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>WhatsApp kapcsolat
       </a>
     </p>
-    <p>
-      <a href="viber://chat?number=%2B36209236130" target="_blank" style="color: white; font-size: 20px; text-decoration: none;">
-        <i class="fab fa-viber" style="margin-right: 8px;"></i>Viber kapcsolat
-      </a>
-    </p>
   </div>
   
   </div>
@@ -297,4 +186,3 @@
 
 </body>
 </html>
-

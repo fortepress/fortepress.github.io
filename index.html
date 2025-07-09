@@ -81,23 +81,35 @@
   <p>Szórólapkészítés – gyorsan, igényesen, korrekt áron</p>
 </header>
 
-<nav>
-  <a onclick="showSection('rolunk')">Rólunk</a>
-  <a onclick="showSection('arak')">Árak</a>
-  <a onclick="showSection('kapcsolat')">Kapcsolat</a>
-</nav>
+<section id="arak">
+  <h2>Áraink</h2>
+  <p class="kiemelt-arinfo">Minden megrendelésre egyedi árat adunk!</p>
+  <p>Aktuális árainkat az alábbi képen láthatóak. A lista rendszeresen frissül. Ha egyedi igénye van, kérjen személyre szabott ajánlatot e-mailben vagy telefonon!</p>
 
-<div class="container">
-  <section id="rolunk" class="active">
-    <h2>Rólunk</h2>
-    <p>Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek, kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával. A budapesti Forte-Press Bt. több, mint 30 éve szolgálja ki hazai és külföldi partnereit – kis példányszámtól a több százezres mennyiségig. 4 színes Heidelberg nyomdagépünk, 1 színes nyomdagépeink és egyéb berendezéseink, valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.</p>
-  </section>
+  <nav class="almenu">
+    <a href="#" onclick="showArSection('szorolap'); return false;">Szórólapok</a>
+    <a href="#" onclick="showArSection('plakat'); return false;">Plakátok</a>
+    <a href="#" onclick="showArSection('egyeb'); return false;">Egyéb nyomtatványok</a>
+  </nav>
 
-  <section id="arak">
-    <h2>Áraink</h2>
-    <p class="kiemelt-arinfo">Minden megrendelésre egyedi árat adunk!</p>
-    <p>Aktuális árainkat az alábbi képen láthatóak. A lista rendszeresen frissül. Ha egyedi igénye van, kérjen személyre szabott ajánlatot e-mailben vagy telefonon!</p>
-  </section>
+  <div id="szorolap" class="ar-subsection active">
+    <h3>Szórólapok árai</h3>
+    <p>A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,25 Ft-tól.<br>
+       Papírfajtától függően gyártunk olcsóbb és drágább szórólapokat is!<br>
+       A táblázatokban szereplő árak tájékoztató jellegűek, az árváltoztatás jogát fenntartjuk.<br>
+       A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!</p>
+  </div>
+
+  <div id="plakat" class="ar-subsection" style="display:none;">
+    <h3>Plakátok árai</h3>
+    <p>Itt megadhatod a plakátok árait, leírását, stb.</p>
+  </div>
+
+  <div id="egyeb" class="ar-subsection" style="display:none;">
+    <h3>Egyéb nyomtatványok árai</h3>
+    <p>Itt megadhatod az egyéb nyomtatványok árlistáját.</p>
+  </div>
+</section>
 
   <section id="kapcsolat">
     <h2>Kapcsolat</h2>

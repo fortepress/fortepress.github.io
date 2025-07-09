@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Forte-Press Bt. - Szórólapkészítés</title>
+  <meta name="description" content="Forte-Press Bt. - Szórólapkészítés Budapesten, gyors, igényes és korrekt árakon. Ofszet technológiával készítünk szórólapokat, plakátokat, terítékalátéteket.">
+  <meta name="keywords" content="szórólap, nyomda, ofszet nyomtatás, plakát, Forte-Press, Budapest, szórólapkészítés, korrekt árak">
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -13,10 +16,11 @@
     }
 
     header {
-      background-color: #003366;
+      background: url('https://via.placeholder.com/1200x250?text=Forte-Press+Bt.+Fejléc') no-repeat center center/cover;
       color: #fff;
-      padding: 20px;
+      padding: 60px 20px;
       text-align: center;
+      box-shadow: inset 0 0 0 1000px rgba(0, 51, 102, 0.7);
     }
 
     nav.main-nav {
@@ -82,13 +86,22 @@
     }
     nav.almenu a {
       margin-right: 15px;
-      color: #0055a5;
+      color: white;
+      background-color: #0055a5;
       cursor: pointer;
-      text-decoration: underline;
+      text-decoration: none;
+      padding: 12px 25px;
+      font-weight: bold;
+      border-radius: 5px;
       user-select: none;
+      font-size: 16px;
+      display: inline-block;
+      transition: background-color 0.3s ease;
     }
     nav.almenu a:hover {
-      color: #003f7f;
+      background-color: #003f7f;
+      color: white;
+      text-decoration: none;
     }
 
     /* Ár almenü tartalom */
@@ -97,6 +110,20 @@
     }
     .ar-subsection.active {
       display: block;
+    }
+
+    /* Példaképek rugalmas elrendezés */
+    .kepek {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .kepek img {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      max-width: 150px;
+      height: auto;
     }
   </style>
 </head>
@@ -122,12 +149,10 @@
   <section id="arak">
   <h2>Áraink</h2>
 
-  <!-- Kék téglalap stílusú gomb -->
-  <nav class="almenu" style="margin-bottom: 15px;">
+  <nav class="almenu">
     <a href="#" id="toggleBtn" class="blue-button">Tovább</a>
   </nav>
 
-  <!-- Rejtett tartalom, alapból nem látszik -->
   <div id="tartalom" style="display: none; margin-top: 20px;">
     <p class="kiemelt-arinfo">
       A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,25 Ft-tól.<br>
@@ -136,8 +161,7 @@
       A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!
     </p>
 
-    <!-- Pár példa kép -->
-    <div class="kepek" style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <div class="kepek">
       <img src="https://via.placeholder.com/150x100?text=Szórólap+1" alt="Szórólap 1" />
       <img src="https://via.placeholder.com/150x100?text=Szórólap+2" alt="Szórólap 2" />
       <img src="https://via.placeholder.com/150x100?text=Szórólap+3" alt="Szórólap 3" />
@@ -145,42 +169,6 @@
   </div>
 
 </section>
-
-<style>
-  .blue-button {
-    display: inline-block;
-    background-color: #0055a5;
-    color: white !important;
-    padding: 12px 25px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    user-select: none;
-    font-size: 16px;
-  }
-
-  .blue-button:hover {
-    background-color: #003f7f;
-  }
-
-  .kiemelt-arinfo {
-    color: red;
-    font-size: 28px;
-    font-weight: bold;
-  }
-</style>
-
-<script>
-  document.getElementById('toggleBtn').addEventListener('click', function(e) {
-    e.preventDefault();
-    const tartalom = document.getElementById('tartalom');
-    if (tartalom.style.display === 'none') {
-      tartalom.style.display = 'block';
-    } else {
-      tartalom.style.display = 'none';
-    }
-  });
-</script>
 
   <section id="kapcsolat">
     <h2>Kapcsolat</h2>
@@ -211,12 +199,15 @@
     document.getElementById(id).classList.add("active");
   }
 
-  function showArSection(id) {
-    document.querySelectorAll('.ar-subsection').forEach(el => {
-      el.classList.remove('active');
-    });
-    document.getElementById(id).classList.add('active');
-  }
+  document.getElementById('toggleBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    const tartalom = document.getElementById('tartalom');
+    if (tartalom.style.display === 'none') {
+      tartalom.style.display = 'block';
+    } else {
+      tartalom.style.display = 'none';
+    }
+  });
 </script>
 
 </body>

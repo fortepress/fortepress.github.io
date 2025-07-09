@@ -1,214 +1,147 @@
-# A HTML kódot tartalmazó fájl létrehozása és mentése
-html_code = """
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Forte-Press Bt. - Szórólapkészítés</title>
-  <meta name="description" content="Forte-Press Bt. - Szórólapkészítés Budapesten, gyors, igényes és korrekt árakon. Ofszet technológiával készítünk szórólapokat, plakátokat, terítékalátéteket.">
-  <meta name="keywords" content="szórólap, nyomda, ofszet nyomtatás, plakát, Forte-Press, Budapest, szórólapkészítés, korrekt árak">
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-    }
-
-    header {
-      background: url('https://via.placeholder.com/1200x250?text=Forte-Press+Bt.+Fejléc') no-repeat center center/cover;
-      color: #fff;
-      padding: 60px 20px;
-      text-align: center;
-      box-shadow: inset 0 0 0 1000px rgba(0, 51, 102, 0.7);
-    }
-
-    nav.main-nav {
-      background-color: #0055a5;
-      display: flex;
-      justify-content: center;
-    }
-
-    nav.main-nav a {
-      color: white;
-      padding: 14px 20px;
-      text-decoration: none;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    nav.main-nav a:hover {
-      background-color: #003f7f;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      background-color: #fff;
-      padding: 20px;
-    }
-
-    section {
-      display: none;
-    }
-
-    section.active {
-      display: block;
-    }
-
-    footer {
-      background-color: #003366;
-      color: #fff;
-      text-align: center;
-      padding: 10px;
-      margin-top: 20px;
-    }
-
-    iframe {
-      width: 100%;
-      max-width: 600px;
-      height: 450px;
-      border: 0;
-    }
-
-    .kiemelt-arinfo {
-      color: red;
-      font-size: 30px;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
-    nav.almenu {
-      margin-top: 15px;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-    nav.almenu a {
-      margin-right: 15px;
-      color: white;
-      background-color: #0055a5;
-      cursor: pointer;
-      text-decoration: none;
-      padding: 12px 25px;
-      font-weight: bold;
-      border-radius: 5px;
-      user-select: none;
-      font-size: 16px;
-      display: inline-block;
-      transition: background-color 0.3s ease;
-    }
-    nav.almenu a:hover {
-      background-color: #003f7f;
-      color: white;
-      text-decoration: none;
-    }
-
-    .ar-subsection {
-      display: none;
-    }
-    .ar-subsection.active {
-      display: block;
-    }
-
-    .kepek {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .kepek img {
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      max-width: 150px;
-      height: auto;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forte-Press Bt.</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #3b5d91;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        nav {
+            background-color: #004080;
+            text-align: center;
+        }
+        nav a {
+            display: inline-block;
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #003366;
+        }
+        .content {
+            display: none;
+            padding: 30px 40px;
+            background-color: white;
+            margin: 30px auto;
+            max-width: 900px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .content.active {
+            display: block;
+        }
+        footer {
+            background-color: #002b5e;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    <script>
+        function showSection(id) {
+            var sections = document.querySelectorAll('.content');
+            sections.forEach(function(section) {
+                section.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+        }
+        window.onload = function() {
+            showSection('rolunk'); // alapértelmezett rész
+        };
+    </script>
 </head>
 <body>
 
 <header>
-  <h1>Forte-Press Bt.</h1>
-  <p>Professzionális szórólapkészítés – gyorsan, pontosan, kedvező áron 1994 óta</p>
+    <h1>Forte-Press Bt.</h1>
+    <p>Professzionális szórólapkészítés – gyorsan, pontosan, kedvező áron 1994 óta</p>
 </header>
 
-<nav class="main-nav">
-  <a onclick="showSection('rolunk')">Rólunk</a>
-  <a onclick="showSection('arak')">Áraink</a>
-  <a onclick="showSection('kapcsolat')">Kapcsolat</a>
+<nav>
+    <a href="#" onclick="showSection('rolunk')">Rólunk</a>
+    <a href="#" onclick="showSection('araink')">Áraink</a>
+    <a href="#" onclick="showSection('kapcsolat')">Kapcsolat</a>
 </nav>
 
-<div class="container">
-  <section id="rolunk" class="active">
+<div id="rolunk" class="content">
     <h2>Rólunk</h2>
-    <p>Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek, kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával. A budapesti Forte-Press Bt. több, mint 30 éve szolgálja ki hazai és külföldi partnereit – kis példányszámtól a több százezres mennyiségig. 4 színes Heidelberg nyomdagépünk, 1 színes nyomdagépeink és egyéb berendezéseink, valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.</p>
-  </section>
+    <p>
+        Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek,
+        kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával.
+        A budapesti Forte-Press Bt. több, mint 30 éve szolgálja ki hazai és külföldi partnereit –
+        kis példányszámtól a több százezres mennyiségig.
+        4 színes Heidelberg nyomdagépeink, 1 színes nyomdagépeink és egyéb berendezéseink,
+        valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.
+    </p>
+</div>
 
-  <section id="arak">
+<div id="araink" class="content">
     <h2>Áraink</h2>
+    <table>
+        <tr>
+            <th>Termék</th>
+            <th>Méret</th>
+            <th>Példányszám</th>
+            <th>Ár (nettó Ft)</th>
+        </tr>
+        <tr>
+            <td>Szórólap</td>
+            <td>A6</td>
+            <td>1000 db</td>
+            <td>12 000 Ft</td>
+        </tr>
+        <tr>
+            <td>Szórólap</td>
+            <td>A5</td>
+            <td>1000 db</td>
+            <td>18 000 Ft</td>
+        </tr>
+        <tr>
+            <td>Plakát</td>
+            <td>A3</td>
+            <td>500 db</td>
+            <td>22 000 Ft</td>
+        </tr>
+    </table>
+</div>
 
-    <nav class="almenu">
-      <a href="#" id="toggleBtn" class="blue-button">Tovább</a>
-    </nav>
-
-    <div id="tartalom" style="display: none; margin-top: 20px;">
-      <p class="kiemelt-arinfo">
-        A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,25 Ft-tól.<br>
-        Papírfajtától függően gyártunk olcsóbb és drágább szórólapokat is!<br>
-        A táblázatokban szereplő árak tájékoztató jellegűek, az árváltoztatás jogát fenntartjuk.<br>
-        A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!
-      </p>
-
-      <div class="kepek">
-        <img src="egyoldalas egyszínes.png" alt="Egyoldalas egyszínes szórólap" />
-        <img src="egyoldalas negyszínes.png" alt="Egyoldalas színes szórólap" />
-        <img src="ketoldalas egyszínes.png" alt="Kétoldalas egyszínes szórólap" />
-        <img src="ketoldalas negyszínes.png" alt="Kétoldalas színes szórólap" />
-      </div>
-    </div>
-  </section>
-
-  <section id="kapcsolat">
+<div id="kapcsolat" class="content">
     <h2>Kapcsolat</h2>
-    <p><strong>Cím:</strong> 1144 Budapest, Zalán utca 77.</p>
-    <p><strong>Telefon:</strong> <a href="tel:+36309404064">+36 30 940 4064</a></p>
-    <p><strong>Email:</strong> <a href="mailto:fortepressnyomda@gmail.com">fortepressnyomda@gmail.com</a></p>
-
-    <div style="margin-top: 20px; text-align: center;">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10871.302170611892!2d19.1476602!3d47.5109829!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741db207fb5e44f%3A0x233a71a52e13ff6a!2sBudapest%2C%20Zal%C3%A1n%20u.%2077%2C%201144!5e0!3m2!1shu!2shu!4v1720536637039!5m2!1shu!2shu"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
-    </div>
-  </section>
+    <p><strong>Cím:</strong> Budapest, XIV. kerület</p>
+    <p><strong>Telefon:</strong> +36 30 123 4567</p>
+    <p><strong>Email:</strong> fortepressnyomda@gmail.com</p>
 </div>
 
 <footer>
-  <p>&copy; 2025 Forte-Press Bt. Minden jog fenntartva.</p>
+    © 2025 Forte-Press Bt. Minden jog fenntartva.
 </footer>
-
-<script>
-  function showSection(id) {
-    document.querySelectorAll("section").forEach(section => {
-      section.classList.remove("active");
-    });
-    document.getElementById(id).classList.add("active");
-  }
-
-  document.getElementById('toggleBtn').addEventListener('click', function(e) {
-    e.preventDefault();
-    const tartalom = document.getElementById('tartalom');
-    if (tartalom.style.display === 'none') {
-      tartalom.style.display = 'block';
-    } else {
-      tartalom.style.display = 'none';
-    }
-  });
-</script>
 
 </body>
 </html>
-

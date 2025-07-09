@@ -65,6 +65,13 @@
       height: 450px;
       border: 0;
     }
+
+    .kiemelt-arinfo {
+      color: red;
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
   </style>
 </head>
 <body>
@@ -75,27 +82,21 @@
 </header>
 
 <nav>
-  <a onclick="showSection('szolgaltatasok')">Szolgáltatások</a>
+  <a onclick="showSection('rolunk')">Rólunk</a>
   <a onclick="showSection('arak')">Árak</a>
   <a onclick="showSection('kapcsolat')">Kapcsolat</a>
 </nav>
 
 <div class="container">
-  <section id="szolgaltatasok" class="active">
-    <h2>Szolgáltatásaink</h2>
-    <ul>
-      <li>Szórólap tervezés és nyomtatás</li>
-      <li>Névjegykártya készítés</li>
-      <li>Plakát, molinó, roll-up</li>
-      <li>Cégtábla, ablakmatrica</li>
-      <li>Fekete-fehér és színes fénymásolás</li>
-      <li>Kötészet, laminálás, spirálozás</li>
-    </ul>
+  <section id="rolunk" class="active">
+    <h2>Rólunk</h2>
+    <p>Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek, kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával. A budapesti Forte-Press Bt. több, mint 30 éve szolgálja ki hazai és külföldi partnereit – kis példányszámtól a több százezres mennyiségig. 4 színes Heidelberg nyomdagépünk, 1 színes nyomdagépeink és egyéb berendezéseink, valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.</p>
   </section>
 
   <section id="arak">
     <h2>Áraink</h2>
-    <p>Kérjen egyedi árajánlatot az igényeinek megfelelően! Nagyobb példányszám esetén kedvezményt biztosítunk.</p>
+    <p class="kiemelt-arinfo">Minden megrendelésre egyedi árat adunk!</p>
+    <p>Aktuális árainkat az alábbi képen láthatóak. A lista rendszeresen frissül. Ha egyedi igénye van, kérjen személyre szabott ajánlatot e-mailben vagy telefonon!</p>
   </section>
 
   <section id="kapcsolat">
@@ -130,3 +131,4 @@
 
 </body>
 </html>
+

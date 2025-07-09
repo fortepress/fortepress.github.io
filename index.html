@@ -4,7 +4,155 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Forte-Press Bt.</title>
-  $1
+  <style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+  }
+
+  header {
+    background-image: url('heidelberg_gtov.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+  }
+
+  nav {
+    background-color: #004080;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    display: inline-block;
+    color: white;
+    padding: 15px 20px;
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    background-color: #003366;
+  }
+
+  .nav-contact {
+    font-size: 14px;
+    color: white;
+  }
+
+  .nav-contact a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+
+  .content {
+    display: none;
+    padding: 60px 40px;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    min-height: 400px;
+    position: relative;
+  }
+
+  .content::before {
+    content: "";
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+  }
+
+  .content-inner {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .content.active {
+    display: block;
+  }
+
+  footer {
+    background-color: #002b5e;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    color: black;
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  iframe {
+    border: none;
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+  }
+
+  .normal-text {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .highlight-text {
+    color: red;
+    font-size: 30px;
+    background-color: #ffe5e5;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  .toggle-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px auto;
+    display: block;
+  }
+
+  .panel {
+    display: none;
+    margin-top: 30px;
+  }
 </style>
 
 <script>

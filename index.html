@@ -120,22 +120,66 @@
   </section>
 
   <section id="arak">
-    <h2>Áraink</h2>
-    <p class="kiemelt-arinfo">A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,25 Ft-tól.Papírfajtától függően gyártunk olcsóbb és drágább szórólapokat is!A táblázatokban szereplő árak tájékoztató jellegűek, az árváltoztatás jogát fenntartjuk. A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!</p>
-    <p>Aktuális árainkat az alábbi képen láthatóak. A lista rendszeresen frissül. Ha egyedi igénye van, kérjen személyre szabott ajánlatot e-mailben vagy telefonon!</p>
+  <h2>Áraink</h2>
 
-    <nav class="almenu">
-      <a href="#" onclick="showArSection('tovabb'); return false;">Tovább</a>
-    </nav>
+  <!-- Kék téglalap stílusú gomb -->
+  <nav class="almenu">
+    <a href="#" id="toggleBtn" class="blue-button">Tovább</a>
+  </nav>
 
-    <div id="tovabb" class="ar-subsection active">
-      <h3>Tovább</h3>
-      <p>A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,25 Ft-tól.<br>
-         Papírfajtától függően gyártunk olcsóbb és drágább szórólapokat is!<br>
-         A táblázatokban szereplő árak tájékoztató jellegűek, az árváltoztatás jogát fenntartjuk.<br>
-         A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!</p>
+  <!-- Rejtett tartalom, alapból nem látszik -->
+  <div id="tartalom" style="display: none; margin-top: 20px;">
+    <p class="kiemelt-arinfo">
+      A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,25 Ft-tól.<br>
+      Papírfajtától függően gyártunk olcsóbb és drágább szórólapokat is!<br>
+      A táblázatokban szereplő árak tájékoztató jellegűek, az árváltoztatás jogát fenntartjuk.<br>
+      A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!
+    </p>
+
+    <!-- Pár példa kép -->
+    <div class="kepek" style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <img src="https://via.placeholder.com/150x100?text=Szórólap+1" alt="Szórólap 1" />
+      <img src="https://via.placeholder.com/150x100?text=Szórólap+2" alt="Szórólap 2" />
+      <img src="https://via.placeholder.com/150x100?text=Szórólap+3" alt="Szórólap 3" />
     </div>
-  </section>
+  </div>
+
+</section>
+
+<style>
+  .blue-button {
+    display: inline-block;
+    background-color: #0055a5;
+    color: white;
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    user-select: none;
+  }
+
+  .blue-button:hover {
+    background-color: #003f7f;
+  }
+
+  .kiemelt-arinfo {
+    color: red;
+    font-size: 28px;
+    font-weight: bold;
+  }
+</style>
+
+<script>
+  document.getElementById('toggleBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    const tartalom = document.getElementById('tartalom');
+    if (tartalom.style.display === 'none') {
+      tartalom.style.display = 'block';
+    } else {
+      tartalom.style.display = 'none';
+    }
+  });
+</script>
 
   <section id="kapcsolat">
     <h2>Kapcsolat</h2>

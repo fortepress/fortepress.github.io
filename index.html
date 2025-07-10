@@ -1,62 +1,398 @@
 <!DOCTYPE html>
-<html lang="hu" dir="ltr">
+<html lang="hu">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
+  <!-- SEO optimalizálás – META leírás -->
+  <meta name="description" content="Szórólapkészítés gyorsan, pontosan, kedvező áron Budapesten. A Forte-Press Bt. több mint 30 éves tapasztalattal vállal szórólap, plakát és kiadvány nyomtatást.">
   <link rel="canonical" href="https://www.fortepress.hu/">
-
-  <!-- Optimalizált SEO meta elemek -->
-  <title>Forte-Press Bt. – Szórólap nyomtatás Budapesten 1994 óta</title>
-  <meta name="description" content="Szórólap, plakát és prospektus gyártás ofszet technológiával – már 1,25 Ft/db-tól. Profi gyorsaság, korrekt árak Budapesten.">
-
-  <!-- Open Graph meta a közösségi megosztáshoz -->
-  <meta property="og:title" content="Forte-Press Bt. – Szórólap nyomtatás Budapesten">
-  <meta property="og:description" content="Gyors és megbízható szórólapkészítés. Kérj ajánlatot most!">
-  <meta property="og:image" content="https://www.fortepress.hu/preview.jpg">
-  <meta property="og:url" content="https://www.fortepress.hu/">
-  <meta property="og:type" content="website">
-
-  <!-- Twitter Cards meta -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Forte-Press Bt.">
-  <meta name="twitter:description" content="Professzionális szórólapkészítés Budapesten – Gyors és pontos nyomtatás.">
-  <meta name="twitter:image" content="https://www.fortepress.hu/preview.jpg">
-
-  <!-- Google LocalBusiness strukturált adat -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Forte-Press Bt.",
-    "image": "https://www.fortepress.hu/logo.png",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Zalán utca 77.",
-      "addressLocality": "Budapest",
-      "postalCode": "1144",
-      "addressCountry": "HU"
-    },
-    "telephone": "+36-20-923-6130",
-    "email": "fortepressnyomda@gmail.com",
-    "url": "https://www.fortepress.hu",
-    "openingHours": "Mo-Fr 08:00-16:00"
-  }
-  </script>
-
-  <!-- Design és reszponzív CSS (eredeti változat változatlanul!) -->
+  <!-- SEO optimalizálás – KULCSSZAVAK -->
+  <meta name="keywords" content="szórólap, szórólapkészítés, nyomda, nyomtatás, plakát nyomtatás, ofszet nyomda, Budapest nyomda, olcsó szórólap, terítékalátét, tálcabetét">
+  <title>Forte-Press Bt.</title>
   <style>
-    /* ... az eredeti CSS pontosan változatlanul ide kerül ... */
-  </style>
+  /* Mobilbarát alapértelmezés */
+  html {
+    font-size: 16px;
+  }
 
-  <!-- JavaScript – működés változatlan -->
-  <script>/* ... az eredeti showSection és togglePanel kód ... */</script>
+  @media (max-width: 768px) {
+    html {
+      font-size: 14px;
+    }
 
-  <!-- FontAwesome ikonok -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    nav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    nav a {
+      padding: 10px 15px;
+    }
+
+    .nav-contact {
+      margin-bottom: 10px;
+    }
+
+    .highlight-text {
+      font-size: 22px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    html {
+      font-size: 12px;
+    }
+
+    .highlight-text {
+      font-size: 18px;
+    }
+  }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+  }
+
+  header {
+    background-image: url('heidelberg_gtov.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+  }
+
+  nav {
+    background-color: #004080;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    color: white;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    display: inline-block;
+    color: white;
+    padding: 15px 20px;
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    background-color: #003366;
+  }
+
+  .nav-contact {
+    font-size: 14px;
+    color: white;
+  }
+
+  .nav-contact a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+
+  .content {
+    display: none;
+    padding: 60px 40px;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    min-height: 400px;
+    position: relative;
+  }
+
+  .content::before {
+    content: "";
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1;
+  }
+
+  .content-inner {
+    position: relative;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .content.active {
+    display: block;
+  }
+
+  footer {
+    background-color: #002b5e;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: white;
+    color: black;
+  }
+
+  th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+
+  iframe {
+    border: none;
+    width: 100%;
+    height: 300px;
+    margin-top: 20px;
+  }
+
+  .normal-text {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .highlight-text {
+    color: red;
+    font-size: 30px;
+    background-color: #ffe5e5;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-weight: bold;
+  }
+
+  .toggle-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 20px auto;
+    display: block;
+  }
+
+  .panel {
+    display: none;
+    margin-top: 30px;
+  }
+</style>
+
+<script>
+    function showSection(id) {
+      var sections = document.querySelectorAll('.content');
+      sections.forEach(function(section) {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
+
+    function togglePanel() {
+      const panel = document.getElementById('pricePanel');
+      panel.style.display = panel.style.display === 'none' || panel.style.display === '' ? 'block' : 'none';
+    }
+
+    window.onload = function() {
+      showSection('rolunk');
+    };
+  </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <!-- A teljes body tartalom változás nélkül -->
-  <!-- Táblázatok, ikonok, panel, menüsor – mind ugyanúgy, mint korábban -->
+
+<header>
+  <h1>Forte-Press Bt.</h1>
+  <h2 class="highlight-text" style="font-size: 22px; background-color: #ffffffaa; color: #000;">Szórólapnyomtatás Budapesten gyors határidővel – akár 1,25 Ft/db-tól!</h2>
+    <p>Professzionális szórólapkészítés – gyorsan, pontosan, kedvező áron 1994 óta</p>
+</header>
+
+<nav>
+  <div class="nav-contact">
+    <a href="mailto:fortepressnyomda@gmail.com"><i class="fas fa-envelope"></i> fortepressnyomda@gmail.com</a>
+  </div>
+  <div>
+    <a href="#" onclick="showSection('rolunk')">Rólunk</a>
+    <a href="#" onclick="showSection('araink')">Áraink</a>
+    <a href="#" onclick="showSection('kapcsolat')">Kapcsolat</a>
+  </div>
+  <div class="nav-contact">
+    <a href="tel:+36209236130"><i class="fas fa-phone"></i> +36 20 923 6130</a>
+  </div>
+</nav>
+
+<div id="rolunk" class="content" style="background-image: url('vagogep.png');">
+  <div class="content-inner">
+    <h2>Rólunk</h2>
+    <p>
+      Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek,
+      kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával.
+      A budapesti Forte-Press Bt. több, mint 30 éve szolgálja ki hazai és külföldi partnereit –
+      kis példányszámtól a több százezres mennyiségig.
+      4 színes Heidelberg nyomdagépeink, 1 színes nyomdagépeink és egyéb berendezéseink,
+      valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.
+    <br><br>
+    <strong>
+      Nyomdánk fő specialitása a <em>szórólapkészítés Budapest</em> területén. Célunk, hogy ügyfeleink számára gyors, pontos és olcsó nyomtatási megoldásokat kínáljunk.<br>
+      Ofszet nyomdánk ideális választás <em>kis példányszámú szórólap</em> vagy akár <em>több százezres plakát nyomtatás</em> esetén is. Vállaljuk <em>A/6, A/5, A/4 és A/3 méretű szórólapok</em> gyártását, <em>1 vagy 4 színnel</em>, kiváló minőségben.
+    </strong>
+  </p>
+  </div>
+</div>
+
+<div id="araink" class="content" style="background-image: url('papirivek.jpg');">
+  <div class="content-inner">
+    <h2>Áraink</h2>
+
+    <div class="normal-text">
+      Aktuális árainkat az alábbi képen láthatóak. 
+      A lista rendszeresen frissül. Ha egyedi igénye van, kérjen személyre szabott ajánlatot e-mailben vagy telefonon!
+    </div>
+    <div class="highlight-text" style="display: block; max-width: 100%; line-height: 1.5;">
+      A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,25 Ft-tól.<br>
+      Papírfajtától függően gyártunk olcsóbb és drágább szórólapokat is!<br>
+      A táblázatokban szereplő árak tájékoztató jellegűek, az árváltoztatás jogát fenntartjuk!<br>
+      A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!
+    </div>
+
+    <button class="toggle-button" onclick="togglePanel()">Tovább</button>
+
+    <div class="panel" id="pricePanel">
+      <h3>Egyoldalas, egyszínes szórólap, 60g/m2 papíron</h3>
+      <table>
+        <tr><th>db</th><th>A/6</th><th>A/5</th><th>A/4</th><th>A/3</th><th>LA4</th></tr>
+        <tr><td>1000</td><td>7 000 Ft</td><td>8 500 Ft</td><td>11 500 Ft</td><td>17 800 Ft</td><td>7 200 Ft</td></tr>
+        <tr><td>2000</td><td>8 500 Ft</td><td>11 500 Ft</td><td>17 800 Ft</td><td>30 600 Ft</td><td>9 300 Ft</td></tr>
+        <tr><td>5000</td><td>13 000 Ft</td><td>21 000 Ft</td><td>37 000 Ft</td><td>69 000 Ft</td><td>15 700 Ft</td></tr>
+        <tr><td>10000</td><td>21 000 Ft</td><td>37 000 Ft</td><td>69 000 Ft</td><td>133 000 Ft</td><td>26 400 Ft</td></tr>
+        <tr><td>20000</td><td>37 000 Ft</td><td>69 000 Ft</td><td>133 000 Ft</td><td>261 000 Ft</td><td>47 700 Ft</td></tr>
+        <tr><td>50000</td><td>85 000 Ft</td><td>165 000 Ft</td><td>325 000 Ft</td><td>645 000 Ft</td><td>111 700 Ft</td></tr>
+      </table>
+
+      <h3>Kétoldalas, egyszínes szórólap, 60g/m2 papíron</h3>
+      <table>
+        <tr><th>db</th><th>A/6</th><th>A/5</th><th>A/4</th><th>A/3</th><th>LA4</th></tr>
+        <tr><td>1000</td><td>6 700 Ft</td><td>8 500 Ft</td><td>11 600 Ft</td><td>18 200 Ft</td><td>7 500 Ft</td></tr>
+        <tr><td>2000</td><td>8 500 Ft</td><td>11 600 Ft</td><td>18 200 Ft</td><td>31 400 Ft</td><td>9 500 Ft</td></tr>
+        <tr><td>5000</td><td>13 300 Ft</td><td>21 500 Ft</td><td>38 000 Ft</td><td>71 000 Ft</td><td>16 000 Ft</td></tr>
+        <tr><td>10000</td><td>21 500 Ft</td><td>38 000 Ft</td><td>71 000 Ft</td><td>137 000 Ft</td><td>27 000 Ft</td></tr>
+        <tr><td>20000</td><td>38 000 Ft</td><td>71 000 Ft</td><td>137 000 Ft</td><td>269 000 Ft</td><td>49 000 Ft</td></tr>
+        <tr><td>50000</td><td>87 500 Ft</td><td>170 000 Ft</td><td>335 000 Ft</td><td>665 000 Ft</td><td>115 000 Ft</td></tr>
+      </table>
+
+      <h3>Egyoldalas, négyszínes szórólap, 90g/m2 papíron</h3>
+      <table>
+        <tr><th>db</th><th>A/6</th><th>A/5</th><th>A/4</th><th>A/3</th><th>LA4</th></tr>
+        <tr><td>1000</td><td>21 900 Ft</td><td>23 700 Ft</td><td>27 400 Ft</td><td>34 800 Ft</td><td>22 500 Ft</td></tr>
+        <tr><td>2000</td><td>23 700 Ft</td><td>27 400 Ft</td><td>34 800 Ft</td><td>49 600 Ft</td><td>25 000 Ft</td></tr>
+        <tr><td>5000</td><td>29 300 Ft</td><td>38 500 Ft</td><td>57 000 Ft</td><td>94 000 Ft</td><td>32 400 Ft</td></tr>
+        <tr><td>10000</td><td>38 500 Ft</td><td>57 000 Ft</td><td>94 000 Ft</td><td>168 000 Ft</td><td>44 700 Ft</td></tr>
+        <tr><td>20000</td><td>57 000 Ft</td><td>94 000 Ft</td><td>168 000 Ft</td><td>316 000 Ft</td><td>69 400 Ft</td></tr>
+        <tr><td>50000</td><td>112 500 Ft</td><td>205 000 Ft</td><td>390 000 Ft</td><td>760 000 Ft</td><td>143 400 Ft</td></tr>
+      </table>
+
+      <h3>Kétoldalas, négyszínes szórólap, 90g/m2 papíron</h3>
+      <table>
+        <tr><th>db</th><th>A/6</th><th>A/5</th><th>A/4</th><th>A/3</th><th>LA4</th></tr>
+        <tr><td>1000</td><td>27 000 Ft</td><td>29 000 Ft</td><td>32 900 Ft</td><td>40 800 Ft</td><td>27 700 Ft</td></tr>
+        <tr><td>2000</td><td>29 000 Ft</td><td>32 900 Ft</td><td>40 800 Ft</td><td>56 500 Ft</td><td>30 300 Ft</td></tr>
+        <tr><td>5000</td><td>35 000 Ft</td><td>44 700 Ft</td><td>64 300 Ft</td><td>103 600 Ft</td><td>38 100 Ft</td></tr>
+        <tr><td>10000</td><td>44 700 Ft</td><td>64 300 Ft</td><td>103 600 Ft</td><td>182 200 Ft</td><td>51 200 Ft</td></tr>
+        <tr><td>20000</td><td>64 300 Ft</td><td>103 600 Ft</td><td>182 200 Ft</td><td>339 400 Ft</td><td>77 400 Ft</td></tr>
+        <tr><td>50000</td><td>123 250 Ft</td><td>221 500 Ft</td><td>418 000 Ft</td><td>811 000 Ft</td><td>156 000 Ft</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="kapcsolat" class="content" style="background-image: url('vagogep3.jpg');">
+  <div class="content-inner">
+    <h2>Kapcsolat</h2>
+    
+    <h2 class="highlight-text" style="font-size: 22px; background-color: #ffffffaa; color: #000;">
+      Szórólapnyomtatás Budapesten gyors határidővel – akár 1,25 Ft/db-tól!
+    </h2>
+
+    <p><strong>Cím:</strong> 1144 Budapest, Zalán utca 77</p>
+    <p><strong>Telefon:</strong> <a href="tel:+36209236130" style="color: white;">+36 20 923 6130</a></p>
+    <p><strong>Email:</strong> <a href="mailto:fortepressnyomda@gmail.com" style="color: white;">fortepressnyomda@gmail.com</a></p>
+
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 20px;">
+  <div style="flex: 0 0 55%;">
+    <h3>Térkép</h3>
+    <iframe 
+      src="https://www.google.com/maps?q=1144+Budapest,+Zalán+utca+77&output=embed" 
+      allowfullscreen="" loading="lazy">
+    </iframe>
+  </div>
+  <div style="flex: 0 0 40%; text-align: right; margin-top: 20px;">
+    <p>
+      <a href="https://www.facebook.com/profile.php?id=100090236685199" target="_blank" style="color: white; font-size: 20px; text-decoration: none;">
+        <i class="fab fa-facebook" style="margin-right: 8px;"></i>Facebook oldalunk
+      </a>
+    </p>
+    <p>
+      <a href="https://wa.me/36209236130" target="_blank" style="color: white; font-size: 20px; text-decoration: none;">
+        <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>WhatsApp kapcsolat
+      </a>
+    </p>
+    <p>
+      <a href="viber://chat?number=%2B36209236130" target="_blank" style="color: white; font-size: 20px; text-decoration: none;">
+        <i class="fab fa-viber" style="margin-right: 8px;"></i>Viber kapcsolat
+      </a>
+    </p>
+  </div>
+  
+  </div>
+</div>
+  </div>
+</div>
+
+  <!-- Strukturált adatok (SEO-hoz mikroadatként) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Forte-Press Bt.",
+  "description": "Ofszet nyomda Budapesten – szórólapkészítés, plakátnyomtatás, tálcabetét és kiadványok gyártása 1994 óta.",
+  "image": "https://www.fortepress.hu/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Budapest",
+    "postalCode": "1141",
+    "streetAddress": "Forte-Press Bt."
+  },
+  "telephone": "+36 20 923 6130",
+  "email": "fortepressnyomda@gmail.com",
+  "url": "https://www.fortepress.hu/"
+}
+</script>
+
+<footer>
+  © 2025 Forte-Press Bt. Minden jog fenntartva.
+</footer>
+
 </body>
 </html>
+
+

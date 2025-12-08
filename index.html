@@ -401,12 +401,25 @@
 </div>
 
 <style>
-/* Főcím minden oldalon középre */
+/* Főcím minden oldalon középre, egységes stílussal */
 .page-title {
-  text-align: center;
-  font-family: inherit;
-  color: white;
-  margin-bottom: 20px;
+  text-align: center;          /* középre igazítás */
+  font-family: Arial, sans-serif; /* egységes betűtípus */
+  color: white;                /* fehér szín */
+  font-size: 28px;             /* főcím méret */
+  font-weight: bold;           /* félkövér */
+  margin-bottom: 20px;         /* alul tér */
+}
+
+/* Minden szöveg a content-inner-en belül egységes betűtípus */
+.content-inner p,
+.content-inner strong,
+.content-inner em,
+.content-inner li,
+.content-inner td,
+.content-inner th {
+  font-family: Arial, sans-serif;
+  color: white; /* alap szöveg fehér, kivéve a táblázat */
 }
 
 /* Contact boxok és wrapper */

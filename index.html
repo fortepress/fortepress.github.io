@@ -13,63 +13,161 @@
   <meta name="keywords" content="szórólap, szórólapkészítés, nyomda, nyomtatás, plakát nyomtatás, ofszet nyomda, Budapest nyomda, olcsó szórólap, terítékalátét, tálcabetét">
   <title>Forte-Press Bt. | Szórólapkészítés és nyomda Budapesten</title>
   <style>
-  html { font-size: 16px; }
-  @media (max-width: 768px) { html { font-size: 14px; } nav { flex-direction: column; align-items: flex-start; } nav a { padding: 10px 15px; } .nav-contact { margin-bottom: 10px; } .highlight-text { font-size: 22px; } }
-  @media (max-width: 480px) { html { font-size: 12px; } .highlight-text { font-size: 18px; } }
+    html { font-size: 16px; }
+    @media (max-width: 768px) { html { font-size: 14px; } }
+    @media (max-width: 480px) { html { font-size: 12px; } }
 
-  body { margin: 0; font-family: Arial, sans-serif; background-color: #f0f0f0; }
-  header { background-image: url('szórólap.jpg'); background-size: cover; background-position: center; color: white; padding: 60px 0; text-align: center; }
-  nav { background-color: #004080; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; color: white; flex-wrap: wrap; }
-  nav a { display: inline-block; color: white; padding: 15px 20px; text-decoration: none; }
-  nav a:hover { background-color: #003366; }
-  .nav-contact { font-size: 14px; color: white; }
-  .nav-contact a { color: white; text-decoration: none; margin: 0 10px; }
+    body { margin: 0; font-family: Arial, sans-serif; background-color: #f0f0f0; }
 
-  .content { display: none; padding: 60px 40px; background-size: cover; background-position: center; color: white; min-height: 400px; position: relative; }
-  .content::before { content: ""; background: rgba(0, 0, 0, 0.5); position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: 1; }
-  .content-inner { position: relative; z-index: 2; background-color: rgba(0,0,0,0.6); padding: 20px; border-radius: 10px; max-width: 900px; margin: auto; }
-  .content.active { display: block; }
+    header {
+      background-image: url('szórólap.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+    }
 
-  footer { background-color: #002b5e; color: white; text-align: center; padding: 20px; margin-top: 20px; }
+    nav {
+      background-color: #004080;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      color: white;
+      flex-wrap: wrap;
+    }
 
-  table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; color: black; }
-  th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
-  th { background-color: #f2f2f2; }
-  iframe { border: none; width: 100%; height: 300px; margin-top: 20px; }
+    nav a { display: inline-block; color: white; padding: 15px 20px; text-decoration: none; }
+    nav a:hover { background-color: #003366; }
+    .nav-contact { font-size: 14px; color: white; }
+    .nav-contact a { color: white; text-decoration: none; margin: 0 10px; }
 
-  .normal-text { font-size: 18px; margin-bottom: 10px; color: white; background-color: rgba(0, 0, 0, 0.4); padding: 10px; border-radius: 8px; }
-  .highlight-text { color: red; font-size: 20px; background-color: #ffe5e5; padding: 10px; display: inline-block; border-radius: 8px; margin-top: 10px; font-weight: bold; }
+    .content {
+      display: none;
+      padding: 60px 40px;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      min-height: 400px;
+      position: relative;
+    }
 
-  .toggle-button { background-color: #007bff; color: white; padding: 10px 30px; border: none; border-radius: 6px; cursor: pointer; font-size: 16px; margin: 20px auto; display: block; }
-  .panel { display: none; margin-top: 30px; }
+    .content::before {
+      content: "";
+      background: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1;
+    }
 
-  /* Főcímek minden oldalon középre, egységes betűtípussal és színnel */
-  .page-title {
-    text-align: center;
-    font-family: Arial, sans-serif;
-    color: #000;
-    margin-bottom: 20px;
-  }
+    .content-inner {
+      position: relative;
+      z-index: 2;
+      background-color: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 900px;
+      margin: auto;
+    }
 
-  .contact-main, .contact-wrapper { display: flex; flex-direction: column; align-items: center; gap: 20px; width: 100%; margin: 0 auto; }
-  .contact-box { background-color: #f0f0f0; padding: 20px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); width: 100%; max-width: 500px; text-align: center; font-family: inherit; color: black; }
-  @media (max-width: 480px) { .contact-box { width: 90%; } .table-wrapper table { width: 100%; font-size: 12px; } }
+    .content.active { display: block; }
+
+    footer {
+      background-color: #002b5e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; color: black; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+    th { background-color: #f2f2f2; }
+
+    iframe { border: none; width: 100%; height: 300px; margin-top: 20px; }
+
+    .normal-text { font-size: 18px; margin-bottom: 10px; color: white; background-color: rgba(0, 0, 0, 0.4); padding: 10px; border-radius: 8px; }
+
+    .highlight-text {
+      color: red;
+      font-size: 20px;
+      background-color: #ffe5e5;
+      padding: 10px;
+      display: inline-block;
+      border-radius: 8px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    .toggle-button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 30px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .panel { display: none; margin-top: 30px; }
+
+    /* Főcímek minden oldalon középre, megtartva eredeti színt */
+    .page-title {
+      text-align: center;
+      font-family: inherit;
+      color: inherit;
+      margin-bottom: 20px;
+    }
+
+    /* Contact boxok és wrapper */
+    .contact-main, .contact-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .contact-box {
+      background-color: #f0f0f0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      font-family: inherit;
+      color: black;
+    }
+
+    @media (max-width: 480px) {
+      .contact-box { width: 90%; }
+      .table-wrapper table { width: 100%; font-size: 12px; }
+    }
   </style>
 
-<script>
-function showSection(id) {
-  var sections = document.querySelectorAll('.content');
-  sections.forEach(function(section) { section.classList.remove('active'); });
-  document.getElementById(id).classList.add('active');
-}
-function togglePanel() {
-  const panel = document.getElementById('pricePanel');
-  panel.style.display = panel.style.display === 'none' || panel.style.display === '' ? 'block' : 'none';
-}
-window.onload = function() { showSection('rolunk'); };
-</script>
+  <script>
+    function showSection(id) {
+      var sections = document.querySelectorAll('.content');
+      sections.forEach(function(section) {
+        section.classList.remove('active');
+      });
+      document.getElementById(id).classList.add('active');
+    }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    function togglePanel() {
+      const panel = document.getElementById('pricePanel');
+      panel.style.display = panel.style.display === 'none' || panel.style.display === '' ? 'block' : 'none';
+    }
+
+    window.onload = function() { showSection('rolunk'); };
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
 <body>
@@ -104,24 +202,23 @@ window.onload = function() { showSection('rolunk'); };
       kis példányszámtól a több százezres mennyiségig.
       4 színes Heidelberg nyomdagépeink, 1 színes nyomdagépeink és egyéb berendezéseink,
       valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.
-    <br><br>
+    </p>
     <strong>
       <em>Budapesten</em>, a <em>XIV. kerületben</em> található nyomdánk fő specialitása a <em>szórólapkészítés. Célunk, hogy ügyfeleink számára gyors, pontos és olcsó nyomtatási megoldásokat kínáljunk.<br>
       Ofszet nyomdánk ideális választás <em>kis példányszámú szórólap</em> vagy akár <em>több százezres plakát nyomtatás</em> esetén is. Vállaljuk <em>A/6, A/5, A/4 és A/3 méretű szórólapok</em> gyártását, <em>1 vagy 4 színnel</em>, kiváló minőségben.
     </strong>
-  </p>
   </div>
 </div>
 
 <div id="araink" class="content" style="background-image: url('szórólap-nyomtatás.jpg');">
   <div class="content-inner">
     <h2 class="page-title">Áraink</h2>
-    <div class="normal-text">
+    <div class="highlight-text" style="display: block; max-width: 100%; line-height: 1.5;">
       Aktuális árainkat az alábbi képen láthatóak. 
       A lista rendszeresen frissül. Ha egyedi igénye van, kérjen személyre szabott ajánlatot e-mailben vagy telefonon!
     </div>
     <div class="highlight-text" style="display: block; max-width: 100%; line-height: 1.5;">
-      A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,25 Ft-tól.<br>
+      A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,30 Ft-tól.<br>
       Papírfajtától függően gyártunk olcsóbb és drágább szórólapokat is!<br>
       A táblázatokban szereplő árak tájékoztató jellegűek, az árváltoztatás jogát fenntartjuk!<br>
       A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!
@@ -171,7 +268,6 @@ window.onload = function() { showSection('rolunk'); };
       </table>
   </div>
 </div>
-
 
 <div id="kapcsolat" class="content" style="background-image: url('szorolap-gyartas.jpg');">
   <div class="content-inner">

@@ -328,20 +328,23 @@
   <div class="content-inner">
     <h2>Kapcsolat</h2>
 
-    <!-- Első doboz: információs szöveg -->
-    <div class="contact-box contact-info">
-      <p>
-        Nyomdánk a X., XIV. és XVI. kerület találkozásánál található, közel a Kerepesi úthoz, 
-        néhány percre az Örs vezér terétől, valamint a Hungária körúttól és az M0 körgyűrűtől! 
-        Autóval és tömegközlekedéssel is rendkívül könnyen megközelíthető. A parkolás ingyenes!
-      </p>
-    </div>
+    <!-- Wrapper az első két boxnak, középre igazítás -->
+    <div class="contact-main">
+      <!-- Első doboz: információs szöveg -->
+      <div class="contact-box contact-info">
+        <p>
+          Nyomdánk a X., XIV. és XVI. kerület találkozásánál található, közel a Kerepesi úthoz, 
+          néhány percre az Örs vezér terétől, valamint a Hungária körúttól és az M0 körgyűrűtől! 
+          Autóval és tömegközlekedéssel is rendkívül könnyen megközelíthető. A parkolás ingyenes!
+        </p>
+      </div>
 
-    <!-- Második doboz: cím, telefon, email -->
-    <div class="contact-box contact-info">
-      <p><strong>Cím:</strong> 1144 Budapest, Zalán utca 77.</p>
-      <p><strong>Telefon:</strong> +36 20 923 6130</p>
-      <p><strong>Email:</strong> fortepressnyomda@gmail.com</p>
+      <!-- Második doboz: cím, telefon, email -->
+      <div class="contact-box contact-info">
+        <p><strong>Cím:</strong> 1144 Budapest, Zalán utca 77.</p>
+        <p><strong>Telefon:</strong> +36 20 923 6130</p>
+        <p><strong>Email:</strong> fortepressnyomda@gmail.com</p>
+      </div>
     </div>
 
     <!-- Wrapper minden további kontakt elemhez -->
@@ -395,16 +398,17 @@
 </div>
 
 <style>
-/* Kapcsolat rész wrapper */
-.contact-wrapper {
+/* Külön wrapper az első két boxnak, középre igazítás */
+.contact-main {
   display: flex;
   flex-direction: column;
-  align-items: center; /* középre igazítás */
-  gap: 20px; /* elemköz */
-  margin-top: 30px;
+  align-items: center; /* vízszintesen középre */
+  gap: 20px; /* távolság a boxok között */
+  width: 100%;
+  margin: 0 auto;
 }
 
-/* Minden kontakt doboz */
+/* Minden contact-box */
 .contact-box {
   background-color: #f0f0f0; /* szürke háttér */
   padding: 20px;
@@ -412,16 +416,25 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   width: 100%;
   max-width: 600px;
-  text-align: center; /* középre igazítás */
-  font-family: inherit; /* meglévő betűtípus megtartása */
+  text-align: center; /* szöveg középre */
+  font-family: inherit; /* meglévő betűtípus */
 }
 
-/* Cím, telefon, email box */
+/* Csak az első két box szövege fekete */
 .contact-info {
-  color: black; /* fekete betűk */
+  color: black;
 }
 
-/* Linkek stílus */
+/* Kapcsolat wrapper a többi elemhez */
+.contact-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* Linkek stílusa */
 .social-link {
   color: #004080;
   font-size: 18px;

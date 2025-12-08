@@ -326,9 +326,11 @@
 
 <div id="kapcsolat" class="content" style="background-image: url('szorolap-gyartas.jpg');">
   <div class="content-inner">
-    <h2 style="text-align: center;">Kapcsolat</h2>
 
-    <!-- Wrapper az első két boxnak, középre igazítás -->
+    <!-- Kapcsolat cím, középre -->
+    <h2 class="page-title">Kapcsolat</h2>
+
+    <!-- Wrapper az első két boxnak -->
     <div class="contact-main">
       <!-- Első doboz: információs szöveg -->
       <div class="contact-box contact-info highlight-text">
@@ -375,7 +377,7 @@
       </div>
 
       <!-- WhatsApp, Facebook, Viber -->
-      <div class="contact-box">
+      <div class="contact-box contact-info">
         <p>
           <a href="https://www.facebook.com/profile.php?id=100090236685199" target="_blank" class="social-link">
             <i class="fab fa-facebook" style="margin-right: 8px;"></i>Facebook oldalunk
@@ -397,6 +399,13 @@
 </div>
 
 <style>
+/* Kapcsolat oldal cím középre */
+.page-title {
+  text-align: center;
+  font-family: inherit;
+  color: black;
+}
+
 /* Külön wrapper az első két boxnak, középre igazítás */
 .contact-main {
   display: flex;
@@ -433,18 +442,13 @@
   border-radius: 10px;
 }
 
-/* Kapcsolat wrapper a többi elemhez */
+/* Kapcsolat wrapper a további elemekhez */
 .contact-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* középre minden box */
   gap: 20px;
   margin-top: 30px;
-}
-
-/* Kapcsolat oldal cím középre */
-.content-inner h2 {
-  text-align: center;
 }
 
 /* Linkek stílusa */

@@ -330,8 +330,8 @@
 
     <!-- Wrapper az első két boxnak, középre igazítás -->
     <div class="contact-main">
-      <!-- Első doboz: információs szöveg -->
-      <div class="contact-box contact-info">
+      <!-- Első doboz: információs szöveg, kiemelve -->
+      <div class="contact-box contact-info highlight-text">
         <p>
           Nyomdánk a X., XIV. és XVI. kerület találkozásánál található, közel a Kerepesi úthoz, 
           néhány percre az Örs vezér terétől, valamint a Hungária körúttól és az M0 körgyűrűtől! 
@@ -398,12 +398,12 @@
 </div>
 
 <style>
-/* Külön wrapper az első két boxnak, középre igazítás */
+/* Wrapper az első két boxnak, középre igazítás */
 .contact-main {
   display: flex;
   flex-direction: column;
   align-items: center; /* vízszintesen középre */
-  gap: 20px; /* távolság a boxok között */
+  gap: 20px;
   width: 100%;
   margin: 0 auto;
 }
@@ -420,9 +420,18 @@
   font-family: inherit; /* meglévő betűtípus */
 }
 
-/* Csak az első két box szövege fekete */
+/* Első két box szövege fekete */
 .contact-info {
   color: black;
+}
+
+/* Kiemelt szöveg a "Nyomdánk a..." részhez */
+.highlight-text {
+  font-weight: bold;       /* félkövér */
+  font-size: 20px;         /* nagyobb méret */
+  background-color: #e0e0e0; /* világos szürke háttér */
+  padding: 15px;
+  border-radius: 10px;
 }
 
 /* Kapcsolat wrapper a többi elemhez */

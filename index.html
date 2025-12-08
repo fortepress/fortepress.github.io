@@ -246,9 +246,8 @@
 </nav>
 
 <div id="rolunk" class="content" style="background-image: url('szorolap-nyomtatas.jpg');">
-  <div class="content-inner" style="font-family: Arial, sans-serif; color: white;">
-    <!-- Főcím középre -->
-    <h2 class="page-title">Rólunk</h2>
+  <div class="content-inner">
+    <h2>Rólunk</h2>
     <p>
       Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek,
       kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával.
@@ -258,25 +257,22 @@
       valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.
     <br><br>
     <strong>
-      <em>Budapesten</em>, a <em>XIV. kerületben</em> található nyomdánk fő specialitása a <em>szórólapkészítés</em>. 
-      Célunk, hogy ügyfeleink számára gyors, pontos és olcsó nyomtatási megoldásokat kínáljunk.<br>
-      Ofszet nyomdánk ideális választás <em>kis példányszámú szórólap</em> vagy akár <em>több százezres plakát nyomtatás</em> esetén is. 
-      Vállaljuk <em>A/6, A/5, A/4 és A/3 méretű szórólapok</em> gyártását, <em>1 vagy 4 színnel</em>, kiváló minőségben.
+      <em>Budapesten</em>, a <em>XIV. kerületben</em> található nyomdánk fő specialitása a <em>szórólapkészítés. Célunk, hogy ügyfeleink számára gyors, pontos és olcsó nyomtatási megoldásokat kínáljunk.<br>
+      Ofszet nyomdánk ideális választás <em>kis példányszámú szórólap</em> vagy akár <em>több százezres plakát nyomtatás</em> esetén is. Vállaljuk <em>A/6, A/5, A/4 és A/3 méretű szórólapok</em> gyártását, <em>1 vagy 4 színnel</em>, kiváló minőségben.
     </strong>
-    </p>
+  </p>
   </div>
 </div>
 
 <div id="araink" class="content" style="background-image: url('szórólap-nyomtatás.jpg');">
   <div class="content-inner">
-    <!-- Főcím középre -->
-    <h2 class="page-title">Áraink</h2>
-    <div class="highlight-text" style="display: block; max-width: 100%; line-height: 1.5;">
+    <h2>Áraink</h2>
+    <div class="normal-text">
       Aktuális árainkat az alábbi képen láthatóak. 
       A lista rendszeresen frissül. Ha egyedi igénye van, kérjen személyre szabott ajánlatot e-mailben vagy telefonon!
     </div>
     <div class="highlight-text" style="display: block; max-width: 100%; line-height: 1.5;">
-      A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,30 Ft-tól.<br>
+      A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,25 Ft-tól.<br>
       Papírfajtától függően gyártunk olcsóbb és drágább szórólapokat is!<br>
       A táblázatokban szereplő árak tájékoztató jellegűek, az árváltoztatás jogát fenntartjuk!<br>
       A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!
@@ -403,45 +399,69 @@
 </div>
 
 <style>
-/* Főcím minden oldalon középre */
+/* Kapcsolat oldal cím középre */
 .page-title {
-  text-align: center;
-  font-family: inherit;
-  color: white;
-  margin-bottom: 20px;
-}
-
-/* Contact boxok és wrapper */
-.contact-main, .contact-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-.contact-box {
-  background-color: #f0f0f0;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 500px; /* kisebb mobilbarát szélesség */
   text-align: center;
   font-family: inherit;
   color: black;
 }
 
-/* Mobilra */
-@media (max-width: 480px) {
-  .contact-box {
-    width: 90%; /* mobilon keskenyebb boxok */
-  }
-  .table-wrapper table {
-    width: 100%;
-    font-size: 12px; /* kisebb betű mobilon */
-  }
+/* Külön wrapper az első két boxnak, középre igazítás */
+.contact-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* vízszintesen középre */
+  gap: 20px; /* távolság a boxok között */
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Minden contact-box */
+.contact-box {
+  background-color: #f0f0f0; /* szürke háttér */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 600px;
+  text-align: center; /* szöveg középre */
+  font-family: inherit; /* meglévő betűtípus */
+  color: black; /* minden szöveg fekete */
+}
+
+/* Első két box külön színezése és kiemelés */
+.contact-info {
+  color: black;
+}
+
+.highlight-text {
+  font-weight: bold;
+  font-size: 18px; /* szükség esetén növelhető */
+  background-color: #dcdcdc; /* világos szürke kiemelés */
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Kapcsolat wrapper a további elemekhez */
+.contact-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* középre minden box */
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* Linkek stílusa */
+.social-link {
+  color: #004080;
+  font-size: 18px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.social-link:hover {
+  color: #007bff;
 }
 </style>
   
@@ -475,5 +495,7 @@
 </footer>
 
 </body>
-</html>                                           
+</html> 
+
+                                          
                    

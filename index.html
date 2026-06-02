@@ -203,17 +203,20 @@ nav * {
     function showSection(id) {
       var sections = document.querySelectorAll('.content');
       sections.forEach(function(section) {
-        section.classList.remove('active');
-      });
+      section.classList.remove('active');
+    });
       document.getElementById(id).classList.add('active');
-    }
+  
+  // Ez a sor gondoskodik róla, hogy a lap tetejére ugorjon a nézet:
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }  
 
     function togglePanel() {
       const panel = document.getElementById('pricePanel');
       panel.style.display = panel.style.display === 'none' || panel.style.display === '' ? 'block' : 'none';
     }
 
-    window.onload = function() { showSection('rolunk'); };
+      window.onload = function() { showSection('rolunk'); };
   </script>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">

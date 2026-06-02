@@ -433,71 +433,77 @@ nav * {
   </div>
 
   <style>
-    /* Kapcsolat oldal cím középre */
+    /* Kapcsolat oldal főcím */
     .page-title {
-  text-align: center;
-  font-family: inherit;
-  color: white; /* fekete helyett fehér */
-}
+      text-align: center;
+      font-family: inherit;
+      color: white;
+    }
 
-/* Külön wrapper az első két boxnak, középre igazítás */
-.contact-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* vízszintesen középre */
-  gap: 20px; /* távolság a boxok között */
-  width: 100%;
-  margin: 0 auto;
-}
+    /* Konténer, ami összefogja a dobozokat */
+    .contact-main, .contact-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      margin: 0 auto;
+    }
 
-/* Minden contact-box */
-.contact-box {
-  background-color: #f0f0f0; /* szürke háttér */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  width: 100%;
-  max-width: 600px;
-  text-align: center; /* szöveg középre */
-  font-family: inherit; /* meglévő betűtípus */
-  color: black; /* minden szöveg fekete */
-}
+    .contact-wrapper {
+      margin-top: 20px;
+    }
 
-/* Első két box külön színezése és kiemelés */
-.contact-info {
-  color: black;
-}
+    /* EGYSÉGES DOBOZ STÍLUS: Minden doboz külseje és mérete teljesen egyforma */
+    .contact-box {
+      background-color: rgba(255, 255, 255, 0.95); /* Egységes fehér háttér */
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      box-sizing: border-box; /* Garantálja, hogy a padding nem nyújtja meg a dobozt */
+    }
 
-.highlight-text {
-  font-weight: bold;
-  font-size: 18px; /* szükség esetén növelhető */
-  background-color: #dcdcdc; /* világos szürke kiemelés */
-  padding: 15px;
-  border-radius: 10px;
-}
-    
-/* Kapcsolat wrapper a további elemekhez */
-.contact-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* középre minden box */
-  gap: 20px;
-  margin-top: 30px;
-}
+    /* Alapértelmezett szövegstílus a normál dobozokban */
+    .contact-box p, .contact-box h3 {
+      margin: 10px 0;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333333;
+    }
 
-/* Linkek stílusa */
-.social-link {
-  color: #004080;
-  font-size: 18px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
-}
+    /* KÜLÖN KIEMELÉS AZ ELSŐ DOBOZ SZÖVEGÉNEK */
+    /* Így a szöveg nagyobb és félkövér lesz, de a doboz formája nem torzul el */
+    .contact-box .highlight-text-inner {
+      font-weight: bold;
+      font-size: 18px; /* Kicsit nagyobb, kiemelt méret */
+      color: #000000;  /* Erőteljesebb fekete szín */
+    }
 
-.social-link:hover {
-  color: #007bff;
-}
-  </style>
+    .contact-box h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    /* Linkek stílusa (Facebook, Viber, stb.) */
+    .social-link {
+      color: #004080;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .social-link:hover {
+      color: #007bff;
+    }
+</style>
   
 </div>
 

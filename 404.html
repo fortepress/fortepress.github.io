@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A keresett oldal nem található - Forte-Press Bt.</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #1a1a1a;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('szórólap-nyomtatás.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .error-container {
+      background-color: rgba(0, 0, 0, 0.75);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      max-width: 500px;
+      width: 90%;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 80px;
+      margin: 0;
+      color: #ff3333; /* Forte piros tónus */
+      font-weight: bold;
+    }
+
+    h2 {
+      font-size: 24px;
+      margin: 10px 0 20px 0;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: #cccccc;
+    }
+
+    .btn-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #004080; /* A menü sötétkék színe */
+      color: white;
+      text-decoration: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .btn-home:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="error-container">
+    <h1>404</h1>
+    <h2>A keresett oldal nem található!</h2>
+    <p>
+      Sajnos az oldal, amit keres, elköltözött, megszűnt, vagy hibásan adta meg a webcímet. 
+      Kérjük, ellenőrizze az URL-t, vagy térjen vissza a főoldalra.
+    </p>
+    <a href="index.html" class="btn-home">
+      <i class="fas fa-home"></i> Vissza a főoldalra
+    </a>
+  </div>
+
+</body>
+</html>

@@ -284,14 +284,14 @@ nav * {
     <div class="highlight-text" style="display: block; max-width: 100%; line-height: 1.5; margin-bottom: 20px;">
       A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,30 Ft-tól.<br>
       Papírfajtától függően gyártunk olcsóbb és drágább szórólapokat is!<br>
-      A táblázatokban szereplő árak tájékoztató jellegűek, az argváltoztatás jogát fenntartjuk!<br>
+      A táblázatokban szereplő árak tájékoztató jellegűek, az árváltoztatás jogát fenntartjuk!<br>
       A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!
     </div>
 
     <div class="contact-wrapper">
 
-      <div class="highlight-text" style="display:block; max-width:100%; line-height:1.6; background-color: white !important; color: black !important; text-align: left; padding: 20px; border-radius: 10px;">
-        <strong style="color: black !important; font-size: 20px; display: block; margin-bottom: 15px;">Egyoldalas, egyszínes szórólap, 60g/m2 papíron</strong>
+      <div class="price-box">
+        <h3>Egyoldalas, egyszínes szórólap, 60g/m2 papíron</h3>
         <table>
           <tr><th>db</th><th>A/6</th><th>A/5</th><th>A/4</th><th>A/3</th><th>LA4</th></tr>
           <tr><td>1000</td><td>8 700 Ft</td><td>10 400 Ft</td><td>13 800 Ft</td><td>20 600 Ft</td><td>9 300 Ft</td></tr>
@@ -303,8 +303,8 @@ nav * {
         </table>
       </div>
 
-      <div class="highlight-text" style="display:block; max-width:100%; line-height:1.6; background-color: white !important; color: black !important; text-align: left; padding: 20px; border-radius: 10px; margin-top: 20px;">
-        <strong style="color: black !important; font-size: 20px; display: block; margin-bottom: 15px;">Kétoldalas, egyszínes szórólap, 60g/m2 papíron</strong>
+      <div class="price-box">
+        <h3>Kétoldalas, egyszínes szórólap, 60g/m2 papíron</h3>
         <table>
           <tr><th>db</th><th>A/6</th><th>A/5</th><th>A/4</th><th>A/3</th><th>LA4</th></tr>
           <tr><td>1000</td><td>8 850 Ft</td><td>10 700 Ft</td><td>14 400 Ft</td><td>21 800 Ft</td><td>9 500 Ft</td></tr>
@@ -316,8 +316,8 @@ nav * {
         </table>
       </div>
 
-      <div class="highlight-text" style="display:block; max-width:100%; line-height:1.6; background-color: white !important; color: black !important; text-align: left; padding: 20px; border-radius: 10px; margin-top: 20px;">
-        <strong style="color: black !important; font-size: 20px; display: block; margin-bottom: 15px;">Egyoldalas, négyszínes szórólap, 90g/m2 papíron</strong>
+      <div class="price-box">
+        <h3>Egyoldalas, négyszínes szórólap, 90g/m2 papíron</h3>
         <table>
           <tr><th>db</th><th>A/6</th><th>A/5</th><th>A/4</th><th>A/3</th><th>LA4</th></tr>
           <tr><td>1000</td><td>24 000 Ft</td><td>26 000 Ft</td><td>30 000 Ft</td><td>38 000 Ft</td><td>24 700 Ft</td></tr>
@@ -329,8 +329,8 @@ nav * {
         </table>
       </div>
 
-      <div class="highlight-text" style="display:block; max-width:100%; line-height:1.6; background-color: white !important; color: black !important; text-align: left; padding: 20px; border-radius: 10px; margin-top: 20px;">
-        <strong style="color: black !important; font-size: 20px; display: block; margin-bottom: 15px;">Kétoldalas, négyszínes szórólap, 90g/m2 papíron</strong>
+      <div class="price-box">
+        <h3>Kétoldalas, négyszínes szórólap, 90g/m2 papíron</h3>
         <table>
           <tr><th>db</th><th>A/6</th><th>A/5</th><th>A/4</th><th>A/3</th><th>LA4</th></tr>
           <tr><td>1000</td><td>29 200 Ft</td><td>31 300 Ft</td><td>35 500 Ft</td><td>44 000 Ft</td><td>29 900 Ft</td></tr>
@@ -342,12 +342,12 @@ nav * {
         </table>
       </div>
 
-      <div class="highlight-text" style="display:block; max-width:100%; line-height:1.6; margin-top: 20px; background-color: white !important; color: black !important; padding: 20px; border-radius: 10px; text-align: center;">
-        <span style="color: black !important; font-weight: bold;">
+      <div class="price-box" style="text-align: center; padding: 20px;">
+        <span style="color: black; font-weight: bold;">
           Gyorsnyomdai szolgáltatások (névjegykártya, nyomtatás, másolás, szkennelés...) áraihoz kattintson ide:
         </span>
         <br>
-        <a href="#" onclick="showSection('gyorsnyomda'); return false;" style="color: #004080; text-decoration: underline; font-weight: bold; display: inline-block; margin-top: 5px;">
+        <a href="#" onclick="showSection('gyorsnyomda'); return false;" style="color: #004080; text-decoration: underline; font-weight: bold; display: inline-block; margin-top: 8px;">
           Gyorsnyomdai szolgáltatások
         </a>
       </div>
@@ -526,6 +526,31 @@ nav * {
     .social-link:hover {
       color: #007bff;
     }
+
+    /* Kifejezetten az áraink oldal nagy fehér dobozaihoz */
+    .price-box {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 900px; /* Így pontosan olyan széles lesz, mint a többi nagy box */
+    box-sizing: border-box;
+    margin-top: 20px;
+   }
+
+.price-box h3 {
+  color: black;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 20px;
+  text-align: left;
+}
+
+.price-box table {
+  width: 100%; /* A táblázat teljesen kitölti a fehér dobozt */
+  margin-top: 10px;
+}
 </style>
   
 </div>

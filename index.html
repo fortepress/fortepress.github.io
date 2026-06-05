@@ -145,62 +145,60 @@
     }
 
     @media (max-width: 480px) {
-  .contact-box { width: 90%; }
-  .table-wrapper table { width: 100%; font-size: 12px; }
-}
-
-/* MINDEN szöveg a kék sávban középre */
-nav {
-  text-align: center;
-}
-
-nav * {
-  text-align: center;
-  justify-content: center;
-}
-    
-/* Desktop: marad a jelenlegi elrendezés /
-
-    @media (min-width: 769px) {
-  
-    nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 0 20px;
- 
+      .contact-box { width: 90%; }
+      .table-wrapper table { width: 100%; font-size: 12px; }
     }
 
-  .nav-contact a {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-}
+    /* MINDEN szöveg a kék sávban középre */
+    nav {
+      text-align: center;
+    }
 
-/ Mobil / tablet: minden középre, egymás alatt */
-@media (max-width: 768px) {
-  nav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 10px 20px;
-  }
+    nav * {
+      text-align: center;
+      justify-content: center;
+    }
+        
+    /* Desktop: marad a jelenlegi elrendezés */
+    @media (min-width: 769px) {
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 0 20px;
+      }
 
-  nav > div {
-    width: 100%;
-    margin: 5px 0;
-  }
+      .nav-contact a {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
 
-  .nav-contact a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-  }
-}
+    /* Mobil / tablet: minden középre, egymás alatt */
+    @media (max-width: 768px) {
+      nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px 20px;
+      }
+
+      nav > div {
+        width: 100%;
+        margin: 5px 0;
+      }
+
+      .nav-contact a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+
     /* Kapcsolat oldal főcím */
     .page-title {
       text-align: center;
@@ -241,20 +239,20 @@ nav * {
       line-height: 1.6;
       color: #333333;
     }
- 
-/* KÜLÖN KIEMELÉS AZ ELSŐ DOBOZ SZÖVEGÉNEK */
-/* Így a szöveg nagyobb és félkövér lesz, de a doboz formája nem torzul el */
+     
+    /* KÜLÖN KIEMELÉS AZ ELSŐ DOBOZ SZÖVEGÉNEK */
+    /* Így a szöveg nagyobb és félkövér lesz, de a doboz formája nem torzul el */
     .contact-box .highlight-text-inner {
       font-weight: bold;
       font-size: 18px; /* Kicsit nagyobb, kiemelt méret */
       color: #000000;  /* Erőteljesebb fekete szín */
-  }
+    }
 
     .contact-box h3 {
       font-size: 20px;
       font-weight: bold;
       margin-bottom: 15px;
-  }
+    }
 
     /* Linkek stílusa (Facebook, Viber, stb.) */
     .social-link {
@@ -266,11 +264,11 @@ nav * {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-  }
+    }
 
     .social-link:hover {
       color: #007bff;
-  }
+    }
 
     /* Kifejezetten az áraink oldal nagy fehér dobozaihoz */
     .price-box {
@@ -282,7 +280,7 @@ nav * {
       max-width: 900px;
       box-sizing: border-box;
       margin-top: 30px; /* Megnöveltük 30px-re, hogy pontosan megegyezzen a Gyorsnyomda térközével */
-  }
+    }
 
     .price-box h3 {
       color: black;
@@ -290,24 +288,23 @@ nav * {
       margin-bottom: 15px;
       font-size: 20px;
       text-align: left;
-  }
+    }
 
-   .price-box table {
-     width: 100%;
-     margin-top: 10px;
-  }
-    
+    .price-box table {
+       width: 100%;
+       margin-top: 10px;
+    }
 </style>
 
 <script>
     function showSection(id) {
       var sections = document.querySelectorAll('.content');
       sections.forEach(function(section) {
-      section.classList.remove('active');
-    });
+        section.classList.remove('active');
+      });
       document.getElementById(id).classList.add('active');
-  
-  // Ez a sor gondoskodik róla, hogy a lap tetejére ugorjon a nézet:
+      
+      // Ez a sor gondoskodik róla, hogy a lap tetejére ugorjon a nézet:
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }  
 
@@ -316,11 +313,10 @@ nav * {
       panel.style.display = panel.style.display === 'none' || panel.style.display === '' ? 'block' : 'none';
     }
 
-      window.onload = function() { showSection('rolunk'); };
+    window.onload = function() { showSection('rolunk'); };
 </script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
 </head>
 <body>
 
@@ -345,18 +341,19 @@ nav * {
   </div>
 </nav>
 
+<!-- RÓLUNK SZEKCIÓ KEZDETE -->
 <div id="rolunk" class="content" style="background-image: url('szorolap-nyomtatas.jpg');">
   <div class="content-inner">
     <h2 class="page-title">Rólunk</h2>
       <p><strong>
           Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek,
           kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával.
-      
+        
           A budapesti Forte-Press Bt. több, mint 30 éve szolgálja ki hazai és külföldi partnereit –
           kis példányszámtól a több százezres mennyiségig.
-      
+        
           4 színes <em>Heidelberg nyomdagép</em>eink, <em>1 színes nyomdagépeink és egyéb berendezéseink</em>,
-          valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.
+          valamivel a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.
     </strong></p>   
     <p><strong>
         Vállalunk még <em>szkennelést</em>, <em>digitális archiválást</em>, <em>fénymásolást</em>, <em>file-ból nyomtatást</em>, <em>fotónyomtatást (nem labor minőségben, elsősorban reprezentációs célra) A/4 méretig</em>, <em>papírkötegek egyenesvágását</em> (pl: 500 db-os A/4 fénymásolópapír félbevágását, harmadolását, negyedelését...)
@@ -364,7 +361,9 @@ nav * {
     </strong></p>  
   </div>
 </div>
+<!-- RÓLUNK SZEKCIÓ VÉGE -->
 
+<!-- ÁRAINK SZEKCIÓ KEZDETE -->
 <div id="araink" class="content" style="background-image: url('szórólap-nyomtatás.jpg');">
   <div class="content-inner">
     <h2 class="page-title">Áraink</h2>
@@ -442,8 +441,10 @@ nav * {
       </a>
     </div>
   </div>
- </div> 
+</div>
+<!-- ÁRAINK SZEKCIÓ VÉGE -->
 
+<!-- GYORSNYOMDA SZEKCIÓ KEZDETE -->
 <div id="gyorsnyomda" class="content" style="background-image: url('szórólap-nyomtatás.jpg');"> 
   <div class="content-inner gyorsnyomda">
     <h2 class="page-title">Gyorsnyomdai szolgáltatások 0–24 (<em>nyomtatás</em>, <em>másolás</em>, <em>szkennelés</em>, <em>névjegykártya</em>...)</h2>
@@ -541,10 +542,11 @@ nav * {
         <strong>Oklevél nyomtatás A/4 méretig:</strong>
       </div>
     
-  </div>
-  
+  </div>  
 </div>
+<!-- GYORSNYOMDA SZEKCIÓ VÉGE -->
 
+<!-- KAPCSOLAT SZEKCIÓ KEZDETE -->
 <div id="kapcsolat" class="content" style="background-image: url('szorolap-gyartas.jpg');">
   <div class="content-inner">
     <h2 class="page-title">Kapcsolat</h2>
@@ -610,7 +612,8 @@ nav * {
       </div> <!-- Közösségi média box vége -->
     </div> <!-- contact-wrapper vége -->
   </div> <!-- content-inner vége -->
-</div> <!-- kapcsolat szekció vége -->
+</div> 
+<!-- KAPCSOLAT SZEKCIÓ VÉGE -->
 
 <!-- Strukturált adatok (SEO-hoz mikroadatként) -->
 <script type="application/ld+json">
@@ -637,7 +640,4 @@ nav * {
 </footer>
 
 </body>
-</html> 
-
-                                          
-                   
+</html>

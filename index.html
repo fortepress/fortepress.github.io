@@ -1,523 +1,651 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <link rel="icon" type="image/x-icon" href="https://www.fortepress.hu/logo.ico">
-  <link rel="shortcut icon" href="/logo.ico" type="image/x-icon">
-  <link rel="icon" type="image/png" sizes="32x32" href="/logo-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/logo-16x16.png">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="index, follow">
-  <meta name="description" content="Szórólapkészítés gyorsan, pontosan, kedvező áron Budapesten. A Forte-Press Bt. több mint 30 éves tapasztalattal vállal szórólap, plakát és kiadvány nyomtatást.">
-  <link rel="canonical" href="https://www.fortepress.hu/">
-  <meta name="keywords" content="szórólap, szórólapkészítés, nyomda, nyomtatás, plakát nyomtatás, ofszet nyomda, Budapest nyomda, olcsó szórólap, terítékalátét, tálcabetét">
-  <title>Forte-Press Bt. | Szórólapkészítés és nyomda Budapesten</title>
-  <style>
-    html { font-size: 16px; }
-    @media (max-width: 768px) { html { font-size: 14px; } }
-    @media (max-width: 480px) { html { font-size: 12px; } }
+  <link rel="icon" type="image/x-icon" href="https://www.fortepress.hu/logo.ico">
+  <link rel="shortcut icon" href="/logo.ico" type="image/x-icon">
+  <link rel="icon" type="image/png" sizes="32x32" href="/logo-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/logo-16x16.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Szórólapkészítés gyorsan, pontosan, kedvező áron Budapesten. A Forte-Press Bt. több mint 30 éves tapasztalattal vállal szórólap, plakát és kiadvány nyomtatást.">
+  <link rel="canonical" href="https://www.fortepress.hu/">
+  <meta name="keywords" content="szórólap, szórólapkészítés, nyomda, nyomtatás, plakát nyomtatás, ofszet nyomda, Budapest nyomda, olcsó szórólap, terítékalátét, tálcabetét">
+  <title>Forte-Press Bt. | Szórólapkészítés és nyomda Budapesten</title>
+  <style>
+    html { font-size: 16px; }
+    @media (max-width: 768px) { html { font-size: 14px; } }
+    @media (max-width: 480px) { html { font-size: 12px; } }
 
-    body { margin: 0; font-family: Arial, sans-serif; background-color: #f0f0f0; }
+    body { margin: 0; font-family: Arial, sans-serif; background-color: #f0f0f0; }
 
-    header {
-      background-image: url('szórólap.jpg');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      padding: 60px 0;
-      text-align: center;
-    }
+    header {
+      background-image: url('szórólap.jpg');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 60px 0;
+      text-align: center;
+    }
 
-    nav {
-      background-color: #004080;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-      color: white;
-      flex-wrap: wrap;
-      text-align: center;
-    }
+    nav {
+      background-color: #004080;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      color: white;
+      flex-wrap: wrap;
+    }
 
-    nav * {
-      text-align: center;
-      justify-content: center;
-    }
+    nav a { display: inline-block; color: white; padding: 15px 20px; text-decoration: none; }
+    nav a:hover { background-color: #003366; }
+    .nav-contact { font-size: 14px; color: white; }
+    .nav-contact a { color: white; text-decoration: none; margin: 0 10px; }
 
-    nav a { display: inline-block; color: white; padding: 15px 20px; text-decoration: none; }
-    nav a:hover { background-color: #003366; }
-    .nav-contact { font-size: 14px; color: white; }
-    .nav-contact a { color: white; text-decoration: none; margin: 0 10px; }
+    .content {
+      display: none;
+      padding: 60px 40px;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      min-height: 400px;
+      position: relative;
+    }
 
-    .content {
-      display: none;
-      padding: 60px 40px;
-      background-size: cover;
-      background-position: center;
-      color: white;
-      min-height: 400px;
-      position: relative;
-    }
+    .content::before {
+      content: "";
+      background: rgba(0, 0, 0, 0.5);
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: 1;
+    }
 
-    .content::before {
-      content: "";
-      background: rgba(0, 0, 0, 0.5);
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 1;
-    }
+    .content-inner {
+      position: relative;
+      z-index: 2;
+      background-color: rgba(0,0,0,0.6);
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 900px;
+      margin: auto;
+    }
 
-    .content-inner {
-      position: relative;
-      z-index: 2;
-      background-color: rgba(0,0,0,0.6);
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 900px;
-      margin: auto;
-    }
+    .content.active { display: block; }
 
-    .content.active { display: block; }
+    footer {
+      background-color: #002b5e;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+    }
 
-    footer {
-      background-color: #002b5e;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 20px;
-    }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; color: black; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
+    th { background-color: #f2f2f2; }
 
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; color: black; }
-    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
-    th { background-color: #f2f2f2; }
+    iframe { border: none; width: 100%; height: 300px; margin-top: 20px; }
 
-    iframe { border: none; width: 100%; height: 300px; margin-top: 20px; }
+    .normal-text { font-size: 18px; margin-bottom: 10px; color: white; background-color: rgba(0, 0, 0, 0.4); padding: 10px; border-radius: 8px; }
 
-    .normal-text { font-size: 18px; margin-bottom: 10px; color: white; background-color: rgba(0, 0, 0, 0.4); padding: 10px; border-radius: 8px; }
+    .highlight-text {
+      color: red;
+      font-size: 20px;
+      background-color: #ffe5e5;
+      padding: 10px;
+      display: inline-block;
+      border-radius: 8px;
+      margin-top: 10px;
+      font-weight: bold;
+    }
 
-    .highlight-text {
-      color: red;
-      font-size: 20px;
-      background-color: #ffe5e5;
-      padding: 10px;
-      display: inline-block;
-      border-radius: 8px;
-      margin-top: 10px;
-      font-weight: bold;
-    }
+    .toggle-button {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 30px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 20px auto;
+      display: block;
+    }
 
-    .toggle-button {
-      background-color: #007bff;
-      color: white;
-      padding: 10px 30px;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 16px;
-      margin: 20px auto;
-      display: block;
-    }
+    .panel { display: none; margin-top: 30px; }
 
-    .panel { display: none; margin-top: 30px; }
+    /* Főcímek minden oldalon középre, megtartva eredeti színt */
+    .page-title {
+      text-align: center;
+      font-family: inherit;
+      color: inherit;
+      margin-bottom: 20px;
+    }
 
-    .page-title {
-      text-align: center;
-      font-family: inherit;
-      color: white;
-      margin-bottom: 20px;
-    }
+    /* Contact boxok és wrapper */
+    .contact-main, .contact-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      margin: 0 auto;
+    }
 
-    /* EGYSÉGES DOBOZ STÍLUS AZ EGÉSZ OLDALON */
-    .price-box {
-      background-color: rgba(255, 255, 255, 0.95);
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      width: 100%;
-      max-width: 900px;
-      box-sizing: border-box;
-      margin-top: 0;
-      color: black !important;
-    }
+    .contact-box {
+      background-color: #f0f0f0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      font-family: inherit;
+      color: black;
+    }
 
-    /* Biztosítjuk, hogy a Kapcsolat címek betűtípusa és mérete egyezzen a Gyorsnyomdáéval */
-    .price-box h3 {
-      font-family: Arial, sans-serif !important;
-      color: black !important;
-      margin-top: 0;
-      margin-bottom: 15px;
-      font-size: 20px;
-      font-weight: bold;
-      text-align: left;
-    }
+    @media (max-width: 480px) {
+  .contact-box { width: 90%; }
+  .table-wrapper table { width: 100%; font-size: 12px; }
+}
 
-    /* Biztosítjuk, hogy a bekezdések is másolják a Gyorsnyomda/Áraink szövegstílusát */
-    .price-box p {
-      font-family: Arial, sans-serif !important;
-      color: black !important;
-      font-size: 16px;
-      line-height: 1.6;
-    }
+/* MINDEN szöveg a kék sávban középre */
+nav {
+  text-align: center;
+}
 
-    .price-box table {
-      width: 100%;
-      margin-top: 10px;
-    }
+nav * {
+  text-align: center;
+  justify-content: center;
+}
+    
+/* Desktop: marad a jelenlegi elrendezés /
 
-    /* Linkek és közösségi média gombok egységesítése */
-    .social-link {
-      color: #004080;
-      font-size: 16px;
-      text-decoration: underline;
-      font-weight: bold;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
+    @media (min-width: 769px) {
+  
+    nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 20px;
+ 
+    }
 
-    .social-link:hover {
-      color: #007bff;
-    }
+  .nav-contact a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
 
-    @media (max-width: 480px) {
-      .table-wrapper table { width: 100%; font-size: 12px; }
-    }
-        
-    @media (min-width: 769px) {
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        padding: 0 20px;
-      }
-      .nav-contact a {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
-    }
+/ Mobil / tablet: minden középre, egymás alatt */
+@media (max-width: 768px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px 20px;
+  }
 
-    @media (max-width: 768px) {
-      nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 10px 20px;
-      }
-      nav > div {
-        width: 100%;
-        margin: 5px 0;
-      }
-      .nav-contact a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 8px;
-      }
-    }
-  </style>
+  nav > div {
+    width: 100%;
+    margin: 5px 0;
+  }
 
-  <script>
-    function showSection(id) {
-      var sections = document.querySelectorAll('.content');
-      sections.forEach(function(section) {
-        section.classList.remove('active');
-      });
-      document.getElementById(id).classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }  
+  .nav-contact a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+}
+</style>
 
-    function togglePanel() {
-      const panel = document.getElementById('pricePanel');
-      panel.style.display = panel.style.display === 'none' || panel.style.display === '' ? 'block' : 'none';
-    }
+  <script>
+    function showSection(id) {
+      var sections = document.querySelectorAll('.content');
+      sections.forEach(function(section) {
+      section.classList.remove('active');
+    });
+      document.getElementById(id).classList.add('active');
+  
+  // Ez a sor gondoskodik róla, hogy a lap tetejére ugorjon a nézet:
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }  
 
-    window.onload = function() { showSection('rolunk'); };
-  </script>
+    function togglePanel() {
+      const panel = document.getElementById('pricePanel');
+      panel.style.display = panel.style.display === 'none' || panel.style.display === '' ? 'block' : 'none';
+    }
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+      window.onload = function() { showSection('rolunk'); };
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
 </head>
 <body>
 
 <header>
-  <h1>Forte-Press Bt.</h1>
-  <h2 class="highlight-text" style="font-size: 22px; background-color: #ffffffaa; color: #000;">Szórólapnyomtatás Budapesten gyors határidővel – akár 1,30 Ft/db-tól!</h2>
-  <p>Professzionális szórólapkészítés – gyorsan, pontosan, kedvező áron 1994 óta</p>
+  <h1>Forte-Press Bt.</h1>
+  <h2 class="highlight-text" style="font-size: 22px; background-color: #ffffffaa; color: #000;">Szórólapnyomtatás Budapesten gyors határidővel – akár 1,30 Ft/db-tól!</h2>
+  <p>Professzionális szórólapkészítés – gyorsan, pontosan, kedvező áron 1994 óta</p>
 </header>
 
 <nav>
-  <div class="nav-contact">
-    <a href="mailto:fortepressnyomda@gmail.com"><i class="fas fa-envelope"></i> fortepressnyomda@gmail.com</a>
-  </div>
-  <div>
-    <a href="#" onclick="showSection('rolunk')">Rólunk</a>
-    <a href="#" onclick="showSection('araink')">Áraink</a>
-    <a href="#" onclick="showSection('gyorsnyomda')">Gyorsnyomdai szolgáltatások 0-24</a>
-    <a href="#" onclick="showSection('kapcsolat')">Kapcsolat</a>
-  </div>
-  <div class="nav-contact">
-    <a href="tel:+36209236130"><i class="fas fa-phone"></i> +36 20 923 6130</a>
-  </div>
+  <div class="nav-contact">
+    <a href="mailto:fortepressnyomda@gmail.com"><i class="fas fa-envelope"></i> fortepressnyomda@gmail.com</a>
+  </div>
+  <div>
+    <a href="#" onclick="showSection('rolunk')">Rólunk</a>
+    <a href="#" onclick="showSection('araink')">Áraink</a>
+    <a href="#" onclick="showSection('gyorsnyomda')">Gyorsnyomdai szolgáltatások 0-24</a>
+    <a href="#" onclick="showSection('kapcsolat')">Kapcsolat</a>
+  </div>
+  <div class="nav-contact">
+    <a href="tel:+36209236130"><i class="fas fa-phone"></i> +36 20 923 6130</a>
+  </div>
 </nav>
 
 <div id="rolunk" class="content" style="background-image: url('szorolap-nyomtatas.jpg');">
-  <div class="content-inner">
-    <h2 class="page-title">Rólunk</h2>
-    <strong>
-      <p>
-        Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek,
-        kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával.
-      
-        A budapesti Forte-Press Bt. több, mint 30 éve szolgálja ki hazai és külföldi partnereit –
-        kis példányszámtól a több százezres mennyiségig.
-      
-        4 színes <em>Heidelberg nyomdagép</em>eink, <em>1 színes nyomdagépeink és egyéb berendezéseink</em>,
-        valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.
-      </p>
-    </strong>    
-    <strong>
-      <p>
-        Vállalunk még <em>szkennelést</em>, <em>digitális archiválást</em>, <em>fénymásolást</em>, <em>file-ból nyomtatást</em>, <em>fotónyomtatást (nem labor minőségben, elsősorban reprezentációs célra) A/4 méretig</em>, <em>papírkötegek egyenesvágását</em> (pl: 500 db-os A/4 fénymásolópapír félbevágását, harmadolását, negyedelését...)
-        Amennyiben lehetséges, sérült, vagy védett PDF fáljból nyomtatás, archiválás.
-      </p>
-    </strong>  
-  </div>
+  <div class="content-inner">
+    <h2 class="page-title">Rólunk</h2>
+      <strong>
+        <p>
+          Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek,
+          kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával.
+      
+          A budapesti Forte-Press Bt. több, mint 30 éve szolgálja ki hazai és külföldi partnereit –
+          kis példányszámtól a több százezres mennyiségig.
+      
+          4 színes <em>Heidelberg nyomdagép</em>eink, <em>1 színes nyomdagépeink és egyéb berendezéseink</em>,
+          valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.
+        </p>
+    </strong>   
+    <strong>
+      <p>
+        Vállalunk még <em>szkennelést</em>, <em>digitális archiválást</em>, <em>fénymásolást</em>, <em>file-ból nyomtatást</em>, <em>fotónyomtatást (nem labor minőségben, elsősorban reprezentációs célra) A/4 méretig</em>, <em>papírkötegek egyenesvágását</em> (pl: 500 db-os A/4 fénymásolópapír félbevágását, harmadolását, negyedelését...)
+        Amennyiben lehetséges, sérült, vagy védett PDF fáljból nyomtatás, archiválás.
+      </p>
+    </strong>  
+  </div>
 </div>
 
 <div id="araink" class="content" style="background-image: url('szórólap-nyomtatás.jpg');">
-  <div class="content-inner">
-    <h2 class="page-title">Áraink</h2>
-    
-    <div class="highlight-text" style="display: block; max-width: 100%; line-height: 1.5;">
-      Aktuális árainkat az alábbi képen láthatóak. 
-      A lista rendszeresen frissül. Ha egyedi igénye van, kérjen személyre szabott ajánlatot e-mailben vagy telefonon!
-    </div>
-    <div class="highlight-text" style="display: block; max-width: 100%; line-height: 1.5; margin-bottom: 20px;">
-      A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,30 Ft-tól.<br>
-      Papírfajtától függően gyártunk olcsóbb és drágább szórólapokat is!<br>
-      A táblázatokban szereplő árak tájékoztató jellegűek, az árváltoztatás jogát fenntartjuk!<br>
-      A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!
-    </div>
+  <div class="content-inner">
+    <h2 class="page-title">Áraink</h2>
+    
+    <div class="highlight-text" style="display: block; max-width: 100%; line-height: 1.5;">
+      Aktuális árainkat az alábbi képen láthatóak. 
+      A lista rendszeresen frissül. Ha egyedi igénye van, kérjen személyre szabott ajánlatot e-mailben vagy telefonon!
+    </div>
+    <div class="highlight-text" style="display: block; max-width: 100%; line-height: 1.5; margin-bottom: 20px;">
+      A/6 méretű egy oldalon, egy színnel nyomtatott szórólapok már 1,30 Ft-tól.<br>
+      Papírfajtától függően gyártunk olcsóbb és drágább szórólapokat is!<br>
+      A táblázatokban szereplő árak tájékoztató jellegűek, az árváltoztatás jogát fenntartjuk!<br>
+      A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!
+    </div>
 
-    <div class="price-box" style="margin-top: 30px;">
-      <h3>Egyoldalas, egyszínes szórólap, 60g/m2 papíron</h3>
-      <table>
-        <tr><th>db</th><th>A/6</th><th>A/5</th><th>A/4</th><th>A/3</th><th>LA4</th></tr>
-        <tr><td>1000</td><td>8 700 Ft</td><td>10 400 Ft</td><td>13 800 Ft</td><td>20 600 Ft</td><td>9 300 Ft</td></tr>
-        <tr><td>2000</td><td>10 400 Ft</td><td>13 800 Ft</td><td>20 600 Ft</td><td>34 200 Ft</td><td>11 600 Ft</td></tr>
-        <tr><td>5000</td><td>15 500 Ft</td><td>24 000 Ft</td><td>41 000 Ft</td><td>75 000 Ft</td><td>18 400 Ft</td></tr>
-        <tr><td>10000</td><td>24 000 Ft</td><td>41 000 Ft</td><td>75 000 Ft</td><td>143 000 Ft</td><td>29 700 Ft</td></tr>
-        <tr><td>20000</td><td>41 000 Ft</td><td>75 000 Ft</td><td>143 000 Ft</td><td>279 000 Ft</td><td>52 400 Ft</td></tr>
-        <tr><td>50000</td><td>92 000 Ft</td><td>177 000 Ft</td><td>347 000 Ft</td><td>687 000 Ft</td><td>120 400 Ft</td></tr>
-      </table>
-    </div>
+    <div class="price-box">
+      <h3>Egyoldalas, egyszínes szórólap, 60g/m2 papíron</h3>
+      <table>
+        <tr><th>db</th><th>A/6</th><th>A/5</th><th>A/4</th><th>A/3</th><th>LA4</th></tr>
+        <tr><td>1000</td><td>8 700 Ft</td><td>10 400 Ft</td><td>13 800 Ft</td><td>20 600 Ft</td><td>9 300 Ft</td></tr>
+        <tr><td>2000</td><td>10 400 Ft</td><td>13 800 Ft</td><td>20 600 Ft</td><td>34 200 Ft</td><td>11 600 Ft</td></tr>
+        <tr><td>5000</td><td>15 500 Ft</td><td>24 000 Ft</td><td>41 000 Ft</td><td>75 000 Ft</td><td>18 400 Ft</td></tr>
+        <tr><td>10000</td><td>24 000 Ft</td><td>41 000 Ft</td><td>75 000 Ft</td><td>143 000 Ft</td><td>29 700 Ft</td></tr>
+        <tr><td>20000</td><td>41 000 Ft</td><td>75 000 Ft</td><td>143 000 Ft</td><td>279 000 Ft</td><td>52 400 Ft</td></tr>
+        <tr><td>50000</td><td>92 000 Ft</td><td>177 000 Ft</td><td>347 000 Ft</td><td>687 000 Ft</td><td>120 400 Ft</td></tr>
+      </table>
+    </div>
 
-    <div class="price-box" style="margin-top: 30px;">
-      <h3>Kétoldalas, egyszínes szórólap, 60g/m2 papíron</h3>
-      <table>
-        <tr><th>db</th><th>A/6</th><th>A/5</th><th>A/4</th><th>A/3</th><th>LA4</th></tr>
-        <tr><td>1000</td><td>8 850 Ft</td><td>10 700 Ft</td><td>14 400 Ft</td><td>21 800 Ft</td><td>9 500 Ft</td></tr>
-        <tr><td>2000</td><td>10 700 Ft</td><td>14 400 Ft</td><td>21 800 Ft</td><td>36 600 Ft</td><td>12 000 Ft</td></tr>
-        <tr><td>5000</td><td>16 200 Ft</td><td>25 500 Ft</td><td>44 000 Ft</td><td>81 000 Ft</td><td>19 400 Ft</td></tr>
-        <tr><td>10000</td><td>25 500 Ft</td><td>44 000 Ft</td><td>81 000 Ft</td><td>155 000 Ft</td><td>31 700 Ft</td></tr>
-        <tr><td>20000</td><td>44 000 Ft</td><td>81 000 Ft</td><td>155 000 Ft</td><td>284 500 Ft</td><td>56 400 Ft</td></tr>
-        <tr><td>50000</td><td>99 500 Ft</td><td>192 000 Ft</td><td>377 000 Ft</td><td>747 000 Ft</td><td>130 400 Ft</td></tr>
-      </table>
-    </div>
+    <div class="price-box">
+      <h3>Kétoldalas, egyszínes szórólap, 60g/m2 papíron</h3>
+      <table>
+        <tr><th>db</th><th>A/6</th><th>A/5</th><th>A/4</th><th>A/3</th><th>LA4</th></tr>
+        <tr><td>1000</td><td>8 850 Ft</td><td>10 700 Ft</td><td>14 400 Ft</td><td>21 800 Ft</td><td>9 500 Ft</td></tr>
+        <tr><td>2000</td><td>10 700 Ft</td><td>14 400 Ft</td><td>21 800 Ft</td><td>36 600 Ft</td><td>12 000 Ft</td></tr>
+        <tr><td>5000</td><td>16 200 Ft</td><td>25 500 Ft</td><td>44 000 Ft</td><td>81 000 Ft</td><td>19 400 Ft</td></tr>
+        <tr><td>10000</td><td>25 500 Ft</td><td>44 000 Ft</td><td>81 000 Ft</td><td>155 000 Ft</td><td>31 700 Ft</td></tr>
+        <tr><td>20000</td><td>44 000 Ft</td><td>81 000 Ft</td><td>155 000 Ft</td><td>284 500 Ft</td><td>56 400 Ft</td></tr>
+        <tr><td>50000</td><td>99 500 Ft</td><td>192 000 Ft</td><td>377 000 Ft</td><td>747 000 Ft</td><td>130 400 Ft</td></tr>
+      </table>
+    </div>
 
-    <div class="price-box" style="margin-top: 30px;">
-      <h3>Egyoldalas, négyszínes szórólap, 90g/m2 papíron</h3>
-      <table>
-        <tr><th>db</th><th>A/6</th><th>A/5</th><th>A/4</th><th>A/3</th><th>LA4</th></tr>
-        <tr><td>1000</td><td>24 000 Ft</td><td>26 000 Ft</td><td>30 000 Ft</td><td>38 000 Ft</td><td>24 700 Ft</td></tr>
-        <tr><td>2000</td><td>26 000 Ft</td><td>30 000 Ft</td><td>38 000 Ft</td><td>54 000 Ft</td><td>27 400 Ft</td></tr>
-        <tr><td>5000</td><td>32 000 Ft</td><td>42 000 Ft</td><td>62 000 Ft</td><td>102 000 Ft</td><td>35 400 Ft</td></tr>
-        <tr><td>10000</td><td>42 000 Ft</td><td>62 000 Ft</td><td>102 000 Ft</td><td>182 000 Ft</td><td>48 700 Ft</td></tr>
-        <tr><td>20000</td><td>62 000 Ft</td><td>102 000 Ft</td><td>182 000 Ft</td><td>342 000 Ft</td><td>75 400 Ft</td></tr>
-        <tr><td>50000</td><td>122 000 Ft</td><td>222 000 Ft</td><td>422 000 Ft</td><td>822 000 Ft</td><td>155 400 Ft</td></tr>
-      </table>
-    </div>
+    <div class="price-box">
+      <h3>Egyoldalas, négyszínes szórólap, 90g/m2 papíron</h3>
+      <table>
+        <tr><th>db</th><th>A/6</th><th>A/5</th><th>A/4</th><th>A/3</th><th>LA4</th></tr>
+        <tr><td>1000</td><td>24 000 Ft</td><td>26 000 Ft</td><td>30 000 Ft</td><td>38 000 Ft</td><td>24 700 Ft</td></tr>
+        <tr><td>2000</td><td>26 000 Ft</td><td>30 000 Ft</td><td>38 000 Ft</td><td>54 000 Ft</td><td>27 400 Ft</td></tr>
+        <tr><td>5000</td><td>32 000 Ft</td><td>42 000 Ft</td><td>62 000 Ft</td><td>102 000 Ft</td><td>35 400 Ft</td></tr>
+        <tr><td>10000</td><td>42 000 Ft</td><td>62 000 Ft</td><td>102 000 Ft</td><td>182 000 Ft</td><td>48 700 Ft</td></tr>
+        <tr><td>20000</td><td>62 000 Ft</td><td>102 000 Ft</td><td>182 000 Ft</td><td>342 000 Ft</td><td>75 400 Ft</td></tr>
+        <tr><td>50000</td><td>122 000 Ft</td><td>222 000 Ft</td><td>422 000 Ft</td><td>822 000 Ft</td><td>155 400 Ft</td></tr>
+      </table>
+    </div>
 
-    <div class="price-box" style="margin-top: 30px;">
-      <h3>Kétoldalas, négyszínes szórólap, 90g/m2 papíron</h3>
-      <table>
-        <tr><th>db</th><th>A/6</th><th>A/5</th><th>A/4</th><th>A/3</th><th>LA4</th></tr>
-        <tr><td>1000</td><td>29 200 Ft</td><td>31 300 Ft</td><td>35 500 Ft</td><td>44 000 Ft</td><td>29 900 Ft</td></tr>
-        <tr><td>2000</td><td>31 300 Ft</td><td>35 500 Ft</td><td>44 000 Ft</td><td>68 900 Ft</td><td>32 700 Ft</td></tr>
-        <tr><td>5000</td><td>37 600 Ft</td><td>48 200 Ft</td><td>69 300 Ft</td><td>111 600 Ft</td><td>41 200 Ft</td></tr>
-        <tr><td>10000</td><td>48 200 Ft</td><td>69 300 Ft</td><td>111 600 Ft</td><td>196 200 Ft</td><td>55 200 Ft</td></tr>
-        <tr><td>20000</td><td>69 300 Ft</td><td>111 600 Ft</td><td>196 200 Ft</td><td>365 400 Ft</td><td>83 400 Ft</td></tr>
-        <tr><td>50000</td><td>132 800 Ft</td><td>238 500 Ft</td><td>450 000 Ft</td><td>873 000 Ft</td><td>168 000 Ft</td></tr>
-      </table>
-    </div>
+    <div class="price-box">
+      <h3>Kétoldalas, négyszínes szórólap, 90g/m2 papíron</h3>
+      <table>
+        <tr><th>db</th><th>A/6</th><th>A/5</th><th>A/4</th><th>A/3</th><th>LA4</th></tr>
+        <tr><td>1000</td><td>29 200 Ft</td><td>31 300 Ft</td><td>35 500 Ft</td><td>44 000 Ft</td><td>29 900 Ft</td></tr>
+        <tr><td>2000</td><td>31 300 Ft</td><td>35 500 Ft</td><td>44 000 Ft</td><td>68 900 Ft</td><td>32 700 Ft</td></tr>
+        <tr><td>5000</td><td>37 600 Ft</td><td>48 200 Ft</td><td>69 300 Ft</td><td>111 600 Ft</td><td>41 200 Ft</td></tr>
+        <tr><td>10000</td><td>48 200 Ft</td><td>69 300 Ft</td><td>111 600 Ft</td><td>196 200 Ft</td><td>55 200 Ft</td></tr>
+        <tr><td>20000</td><td>69 300 Ft</td><td>111 600 Ft</td><td>196 200 Ft</td><td>365 400 Ft</td><td>83 400 Ft</td></tr>
+        <tr><td>50000</td><td>132 800 Ft</td><td>238 500 Ft</td><td>450 000 Ft</td><td>873 000 Ft</td><td>168 000 Ft</td></tr>
+      </table>
+    </div>
 
-    <div class="price-box" style="text-align: center; padding: 20px; margin-top: 30px;">
-      <span style="color: black; font-weight: bold;">
-        Gyorsnyomdai szolgáltatások (névjegykártya, nyomtatás, másolás, szkennelés...) áraihoz kattintson ide:
-      </span>
-      <br>
-      <a href="#" onclick="showSection('gyorsnyomda'); return false;" style="color: #004080; text-decoration: underline; font-weight: bold; display: inline-block; margin-top: 8px;">
-        Gyorsnyomdai szolgáltatások
-      </a>
-    </div>
-  </div>
-</div> 
+    <div class="price-box" style="text-align: center; padding: 20px;">
+      <span style="color: black; font-weight: bold;">
+        Gyorsnyomdai szolgáltatások (névjegykártya, nyomtatás, másolás, szkennelés...) áraihoz kattintson ide:
+      </span>
+      <br>
+      <a href="#" onclick="showSection('gyorsnyomda'); return false;" style="color: #004080; text-decoration: underline; font-weight: bold; display: inline-block; margin-top: 8px;">
+        Gyorsnyomdai szolgáltatások
+      </a>
+    </div>
+  </div>
+ </div> 
 
-<div id="gyorsnyomda" class="content" style="background-image: url('szórólap-nyomtatás.jpg');"> 
-  <div class="content-inner gyorsnyomda">
-    <h2 class="page-title">Gyorsnyomdai szolgáltatások 0–24 (<em>nyomtatás</em>, <em>másolás</em>, <em>szkennelés</em>, <em>névjegykártya</em>...)</h2>
+<div id="gyorsnyomda" class="content" style="background-image: url('szórólap-nyomtatás.jpg');"> 
+  <div class="content-inner gyorsnyomda">
+    <h2 class="page-title">Gyorsnyomdai szolgáltatások 0–24 (<em>nyomtatás</em>, <em>másolás</em>, <em>szkennelés</em>, <em>névjegykártya</em>...)</h2>
 
-    <div class="highlight-text" style="display:block; max-width:100%; line-height:1.6;">
-      <strong>Fontos információ:</strong><br>
-      A gyorsnyomdai (<em>print shop</em>) szolgáltatásokat meglévő megrendelőink kérésére, kiegészítő jelleggel végezzük,
-      not fénymásoló szalonként működünk, ezért...
-      <br><br>
-      <strong>ELŐZETES TELEFONOS BEJELENTKEZÉS MINDEN ESETBEN SZÜKSÉGES!</strong>
-      <br><br>
-      Hívásukat a hét minden napján, 0–24 órában várjuk.
-      Esti órákban is hívhat minket, ha számunkra is alkalmas, fogadjuk a hívást,
-      ellenkező esetben visszahívjuk Önöket.<br>
-    </div>
+      <div class="highlight-text" style="display:block; max-width:100%; line-height:1.6;">
+        <strong>Fontos információ:</strong><br>
+        A gyorsnyomdai (<em>print shop</em>) szolgáltatásokat meglévő megrendelőink kérésére, kiegészítő jelleggel végezzük,
+        nem fénymásoló szalonként működünk, ezért...
+        <br><br>
+        <strong>ELŐZETES TELEFONOS BEJELENTKEZÉS MINDEN ESETBEN SZÜKSÉGES!</strong>
+        <br><br>
+        Hívásukat a hét minden napján, 0–24 órában várjuk.
+        Esti órákban is hívhat minket, ha számunkra is alkalmas, fogadjuk a hívást,
+        ellenkező esetben visszahívjuk Önöket.<br>
+      </div>
 
-    <div class="price-box" style="margin-top: 30px;">
-      <h3>Fénymásolás, file-ból nyomtatás</h3>
-      <p>A/4 méretben, 80 g/m<sup>2</sup> fénymásoló papírra:</p>
-      <p><strong>Fekete - Fehér:</strong> 30 Ft/oldal<br>Minimum díj: 600 Ft</p>
-      <p><strong>Színes – kis fedettség esetén</strong><br>(pl. a szövegben egy sor piros a fekete helyett):<br>60 Ft/oldal<br>Minimum díj: 800 Ft</p>
-      <p><strong>Színes – nagyobb fedettség esetén</strong><br>(grafikonok, képek, nagy festékfelület):<br>120 Ft/oldal<br>Minimum díj: 1.000 Ft</p>
-      <p><strong>150 g/m<sup>2</sup> matt műnyomó papírra nyomtatás – színes</strong><br>Főként reprezentációs célra alkalmas. A kb. kétszeres papírvastagság miatt a nagy festékterhelés ellenére sem transzparál, a lap hátoldala tiszta, fehér hatású marad.<br>200 Ft/oldal<br>Minimum díj: 1.200 Ft</p>
-      <p><strong>Fotópapírra nyomtatás:</strong><br>400 Ft/oldal<br>Minimum díj: 1.200 Ft</p>
-    </div> 
+      <div class="highlight-text" style="display:block; max-width:100%; line-height:1.6; margin-top: 20px; background-color: white !important; color: black !important;">
+        <strong style="color: black !important;">Fénymásolás, file-ból nyomtatás</strong><br>
+        A/4 méretben, 80 g/m<sup>2</sup> fénymásoló papírra:
+        <br><br>
 
-    <div class="price-box" style="margin-top: 30px;">
-      <h3>Szkennelés (maximum A/4 méretig)</h3>
-      <p>150 Ft/oldal<br>Minimum díj: 1.000 Ft</p>
-      <p><strong>Szkennelés és digitális archiválás (maximum A/4 méretig)</strong><br>200 Ft/oldal<br>Minimum díj: 1.000 Ft</p>
-    </div>
-    
-    <div class="price-box" style="margin-top: 30px;">
-      <h3>Retusálás:</h3>
-      <p>10.000 Ft/óra, perc alapú bontásban<br>Az átküldött vagy személyesen átadott anyag szemrevételezését követően nagy pontossággal meg tudjuk mondani a várható minőséget és munkadíjat.<br>Minimum díj: 2.000 Ft</p>
-    </div>
-    
-    <div class="price-box" style="margin-top: 30px;">
-      <h3>Egyenesvágás nyomdai vágógéppel:</h3>
-      <p>14.000 Ft/óra, perc alapú bontásban<br>Minimum díj: 1.000 Ft</p>
-    </div>
+        <strong style="color: black !important;">Fekete - Fehér:</strong> 30 Ft/oldal<br>
+        Minimum díj: 600 Ft
+        <br><br>
 
-    <div class="price-box" style="margin-top: 30px;">
-      <h3>Névjegykártya, cégkártya nyomtatás:</h3>
-      <table>
-        <tr><th></th><th>1 oldalas</th><th>2 oldalas</th></tr>
-        <tr><td>50 db</td><td>5.500 Ft</td><td>7.000 Ft</td></tr>
-        <tr><td>100 db</td><td>6.500 Ft</td><td>8.000 Ft</td></tr>
-        <tr><td>200 db</td><td>8.500 Ft</td><td>12.500 Ft</td></tr>
-        <tr><td>500 db</td><td>18.500 Ft</td><td>25.500 Ft</td></tr>
-        <tr><td>1000 db</td><td>28.500 Ft</td><td>36.500 Ft</td></tr> 
-      </table>
-      <p style="font-size: 14px; margin-top: 15px;">
-        A táblázatban szereplő árak tartalmazzák ÁFA-t.<br>
-        Az árak a szerkesztési díjat nem tartalmazzák, tehát a megrendelő által biztosított nyomdakész grafikára vonatkoznak.<br>
-        Apróbb korrekciókat, tehát legfeljebb néhány percnyi grafikai munkáért szerkesztési díjat nem számítunk fel!<br>
-        A fenti árak fekete-fehér és színes névjegykártyákra is vonatkoznak!
-      </p>
-      <p><strong>Oklevél nyomtatás A/4 méretig:</strong></p>
-    </div>
-  </div>
+        <strong style="color: black !important;">Színes – kis fedettség esetén</strong><br>
+        (pl. a szövegben egy sor piros a fekete helyett):<br>
+        60 Ft/oldal<br>
+        Minimum díj: 800 Ft
+        <br><br>
+
+        <strong style="color: black !important;">Színes – nagyobb fedettség esetén</strong><br>
+        (grafikonok, képek, nagy festékfelület):<br>
+        120 Ft/oldal<br>
+        Minimum díj: 1.000 Ft
+        <br><br>
+
+        <strong style="color: black !important;">150 g/m<sup>2</sup> matt műnyomó papírra nyomtatás – színes</strong><br>
+        Főként reprezentációs célra alkalmas. A kb. kétszeres papírvastagság miatt a nagy festékterhelés ellenére sem transzparál, 
+        a lap hátoldala tiszta, fehér hatású marad.<br>
+        200 Ft/oldal<br>
+        Minimum díj: 1.200 Ft
+        <br><br>
+
+        <strong style="color: black !important;">Fotópapírra nyomtatás:</strong><br>
+        400 Ft/oldal<br>
+        Minimum díj: 1.200 Ft
+        <br><br>
+      </div> 
+    
+      <div class="highlight-text" style="display:block; max-width:100%; line-height:1.6; margin-top: 20px; background-color: white !important; color: black !important;">
+        <strong style="color: black !important;">Szkennelés (maximum A/4 méretig)</strong><br>
+        150 Ft/oldal<br>
+        Minimum díj: 1.000 Ft
+        <br><br>
+
+        <strong>Szkennelés és digitális archiválás (maximum A/4 méretig)</strong><br>
+        200 Ft/oldal<br>
+        Minimum díj: 1.000 Ft
+        <br><br>
+      </div>
+    
+      <div class="highlight-text" style="display:block; max-width:100%; line-height:1.6; margin-top: 20px; background-color: white !important; color: black !important;">
+        <strong style="color: black !important;">Retusálás:</strong><br>
+        10.000 Ft/óra, perc alapú bontásban<br>
+        Az átküldött vagy személyesen átadott anyag szemrevételezését követően nagy pontossággal meg tudjuk mondani 
+        a várható minőséget és munkadíjat.<br>
+        Minimum díj: 2.000 Ft
+        <br><br>
+      </div>
+    
+      <div class="highlight-text" style="display:block; max-width:100%; line-height:1.6; margin-top: 20px; background-color: white !important; color: black !important;">
+        <strong style="color: black !important;">Egyenesvágás nyomdai vágógéppel:</strong><br>
+        14.000 Ft/óra, perc alapú bontásban<br>
+        Minimum díj: 1.000 Ft
+        <br><br>
+      </div>
+
+      <div class="highlight-text" style="display:block; max-width:100%; line-height:1.6; margin-top: 20px; background-color: white !important; color: black !important;">
+        <strong style="color: black !important;">Névjegykártya, cégkártya nyomtatás:</strong><br>
+          <table>
+            <tr><th></th><th>1 oldalas</th><th>2 oldalas</th></tr>
+            <tr><td>50 db</td><td>5.500 Ft</td><td>7.000 Ft</td></tr>
+            <tr><td>100 db</td><td>6.500 Ft</td><td>8.000 Ft</td></tr>
+            <tr><td>200 db</td><td>8.500 Ft</td><td>12.500 Ft</td></tr>
+            <tr><td>500 db</td><td>18.500 Ft</td><td>25.500 Ft</td></tr>
+            <tr><td>1000 db</td><td>28.500 Ft</td><td>36.500 Ft</td></tr> 
+          </table>
+        A táblázatban szereplő árak tartalmazzák ÁFA-t.<br>
+        Az árak a szerkeztési díjat nem tartalmazzák, tehát a megrendelő által biztosított nyomdakész grafikára vonatkoznak.
+        Apróbb korrekciókat, tehát legfeljebb néhány percnyi grafikai munkáért szerkeztési díjat nem számítunk fel!<br>
+        A fenti árak fekete-fehér és színes névjegykártyákra is vontakoznak!
+        <br></br>
+        
+        <strong>Oklevél nyomtatás A/4 méretig:</strong>
+      </div>
+    
+  </div>
+
+  <style>
+    /* Kapcsolat oldal főcím */
+    .page-title {
+      text-align: center;
+      font-family: inherit;
+      color: white;
+    }
+
+    /* Konténer, ami összefogja a dobozokat */
+    .contact-main, .contact-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .contact-wrapper {
+      margin-top: 20px;
+    }
+
+    /* EGYSÉGES DOBOZ STÍLUS: Minden doboz külseje és mérete teljesen egyforma */
+    .contact-box {
+      background-color: rgba(255, 255, 255, 0.95); /* Egységes fehér háttér */
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      box-sizing: border-box; /* Garantálja, hogy a padding nem nyújtja meg a dobozt */
+    }
+
+    /* Alapértelmezett szövegstílus a normál dobozokban */
+    .contact-box p, .contact-box h3 {
+      margin: 10px 0;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333333;
+    }
+ 
+/* KÜLÖN KIEMELÉS AZ ELSŐ DOBOZ SZÖVEGÉNEK */
+/* Így a szöveg nagyobb és félkövér lesz, de a doboz formája nem torzul el */
+    .contact-box .highlight-text-inner {
+      font-weight: bold;
+      font-size: 18px; /* Kicsit nagyobb, kiemelt méret */
+      color: #000000;  /* Erőteljesebb fekete szín */
+  }
+
+    .contact-box h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+  }
+
+    /* Linkek stílusa (Facebook, Viber, stb.) */
+    .social-link {
+      color: #004080;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+  }
+
+    .social-link:hover {
+      color: #007bff;
+  }
+
+    /* Kifejezetten az áraink oldal nagy fehér dobozaihoz */
+    .price-box {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 900px;
+      box-sizing: border-box;
+      margin-top: 30px; /* Megnöveltük 30px-re, hogy pontosan megegyezzen a Gyorsnyomda térközével */
+  }
+
+    .price-box h3 {
+      color: black;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 20px;
+      text-align: left;
+  }
+
+   .price-box table {
+     width: 100%;
+     margin-top: 10px;
+  }
+</style>
+  
 </div>
 
 <div id="kapcsolat" class="content" style="background-image: url('szorolap-gyartas.jpg');">
-  <div class="content-inner">
-    <h2 class="page-title">Kapcsolat</h2>
+  <div class="content-inner">
+    <h2 class="page-title">Kapcsolat</h2>
 
-    <div class="contact-wrapper" style="display: flex; flex-direction: column; gap: 30px;">
-      
-      <div class="price-box" style="text-align: center; font-weight: bold; padding: 25px;">
-        <p style="margin: 0; font-size: 18px;">
-          Nyomdánk a X., XIV. és XVI. kerület találkozásánál található, közel a Kerepesi úthoz, 
-          néhány percre az Örs vezér terétől, valamint a Hungária körúttal és az M0 körgyűrűtől! 
-          Autóval és tömegközlekedéssel is rendkívül könnyen megközelíthető. A parkolás ingyenes!
-        </p>
-      </div>
+    <div class="contact-wrapper" style="display: flex; flex-direction: column; gap: 30px;">
+      
+      <div class="price-box" style="text-align: center; color: black !important; font-weight: bold; line-height: 1.6; padding: 25px; margin: 0; box-sizing: border-box;">
+        <p style="margin: 0;">
+          Nyomdánk a X., XIV. és XVI. kerület találkezásánál található, közel a Kerepesi úthoz, 
+          néhány percre az Örs vezér terétől, valamint a Hungária körúttal és az M0 körgyűrűtől! 
+          Autóval és tömegközlekedéssel is rendkívül könnyen megközelíthető. A parkolás ingyenes!
+        </p>
+      </div>
 
-      <div class="price-box" style="text-align: center; padding: 25px;">
-        <p style="margin: 0 0 8px 0;"><strong>Cím:</strong> 1144 Budapest, Zalán utca 77.</p>
-        <p style="margin: 0 0 8px 0;"><strong>Telefon:</strong> +36 20 923 6130</p>
-        <p style="margin: 0;"><strong>Email:</strong> fortepressnyomda@gmail.com</p>
-      </div>
+      <div class="price-box" style="text-align: center; color: black !important; line-height: 1.8; padding: 25px; margin: 0; box-sizing: border-box;">
+        <p style="margin: 0 0 8px 0;"><strong>Cím:</strong> 1144 Budapest, Zalán utca 77.</p>
+        <p style="margin: 0 0 8px 0;"><strong>Telefon:</strong> +36 20 923 6130</p>
+        <p style="margin: 0;"><strong>Email:</strong> fortepressnyomda@gmail.com</p>
+      </div>
 
-      <div class="price-box" style="text-align: center; padding: 25px;">
-        <h3 style="text-align: center; margin: 0 0 15px 0;">Térkép</h3>
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d344.34809729018104!2d19.1541715!3d47.5069175!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741c50284d22361%3A0x26aa941ca5f302c0!2sForte-Press%20Nyomda%20%C3%A9s%20Kiad%C3%B3%20BT.!5e1!3m2!1sen!2shu!4v1752319636251!5m2!1sen!2shu"  
-          width="100%" 
-          height="400" 
-          style="border:0; border-radius: 5px; display: block;" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </div>
+      <div class="price-box" style="text-align: center; color: black !important; padding: 25px; margin: 0; box-sizing: border-box;">
+        <h3 style="text-align: center; margin: 0 0 15px 0; font-size: 20px;">Térkép</h3>
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d344.34809729018104!2d19.1541715!3d47.5069175!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4741c50284d22361%3A0x26aa941ca5f302c0!2sForte-Press%20Nyomda%20%C3%A9s%20Kiad%C3%B3%20BT.!5e1!3m2!1sen!2shu!4v1752319636251!5m2!1sen!2shu"  
+          width="100%" 
+          height="400" 
+          style="border:0; border-radius: 5px; display: block;" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
 
-      <div class="price-box" style="text-align: center; padding: 25px;">
-        <h3 style="text-align: center; margin: 0 0 15px 0;">Ügyfeleink véleménye</h3>
-        <p style="margin: 0 0 8px 0;">Olvassa el ügyfeleink Google-értékeléseit:</p>
-        <p style="margin: 0; font-size: 18px;">
-          ⭐⭐⭐⭐⭐ 
-          <a href="https://www.google.com/search?q=Forte-Press+Nyomda+%C3%A9s+Kiad%C3%B3+BT.+V%C3%A9lem%C3%A9nyek&ludocid=11725732152778476558&lsig=AB86z5WD9H_Uf_2eWp_WfC0e4y9p#lrd=0x4741dc5f91ffcf7b:0xa2ba80d0d829cc0e,1" 
-             target="_blank"
-             style="color: #004080; font-weight: bold; text-decoration: underline;"> 
-             Vélemények megtekintése 
-          </a>
-        </p>
-      </div>
+      <div class="price-box" style="text-align: center; color: black !important; line-height: 1.6; padding: 25px; margin: 0; box-sizing: border-box;">
+        <h3 style="text-align: center; margin: 0 0 15px 0; font-size: 20px;">Ügyfeleink véleménye</h3>
+        <p style="margin: 0 0 8px 0;">Olvassa el ügyfeleink Google-értékeléseit:</p>
+        <p style="margin: 0; font-size: 18px;">
+          ⭐⭐⭐⭐⭐ 
+          <a href="https://www.google.com/search?q=Forte-Press+Nyomda+%C3%A9s+Kiad%C3%B3+BT.+V%C3%A9lem%C3%A9nyek&ludocid=11725732152778476558&lsig=AB86z5WD9H_Uf_2eWp_WfC0e4y9p#lrd=0x4741dc5f91ffcf7b:0xa2ba80d0d829cc0e,1" 
+             target="_blank"
+             style="color: #004080; font-weight: bold; text-decoration: underline;"> 
+             Vélemények megtekintése 
+          </a>
+        </p>
+      </div>
 
-      <div class="price-box" style="text-align: center; padding: 25px;">
-        <h3 style="text-align: center; margin: 0 0 15px 0;">Közösségi média & Kapcsolat</h3>
-        <p style="margin: 0 0 10px 0;">
-          <a href="https://www.facebook.com/profile.php?id=100090236685199" target="_blank" class="social-link">
-            <i class="fab fa-facebook" style="margin-right: 8px;"></i>Facebook oldalunk
-          </a>
-        </p>
-        <p style="margin: 0 0 10px 0;">
-          <a href="https://wa.me/36209236130" target="_blank" class="social-link">
-            <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>WhatsApp kapcsolat
-          </a>
-        </p>
-        <p style="margin: 0;">
-          <a href="viber://chat?number=%2B36209236130" target="_blank" class="social-link">
-            <i class="fab fa-viber" style="margin-right: 8px;"></i>Viber kapcsolat
-          </a>
-        </p>
-      </div>
-    </div>
-  </div> 
+      <div class="price-box" style="text-align: center; color: black !important; line-height: 1.8; padding: 25px; margin: 0; box-sizing: border-box;">
+        <h3 style="text-align: center; margin: 0 0 15px 0; font-size: 20px;">Közösségi média & Kapcsolat</h3>
+        <p style="margin: 0 0 10px 0;">
+          <a href="https://www.facebook.com/profile.php?id=100090236685199" target="_blank" class="social-link" style="color: #004080; font-weight: bold; text-decoration: underline;">
+            <i class="fab fa-facebook" style="margin-right: 8px;"></i>Facebook oldalunk
+          </a>
+        </p>
+        <p style="margin: 0 0 10px 0;">
+          <a href="https://wa.me/36209236130" target="_blank" class="social-link" style="color: #004080; font-weight: bold; text-decoration: underline;">
+            <i class="fab fa-whatsapp" style="margin-right: 8px;"></i>WhatsApp kapcsolat
+          </a>
+        </p>
+        <p style="margin: 0;">
+          <a href="viber://chat?number=%2B36209236130" target="_blank" class="social-link" style="color: #004080; font-weight: bold; text-decoration: underline;">
+            <i class="fab fa-viber" style="margin-right: 8px;"></i>Viber kapcsolat
+          </a>
+        </p>
+      </div>
+    </div>
+  </div> 
+</div>
+  
+</div>
+  </div>
 </div>
 
+  <!-- Strukturált adatok (SEO-hoz mikroadatként) -->
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Forte-Press Bt.",
-  "description": "Ofszet nyomda Budapesten – szórólapkészítés, plakátnyomtatás, tálcabetét és kiadványok gyártása 1994 óta.",
-  "image": "https://www.fortepress.hu/logo.png",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Budapest",
-    "postalCode": "1141",
-    "streetAddress": "Forte-Press Bt."
-  },
-  "telephone": "+36 20 923 6130",
-  "email": "fortepressnyomda@gmail.com",
-  "url": "https://www.fortepress.hu/"
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Forte-Press Bt.",
+  "description": "Ofszet nyomda Budapesten – szórólapkészítés, plakátnyomtatás, tálcabetét és kiadványok gyártása 1994 óta.",
+  "image": "https://www.fortepress.hu/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Budapest",
+    "postalCode": "1141",
+    "streetAddress": "Forte-Press Bt."
+  },
+  "telephone": "+36 20 923 6130",
+  "email": "fortepressnyomda@gmail.com",
+  "url": "https://www.fortepress.hu/"
 }
 </script>
 
 <footer>
-  © 2026 Forte-Press Bt. Minden jog fenntartva.
+  © 2026 Forte-Press Bt. Minden jog fenntartva.
 </footer>
 
 </body>
-</html>                                                          
+</html>

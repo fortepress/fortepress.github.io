@@ -201,9 +201,105 @@ nav * {
     gap: 8px;
   }
 }
+    /* Kapcsolat oldal főcím */
+    .page-title {
+      text-align: center;
+      font-family: inherit;
+      color: white;
+    }
+
+    /* Konténer, ami összefogja a dobozokat */
+    .contact-main, .contact-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .contact-wrapper {
+      margin-top: 20px;
+    }
+
+    /* EGYSÉGES DOBOZ STÍLUS: Minden doboz külseje és mérete teljesen egyforma */
+    .contact-box {
+      background-color: rgba(255, 255, 255, 0.95); /* Egységes fehér háttér */
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 600px;
+      text-align: center;
+      box-sizing: border-box; /* Garantálja, hogy a padding nem nyújtja meg a dobozt */
+    }
+
+    /* Alapértelmezett szövegstílus a normál dobozokban */
+    .contact-box p, .contact-box h3 {
+      margin: 10px 0;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #333333;
+    }
+ 
+/* KÜLÖN KIEMELÉS AZ ELSŐ DOBOZ SZÖVEGÉNEK */
+/* Így a szöveg nagyobb és félkövér lesz, de a doboz formája nem torzul el */
+    .contact-box .highlight-text-inner {
+      font-weight: bold;
+      font-size: 18px; /* Kicsit nagyobb, kiemelt méret */
+      color: #000000;  /* Erőteljesebb fekete szín */
+  }
+
+    .contact-box h3 {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+  }
+
+    /* Linkek stílusa (Facebook, Viber, stb.) */
+    .social-link {
+      color: #004080;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+  }
+
+    .social-link:hover {
+      color: #007bff;
+  }
+
+    /* Kifejezetten az áraink oldal nagy fehér dobozaihoz */
+    .price-box {
+      background-color: rgba(255, 255, 255, 0.95);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 900px;
+      box-sizing: border-box;
+      margin-top: 30px; /* Megnöveltük 30px-re, hogy pontosan megegyezzen a Gyorsnyomda térközével */
+  }
+
+    .price-box h3 {
+      color: black;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 20px;
+      text-align: left;
+  }
+
+   .price-box table {
+     width: 100%;
+     margin-top: 10px;
+  }
+    
 </style>
 
-  <script>
+<script>
     function showSection(id) {
       var sections = document.querySelectorAll('.content');
       sections.forEach(function(section) {
@@ -221,9 +317,9 @@ nav * {
     }
 
       window.onload = function() { showSection('rolunk'); };
-  </script>
+</script>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   
 </head>
 <body>
@@ -450,104 +546,6 @@ nav * {
       </div>
     
   </div>
-
-  <style>
-    /* Kapcsolat oldal főcím */
-    .page-title {
-      text-align: center;
-      font-family: inherit;
-      color: white;
-    }
-
-    /* Konténer, ami összefogja a dobozokat */
-    .contact-main, .contact-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .contact-wrapper {
-      margin-top: 20px;
-    }
-
-    /* EGYSÉGES DOBOZ STÍLUS: Minden doboz külseje és mérete teljesen egyforma */
-    .contact-box {
-      background-color: rgba(255, 255, 255, 0.95); /* Egységes fehér háttér */
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      width: 100%;
-      max-width: 600px;
-      text-align: center;
-      box-sizing: border-box; /* Garantálja, hogy a padding nem nyújtja meg a dobozt */
-    }
-
-    /* Alapértelmezett szövegstílus a normál dobozokban */
-    .contact-box p, .contact-box h3 {
-      margin: 10px 0;
-      font-size: 16px;
-      line-height: 1.6;
-      color: #333333;
-    }
- 
-/* KÜLÖN KIEMELÉS AZ ELSŐ DOBOZ SZÖVEGÉNEK */
-/* Így a szöveg nagyobb és félkövér lesz, de a doboz formája nem torzul el */
-    .contact-box .highlight-text-inner {
-      font-weight: bold;
-      font-size: 18px; /* Kicsit nagyobb, kiemelt méret */
-      color: #000000;  /* Erőteljesebb fekete szín */
-  }
-
-    .contact-box h3 {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 15px;
-  }
-
-    /* Linkek stílusa (Facebook, Viber, stb.) */
-    .social-link {
-      color: #004080;
-      font-size: 16px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-  }
-
-    .social-link:hover {
-      color: #007bff;
-  }
-
-    /* Kifejezetten az áraink oldal nagy fehér dobozaihoz */
-    .price-box {
-      background-color: rgba(255, 255, 255, 0.95);
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      width: 100%;
-      max-width: 900px;
-      box-sizing: border-box;
-      margin-top: 30px; /* Megnöveltük 30px-re, hogy pontosan megegyezzen a Gyorsnyomda térközével */
-  }
-
-    .price-box h3 {
-      color: black;
-      margin-top: 0;
-      margin-bottom: 15px;
-      font-size: 20px;
-      text-align: left;
-  }
-
-   .price-box table {
-     width: 100%;
-     margin-top: 10px;
-  }
-</style>
   
 </div>
 
@@ -634,7 +632,7 @@ nav * {
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Budapest",
-    "postalCode": "1141",
+    "postalCode": "1144",
     "streetAddress": "Forte-Press Bt."
   },
   "telephone": "+36 20 923 6130",

@@ -18,7 +18,12 @@
     @media (max-width: 768px) { html { font-size: 14px; } }
     @media (max-width: 480px) { html { font-size: 12px; } }
 
-    body { margin: 0; font-family: Arial, sans-serif; background-color: #f0f0f0; }
+    /* A KETTES KÉP ALAPJÁN: Modern, vaskos talpatlan betűtípus az egész oldalon */
+    body { 
+      margin: 0; 
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+      background-color: #f0f0f0; 
+    }
 
     header {
       background-image: url('szórólap.jpg');
@@ -45,9 +50,9 @@
       justify-content: center;
     }
 
-    nav a { display: inline-block; color: white; padding: 15px 20px; text-decoration: none; }
+    nav a { display: inline-block; color: white; padding: 15px 20px; text-decoration: none; font-weight: bold; }
     nav a:hover { background-color: #003366; }
-    .nav-contact { font-size: 14px; color: white; }
+    .nav-contact { font-size: 14px; color: white; font-weight: bold; }
     .nav-contact a { color: white; text-decoration: none; margin: 0 10px; }
 
     .content {
@@ -86,11 +91,12 @@
       text-align: center;
       padding: 20px;
       margin-top: 20px;
+      font-weight: bold;
     }
 
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; color: black; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; color: black; font-weight: bold; }
     th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
-    th { background-color: #f2f2f2; }
+    th { background-color: #f2f2f2; font-weight: 900; }
 
     iframe { border: none; width: 100%; height: 300px; margin-top: 20px; }
 
@@ -102,17 +108,16 @@
       display: inline-block;
       border-radius: 8px;
       margin-top: 10px;
-      font-weight: bold;
+      font-weight: 900;
     }
 
     .page-title {
       text-align: center;
-      font-family: inherit;
       color: white;
       margin-bottom: 20px;
+      font-weight: 900;
     }
 
-    /* ELRENDEZÉS WRAPPER */
     .contact-wrapper {
       display: flex;
       flex-direction: column;
@@ -122,7 +127,7 @@
       margin: 20px auto 0 auto;
     }
 
-    /* EGYSÉGES DOBOZ STÍLUS AZ EGÉSZ WEBOLDALON (Áraink, Gyorsnyomda, Kapcsolat) */
+    /* EGYSÉGES DOBOZ STÍLUS */
     .price-box {
       background-color: rgba(255, 255, 255, 0.95);
       padding: 25px;
@@ -134,32 +139,31 @@
       margin-top: 30px;
     }
 
-    /* Címsorok stílusa a fehér dobozokban */
+    /* A kettes kép alapján: extra vaskos, fekete címek */
     .price-box h3 {
-      font-family: Arial, sans-serif;
       color: black !important;
       margin-top: 0;
-      margin-bottom: 15px;
-      font-size: 20px;
-      font-weight: bold;
+      margin-bottom: 18px;
+      font-size: 22px;
+      font-weight: 900;
       text-align: left;
+      letter-spacing: -0.5px;
     }
 
-    /* Bekezdések és adatok stílusa (Mélyfekete, erőteljes, jól olvasható) */
+    /* A kettes kép alapján: Mélyfekete, kifejezetten vastag folyószöveg sűrűbb sorközzel */
     .price-box p {
-      font-family: Arial, sans-serif;
       color: black !important;
       font-size: 16px;
-      line-height: 1.6;
-      margin: 10px 0;
+      line-height: 1.4;
+      margin: 12px 0;
+      font-weight: 700; 
     }
 
-    /* Linkek és közösségi média gombok */
     .social-link {
       color: #004080;
       font-size: 16px;
       text-decoration: underline;
-      font-weight: bold;
+      font-weight: 900;
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -228,7 +232,7 @@
 <header>
   <h1>Forte-Press Bt.</h1>
   <h2 class="highlight-text" style="font-size: 22px; background-color: #ffffffaa; color: #000;">Szórólapnyomtatás Budapesten gyors határidővel – akár 1,30 Ft/db-tól!</h2>
-  <p>Professzionális szórólapkészítés – gyorsan, pontosan, kedvező áron 1994 óta</p>
+  <p style="font-weight: bold;">Professzionális szórólapkészítés – gyorsan, pontosan, kedvező áron 1994 óta</p>
 </header>
 
 <nav>
@@ -250,24 +254,20 @@
 <div id="rolunk" class="content" style="background-image: url('szorolap-nyomtatas.jpg');">
   <div class="content-inner">
     <h2 class="page-title">Rólunk</h2>
-    <strong>
-      <p>
-        Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek,
-        kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával.
-      
-        A budapesti Forte-Press Bt. több, mint 30 éve szolgálja ki hazai és külföldi partnereit –
-        kis példányszámtól a több százezres mennyiségig.
-      
-        4 színes <em>Heidelberg nyomdagép</em>eink, <em>1 színes nyomdagépeink és egyéb berendezéseink</em>,
-        valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.
-      </p>
-    </strong>    
-    <strong>
-      <p>
-        Vállalunk még <em>szkennelést</em>, <em>digitális archiválást</em>, <em>fénymásolást</em>, <em>file-ból nyomtatást</em>, <em>fotónyomtatást (nem labor minőségben, elsősorban reprezentációs célra) A/4 méretig</em>, <em>papírkötegek egyenesvágását</em> (pl: 500 db-os A/4 fénymásolópapír félbevágását, harmadolását, negyedelését...)
-        Amennyiben lehetséges, sérült, vagy védett PDF fáljból nyomtatás, archiválás.
-      </p>
-    </strong>  
+    <p style="font-weight: bold;">
+      Cégünk fő profilja a szórólapok, plakátok (A/3 méretig), tálcabetétek, terítékalátétek,
+      kisebb terjedelmű és példányszámú kiadványok gyártása ofszet technológiával.
+    
+      A budapesti Forte-Press Bt. több, mint 30 éve szolgálja ki hazai és külföldi partnereit –
+      kis példányszámtól a több százezres mennyiségig.
+    
+      4 színes <em>Heidelberg nyomdagép</em>eink, <em>1 színes nyomdagépeink és egyéb berendezéseink</em>,
+      valamint a több évtizedes szakmai tapasztalatunk garantálja a professzionális és hatékony végeredményt.
+    </p>
+    <p style="font-weight: bold;">
+      Vállalunk még <em>szkennelést</em>, <em>digitális archiválást</em>, <em>fénymásolást</em>, <em>file-ból nyomtatást</em>, <em>fotónyomtatást (nem labor minőségben, elsősorban reprezentációs célra) A/4 méretig</em>, <em>papírkötegek egyenesvágását</em> (pl: 500 db-os A/4 fénymásolópapír félbevágását, harmadolását, negyedelését...)
+      Amennyiben lehetséges, sérült, vagy védett PDF fáljból nyomtatás, archiválás.
+    </p>
   </div>
 </div>
 
@@ -354,11 +354,11 @@
 <!-- GYORSNYOMDA SZEKCIÓ -->
 <div id="gyorsnyomda" class="content" style="background-image: url('szórólap-nyomtatás.jpg');"> 
   <div class="content-inner gyorsnyomda">
-    <h2 class="page-title">Gyorsnyomdai szolgáltatások 0–24 (<em>nyomtatás</em>, <em>másolás</em>, <em>szkennelés</em>, <em>névjegykártya</em>...)</h2>
+    <h2 class="page-title">Gyorsnyomdai szolgáltatások 0–24 (nyomtatás, másolás, szkennelés, névjegykártya...)</h2>
 
     <div class="highlight-text" style="display:block; max-width:100%; line-height:1.6;">
       <strong>Fontos információ:</strong><br>
-      A gyorsnyomdai (<em>print shop</em>) szolgáltatásokat meglévő megrendelőink kérésére, kiegészítő jelleggel végezzük,
+      A gyorsnyomdai (print shop) szolgáltatásokat meglévő megrendelőink kérésére, kiegészítő jelleggel végezzük,
       nem fénymásoló szalonként működünk, ezért...
       <br><br>
       <strong>ELŐZETES TELEFONOS BEJELENTKEZÉS MINDEN ESETBEN SZÜKSÉGES!</strong>
@@ -371,17 +371,17 @@
     <div class="price-box" style="margin-top: 30px;">
       <h3>Fénymásolás, file-ból nyomtatás</h3>
       <p>A/4 méretben, 80 g/m<sup>2</sup> fénymásoló papírra:</p>
-      <p><strong>Fekete - Fehér:</strong> 30 Ft/oldal<br>Minimum díj: 600 Ft</p>
-      <p><strong>Színes – kis fedettség esetén</strong><br>(pl. a szövegben egy sor piros a fekete helyett):<br>60 Ft/oldal<br>Minimum díj: 800 Ft</p>
-      <p><strong>Színes – nagyobb fedettség esetén</strong><br>(grafikonok, képek, nagy festékfelület):<br>120 Ft/oldal<br>Minimum díj: 1.000 Ft</p>
-      <p><strong>150 g/m<sup>2</sup> matt műnyomó papírra nyomtatás – színes</strong><br>Főként reprezentációs célra alkalmas. A kb. kétszeres papírvastagság miatt a nagy festékterhelés ellenére sem transzparál, a lap hátoldala tiszta, fehér hatású marad.<br>200 Ft/oldal<br>Minimum díj: 1.200 Ft</p>
-      <p><strong>Fotópapírra nyomtatás:</strong><br>400 Ft/oldal<br>Minimum díj: 1.200 Ft</p>
+      <p>Fekete - Fehér: 30 Ft/oldal<br>Minimum díj: 600 Ft</p>
+      <p>Színes – kis fedettség esetén<br>(pl. a szövegben egy sor piros a fekete helyett):<br>60 Ft/oldal<br>Minimum díj: 800 Ft</p>
+      <p>Színes – nagyobb fedettség esetén<br>(grafikonok, képek, nagy festékfelület):<br>120 Ft/oldal<br>Minimum díj: 1.000 Ft</p>
+      <p>150 g/m<sup>2</sup> matt műnyomó papírra nyomtatás – színes<br>Főként reprezentációs célra alkalmas. A kb. kétszeres papírvastagság miatt a nagy festékterhelés ellenére sem transzparál, a lap hátoldala tiszta, fehér hatású marad.<br>200 Ft/oldal<br>Minimum díj: 1.200 Ft</p>
+      <p>Fotópapírra nyomtatás:<br>400 Ft/oldal<br>Minimum díj: 1.200 Ft</p>
     </div> 
 
     <div class="price-box">
       <h3>Szkennelés (maximum A/4 méretig)</h3>
       <p>150 Ft/oldal<br>Minimum díj: 1.000 Ft</p>
-      <p><strong>Szkennelés és digitális archiválás (maximum A/4 méretig)</strong><br>200 Ft/oldal<br>Minimum díj: 1.000 Ft</p>
+      <p>Szkennelés és digitális archiválás (maximum A/4 méretig)<br>200 Ft/oldal<br>Minimum díj: 1.000 Ft</p>
     </div>
     
     <div class="price-box">
@@ -410,7 +410,7 @@
         Apróbb korrekciókat, tehát legfeljebb néhány percnyi grafikai munkáért szerkesztési díjat nem számítunk fel!<br>
         A fenti árak fekete-fehér és színes névjegykártyákra is vonatkoznak!
       </p>
-      <p><strong>Oklevél nyomtatás A/4 méretig:</strong></p>
+      <p>Oklevél nyomtatás A/4 méretig:</p>
     </div>
   </div>
 </div>
@@ -424,7 +424,7 @@
       
       <!-- 1. DOBOZ - Tájékoztató szöveg -->
       <div class="price-box" style="text-align: center; margin-top: 0;">
-        <p style="font-size: 18px; font-weight: bold; margin: 0;">
+        <p style="font-size: 18px; margin: 0;">
           Nyomdánk a X., XIV. és XVI. kerület találkozásánál található, közel a Kerepesi úthoz, 
           néhány percre az Örs vezér terétől, valamint a Hungária körúttal és az M0 körgyűrűtől! 
           Autóval és tömegközlekedéssel is rendkívül könnyen megközelíthető. A parkolás ingyenes!
@@ -432,10 +432,10 @@
       </div>
 
       <!-- 2. DOBOZ - Elérhetőségek -->
-      <div class="price-box" style="text-align: center; font-weight: bold; margin-top: 0;">
-        <p><strong>Cím:</strong> 1144 Budapest, Zalán utca 77.</p>
-        <p><strong>Telefon:</strong> +36 20 923 6130</p>
-        <p><strong>Email:</strong> fortepressnyomda@gmail.com</p>
+      <div class="price-box" style="text-align: center; margin-top: 0;">
+        <p>Cím: 1144 Budapest, Zalán utca 77.</p>
+        <p>Telefon: +36 20 923 6130</p>
+        <p>Email: fortepressnyomda@gmail.com</p>
       </div>
 
       <!-- 3. DOBOZ - Térkép -->
@@ -453,7 +453,7 @@
       </div>
 
       <!-- 4. DOBOZ - Vélemények -->
-      <div class="price-box" style="text-align: center; font-weight: bold; margin-top: 0;">
+      <div class="price-box" style="text-align: center; margin-top: 0;">
         <h3>Ügyfeleink véleménye</h3>
         <p>Olvassa el ügyfeleink Google-értékeléseit:</p>
         <p style="font-size: 18px; margin: 0;">
@@ -467,7 +467,7 @@
       </div>
 
       <!-- 5. DOBOZ - Közösségi média -->
-      <div class="price-box" style="text-align: center; font-weight: bold; margin-top: 0;">
+      <div class="price-box" style="text-align: center; margin-top: 0;">
         <h3>Közösségi média & Kapcsolat</h3>
         <p>
           <a href="https://www.facebook.com/profile.php?id=100090236685199" target="_blank" class="social-link">

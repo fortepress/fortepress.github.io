@@ -296,6 +296,34 @@
     }
 </style>
 
+/* ÚJ VILLOGÓ BOX STÍLUSA */
+    .uj-villogo-box {
+      background-color: #1e3f20; /* Logó ihlette mélyzöld */
+      color: #e5c158;            /* Logó ihlette arany/sárga */
+      text-align: center;
+      padding: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      border-radius: 10px;
+      max-width: 900px;
+      margin: 30px auto 0 auto; /* Különálló dobozként, távolsággal a felette lévőtől */
+      box-sizing: border-box;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      border: 2px solid #e5c158;
+      animation: arculati-pulzalas 1.8s infinite alternate ease-in-out;
+    }
+
+    @keyframes arculati-pulzalas {
+      0% {
+        opacity: 1;
+        box-shadow: 0 0 15px rgba(229, 193, 88, 0.6);
+      }
+      100% {
+        opacity: 0.5;
+        box-shadow: 0 0 2px transparent;
+      }
+    }
+
 <script>
     function showSection(id) {
       var sections = document.querySelectorAll('.content');
@@ -377,6 +405,11 @@
       Papírfajtától függően gyártunk olcsóbb és drágább szórólapokat is!<br>
       A táblázatokban szereplő árak tájékoztató jellegűek, az árváltoztatás jogát fenntartjuk!<br>
       A táblázatokban szereplő árak NEM tartalmazzák az ÁFA-t!
+    </div>
+
+    <!-- ÚJ, KÜLÖNÁLLÓ VILLOGÓ BOX -->
+    <div class="uj-villogo-box">
+      ✉️ Egyedi igénye van vagy nagyobb tételben rendelne? Kérjen tőlünk személyre szabott ajánlatot elérhetőségeinken!
     </div>
 
     <div class="price-box">

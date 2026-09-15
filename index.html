@@ -330,13 +330,22 @@
   <div class="nav-contact">
     <a href="mailto:fortepressnyomda@gmail.com"><i class="fas fa-envelope"></i> fortepressnyomda@gmail.com</a>
   </div>
-  <div>
-    <a href="#" onclick="showSection('uj-ajanlat'); return false;">Színes szórólapok INGYENES kiszállítással már 50 db.-tól!</a>
-    <a href="#" onclick="showSection('rolunk')">Rólunk</a>
-    <a href="#" onclick="showSection('araink')">Nyomdai áraink</a>
-    <a href="#" onclick="showSection('gyorsnyomda')">Gyorsnyomdai szolgáltatások 0-24</a>
-    <a href="#" onclick="showSection('kapcsolat')">Kapcsolat</a>
-    <a href="#" onclick="showSection('uj-ajanlat'); return false;">Színes szórólapok INGYENES kiszállítással már 50 db.-tól!</a>
+  <div style="display: flex; flex-direction: column; width: 100%; align-items: center; gap: 10px; padding: 10px 0;">
+    <!-- FELSŐ GOMB -->
+    <div style="width: 100%; text-align: center;">
+      <a href="#" onclick="showSection('ingyenes-szallitas'); return false;" style="font-weight: bold; color: #ffcc00;">Színes szórólapok INGYENES kiszállítással már 50 db.-tól!</a>
+    </div>
+    <!-- KÖZÉPSŐ MENÜSOR (Egy sorban a többi) -->
+    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 5px;">
+      <a href="#" onclick="showSection('about')">Rólunk</a>
+      <a href="#" onclick="showSection('prices')">Nyomdai áraink</a>
+      <a href="#" onclick="showSection('express')">Gyorsnyomdai szolgáltatások 0-24</a>
+      <a href="#" onclick="showSection('contact')">Kapcsolat</a>
+    </div>
+    <!-- ALSÓ GOMB -->
+    <div style="width: 100%; text-align: center;">
+      <a href="#" onclick="showSection('ingyenes-szallitas'); return false;" style="font-weight: bold; color: #ffcc00;">Színes szórólapok INGYENES kiszállítással már 50 db.-tól!</a>
+    </div>
   </div>
   <div class="nav-contact">
     <a href="tel:+36209236130"><i class="fas fa-phone"></i> +36 20 923 6130</a>

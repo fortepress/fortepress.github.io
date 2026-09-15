@@ -296,37 +296,6 @@
     }
 </style>
 
-<style>
-/* ÚJ VILLOGÓ BOX STÍLUSA */
-    .uj-villogo-box {
-      background-color: #1e3f20; /* Logó ihlette mélyzöld */
-      color: #e5c158;            /* Logó ihlette arany/sárga */
-      text-align: center;
-      padding: 20px;
-      font-weight: bold;
-      font-size: 18px;
-      border-radius: 10px;
-      max-width: 100%;
-      margin: 30px auto 0 auto; /* Különálló dobozként, távolsággal a felette lévőtől */
-      box-sizing: border-box;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      border: 2px solid #e5c158;
-      animation: arculati-pulzalas 1.8s infinite alternate ease-in-out;
-    }
-
-    @keyframes arculati-pulzalas {
-      0% {
-        opacity: 1;
-        box-shadow: 0 0 15px rgba(229, 193, 88, 0.6);
-      }
-      100% {
-        opacity: 0.5;
-        box-shadow: 0 0 2px transparent;
-      }
-    }
-
-</style>
-  
 <script>
     function showSection(id) {
       var sections = document.querySelectorAll('.content');
@@ -357,30 +326,22 @@
   <p>Professzionális szórólapkészítés – gyorsan, pontosan, kedvező áron 1994 óta</p>
 </header>
 
-<!-- ÚJ, KÜLÖNÁLLÓ VILLOGÓ BOX -->
-<div class="uj-villogo-box">
-  ✉️ Színes szórólapok INGYENES kiszállítással már 50 db-tól!
-</div>
-
 <nav>
   <div class="nav-contact">
     <a href="mailto:fortepressnyomda@gmail.com"><i class="fas fa-envelope"></i> fortepressnyomda@gmail.com</a>
   </div>
   <div>
+    <a href="#" onclick="showSection('uj-ajanlat'); return false;">Színes szórólapok INGYENES kiszállítással már 50 db.-tól!</a>
     <a href="#" onclick="showSection('rolunk')">Rólunk</a>
     <a href="#" onclick="showSection('araink')">Nyomdai áraink</a>
     <a href="#" onclick="showSection('gyorsnyomda')">Gyorsnyomdai szolgáltatások 0-24</a>
     <a href="#" onclick="showSection('kapcsolat')">Kapcsolat</a>
+    <a href="#" onclick="showSection('uj-ajanlat'); return false;">Színes szórólapok INGYENES kiszállítással már 50 db.-tól!</a>
   </div>
   <div class="nav-contact">
     <a href="tel:+36209236130"><i class="fas fa-phone"></i> +36 20 923 6130</a>
   </div>
 </nav>
-
-<!-- ÚJ, KÜLÖNÁLLÓ VILLOGÓ BOX -->
-<div class="uj-villogo-box">
-  ✉️ Színes szórólapok INGYENES kiszállítással már 50 db-tól!
-</div>
 
 <!-- RÓLUNK SZEKCIÓ KEZDETE -->
 <div id="rolunk" class="content" style="background-image: url('szorolap-nyomtatas.jpg');">
@@ -403,6 +364,22 @@
   </div>
 </div>
 <!-- RÓLUNK SZEKCIÓ VÉGE -->
+
+<!-- ÚJ OLDAL SZEKCIÓ (Ide dob be mindkét új gomb) -->
+  <div id="uj-ajanlat" class="content" style="background-image: url('szorolap-nyomtatas.jpg');">
+    <div class="content-inner">
+      <h2 class="page-title">Egyedi Ajánlatkérés & Digitális Nyomtatás</h2>
+      
+      <div class="contact-main">
+        <div class="contact-box">
+          <p class="highlight-text-inner">💡 Kérjen egyedi árajánlatot vagy rendeljen azonnali nyomtatást!</p>
+          <p>Nagyobb tételű szórólapnyomtatás, egyedi méretek vagy azonnali digitális dokumentumnyomtatás esetén keressen minket közvetlenül elérhetőségeinken.</p>
+          <p><strong>E-mail:</strong> <a href="mailto:fortepressnyomda@gmail.com" style="color: #004080; text-decoration: none; font-weight: bold;">fortepressnyomda@gmail.com</a></p>
+          <p><strong>Telefon:</strong> <a href="tel:+36209236130" style="color: #004080; text-decoration: none; font-weight: bold;">+36 20 923 6130</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <!-- NYOMDAI ÁRAINK SZEKCIÓ KEZDETE -->
 <div id="araink" class="content" style="background-image: url('szórólap-nyomtatás.jpg');">

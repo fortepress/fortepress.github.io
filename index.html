@@ -81,9 +81,10 @@
       margin-top: 20px;
     }
 
-    table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; color: black; }
-    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; }
-    th { background-color: #f2f2f2; }
+    /* ALAPÉRTELMEZETT TÁBLÁZAT (Mindenhol fehér marad) */
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white !important; color: black !important; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: center; color: black !important; }
+    th { background-color: #f2f2f2 !important; }
 
     iframe { border: none; width: 100%; height: 300px; margin-top: 20px; }
 
@@ -126,7 +127,6 @@
 
     .panel { display: none; margin-top: 30px; }
 
-    /* Főcímek minden oldalon középre, megtartva eredeti színt */
     .page-title {
       text-align: center;
       font-family: inherit;
@@ -134,7 +134,6 @@
       margin-bottom: 20px;
     }
 
-    /* Contact boxok és wrapper */
     .contact-main, .contact-wrapper {
       display: flex;
       flex-direction: column;
@@ -161,128 +160,40 @@
       .table-wrapper table { width: 100%; font-size: 12px; }
     }
 
-    /* MINDEN szöveg a kék sávban középre */
-    nav {
-      text-align: center;
-    }
-
-    nav * {
-      text-align: center;
-      justify-content: center;
-    }
+    nav { text-align: center; }
+    nav * { text-align: center; justify-content: center; }
         
-    /* Desktop: marad a jelenlegi elrendezés */
     @media (min-width: 769px) {
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-        padding: 0 20px;
-      }
-
-      .nav-contact a {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-      }
+      nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; padding: 0 20px; }
+      .nav-contact a { display: inline-flex; align-items: center; gap: 8px; }
     }
 
-    /* Mobil / tablet: minden középre, egymás alatt */
     @media (max-width: 768px) {
-      nav {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 10px 20px;
-      }
-
-      nav > div {
-        width: 100%;
-        margin: 5px 0;
-      }
-
-      .nav-contact a {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 8px;
-      }
+      nav { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 10px 20px; }
+      nav > div { width: 100%; margin: 5px 0; }
+      .nav-contact a { display: flex; justify-content: center; align-items: center; gap: 8px; }
     }
 
-    /* Kapcsolat oldal főcím */
-    .page-title {
-      text-align: center;
-      font-family: inherit;
-      color: white;
-    }
+    .page-title { text-align: center; font-family: inherit; color: white; }
 
-    /* Konténer, ami összefogja a dobozokat */
-    .contact-main, .contact-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .contact-wrapper {
-      margin-top: 20px;
-    }
-
-    /* EGYSÉGES DOBOZ STÍLUS: Minden doboz külseje és mérete teljesen egyforma */
     .contact-box {
-      background-color: rgba(255, 255, 255, 0.95); /* Egységes fehér háttér */
+      background-color: rgba(255, 255, 255, 0.95);
       padding: 25px;
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       width: 100%;
       max-width: 600px;
       text-align: center;
-      box-sizing: border-box; /* Garantálja, hogy a padding nem nyújtja meg a dobozt */
+      box-sizing: border-box;
     }
 
-    /* Alapértelmezett szövegstílus a normál dobozokban */
-    .contact-box p, .contact-box h3 {
-      margin: 10px 0;
-      font-size: 16px;
-      line-height: 1.6;
-      color: #333333;
-    }
-     
-    /* KÜLÖN KIEMELÉS AZ ELSŐ DOBOZ SZÖVEGÉNEK */
-    /* Így a szöveg nagyobb és félkövér lesz, de a doboz formája nem torzul el */
-    .contact-box .highlight-text-inner {
-      font-weight: bold;
-      font-size: 18px; /* Kicsit nagyobb, kiemelt méret */
-      color: #000000;  /* Erőteljesebb fekete szín */
-    }
+    .contact-box p, .contact-box h3 { margin: 10px 0; font-size: 16px; line-height: 1.6; color: #333333; }
+    .contact-box .highlight-text-inner { font-weight: bold; font-size: 18px; color: #000000; }
+    .contact-box h3 { font-size: 20px; font-weight: bold; margin-bottom: 15px; }
 
-    .contact-box h3 {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
+    .social-link { color: #004080; font-size: 16px; text-decoration: none; font-weight: bold; transition: color 0.3s; display: inline-flex; align-items: center; gap: 8px; }
+    .social-link:hover { color: #007bff; }
 
-    /* Linkek stílusa (Facebook, Viber, stb.) */
-    .social-link {
-      color: #004080;
-      font-size: 16px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .social-link:hover {
-      color: #007bff;
-    }
-
-    /* Kifejezetten a nagy fehér dobozokhoz */
     .price-box {
       background-color: rgba(255, 255, 255, 0.95);
       padding: 25px;
@@ -294,30 +205,24 @@
       margin: 30px auto 0 auto; /* Középre rendezve */
     }
 
-    .price-box h3 {
-      color: black;
-      margin-top: 0;
-      margin-bottom: 15px;
-      font-size: 20px;
-      text-align: left;
-    }
+    .price-box h3 { color: black; margin-top: 0; margin-bottom: 15px; font-size: 20px; text-align: left; }
 
-    /* CSAK AZ A TÁBLÁZAT LESZ SÁRGA, AMELYIK FELETT OTT VAN A SÁRGA KIEMELŐ DOBOZ! */
-    .price-box:has(.highlight-text-yellow) table {
+    /* EZ A TRÜKK: Sárga táblázat formázása teljesen külön névvel */
+    .sarga-tablazat table {
        width: 100%;
        margin-top: 10px;
-       background-color: #fffde7 !important; /* Halványsárga háttér */
+       background-color: #fffde7 !important;
        color: #000000 !important;
     }
-
-    .price-box:has(.highlight-text-yellow) th {
-       background-color: #fdd835 !important; /* Erősebb sárga fejléc */
+    .sarga-tablazat th {
+       background-color: #fdd835 !important;
        color: #000000 !important;
        font-weight: bold;
     }
-
-    .price-box:has(.highlight-text-yellow) td {
-       border: 1px solid #b0bec5 !important; 
+    .sarga-tablazat td {
+       border: 1px solid #b0bec5 !important;
+       background-color: #fffde7 !important;
+       color: #000000 !important;
     }
 </style>
 
@@ -407,7 +312,7 @@
       </div> 
       <div class="price-box">
         <h3>Szórólap, A/5 méretű, 150g/m2 növelt térfogatú műnyomó papíron</h3>
-        <table>
+        <table class="sarga-tablazat">
           <tr><th>db</th><th>4+0 (egyoldalon színes nyomtatás)</th><th>4+4 (mindkét oldalon színes nyomtatás)</th>
           <tr><td>50</td><td>br. 7 400 Ft</td><td>br. 8 100 Ft</td>
           <tr><td>100</td><td>br. 8 150 Ft</td><td>br. 9 300 Ft</td>

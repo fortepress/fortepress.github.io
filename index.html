@@ -291,7 +291,7 @@
       width: 100%;
       max-width: 900px;
       box-sizing: border-box;
-      margin-top: 30px; /* Megnöveltük 30px-re, hogy pontosan megegyezzen a Gyorsnyomda térközével */
+      margin: 30px auto 0 auto; /* <<-- KIJAVÍTVA: Most már teljesen középen lesz a nagy doboz */
     }
 
     .price-box h3 {
@@ -302,11 +302,26 @@
       text-align: left;
     }
 
+    /* ÚJ: CSAK a Nyomdai áraink táblázat sárgítása */
     .price-box table {
        width: 100%;
        margin-top: 10px;
+       background-color: #fffde7; /* Halványsárga háttér az áraknak és darabszámoknak */
+       color: #000000;            /* Fekete betűk */
     }
-</style>
+
+    /* ÚJ: Csak ennek a táblázatnak a fejléce lesz sötétebb sárga */
+    .price-box th {
+       background-color: #fdd835; /* Erősebb sárga a fejlécnek (db, 4+0, 4+4) */
+       color: #000000;            /* Fekete szöveg a fejlécben */
+       font-weight: bold;
+    }
+
+    /* ÚJ: Tisztább rácsvonalak a sárga táblázat celláinak */
+    .price-box td {
+       border: 1px solid #b0bec5; 
+    }
+</style>>
 
 <script>
     function showSection(id) {

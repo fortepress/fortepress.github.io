@@ -282,7 +282,7 @@
       color: #007bff;
     }
 
-    /* Kifejezetten az nyomdai áraink oldal nagy fehér dobozaihoz */
+    /* Kifejezetten a nagy fehér dobozokhoz */
     .price-box {
       background-color: rgba(255, 255, 255, 0.95);
       padding: 25px;
@@ -291,7 +291,7 @@
       width: 100%;
       max-width: 900px;
       box-sizing: border-box;
-      margin: 30px auto 0 auto; /* <<-- KIJAVÍTVA: Most már teljesen középen lesz a nagy doboz */
+      margin: 30px auto 0 auto; /* Középre rendezve */
     }
 
     .price-box h3 {
@@ -302,26 +302,24 @@
       text-align: left;
     }
 
-    /* ÚJ: CSAK a Nyomdai áraink táblázat sárgítása */
-    .price-box table {
+    /* CSAK AZ A TÁBLÁZAT LESZ SÁRGA, AMELYIK FELETT OTT VAN A SÁRGA KIEMELŐ DOBOZ! */
+    .price-box:has(.highlight-text-yellow) table {
        width: 100%;
        margin-top: 10px;
-       background-color: #fffde7; /* Halványsárga háttér az áraknak és darabszámoknak */
-       color: #000000;            /* Fekete betűk */
+       background-color: #fffde7 !important; /* Halványsárga háttér */
+       color: #000000 !important;
     }
 
-    /* ÚJ: Csak ennek a táblázatnak a fejléce lesz sötétebb sárga */
-    .price-box th {
-       background-color: #fdd835; /* Erősebb sárga a fejlécnek (db, 4+0, 4+4) */
-       color: #000000;            /* Fekete szöveg a fejlécben */
+    .price-box:has(.highlight-text-yellow) th {
+       background-color: #fdd835 !important; /* Erősebb sárga fejléc */
+       color: #000000 !important;
        font-weight: bold;
     }
 
-    /* ÚJ: Tisztább rácsvonalak a sárga táblázat celláinak */
-    .price-box td {
-       border: 1px solid #b0bec5; 
+    .price-box:has(.highlight-text-yellow) td {
+       border: 1px solid #b0bec5 !important; 
     }
-</style>>
+</style>
 
 <script>
     function showSection(id) {

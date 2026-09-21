@@ -198,6 +198,13 @@
         </select>
       </div>
 
+      <div class="form-group">
+        <label for="mennyiseg">Mennyiség (db) *</label>
+        <select id="mennyiseg" name="Mennyiség" disabled required>
+          <option value="">-- Először válassz méretet! --</option>
+        </select>
+      </div>
+
       <!-- ÚJ: Színnyomat (4+0 / 4+4) választó mező -->
       <div class="form-group">
         <label for="szin">Nyomtatás (Oldalak) *</label>
@@ -255,6 +262,46 @@
 </div>
 
 <script>
+function updateQuantities() {
+  var meret = document.getElementById("meret").value;
+  var mennyisegSelect = document.getElementById("mennyiseg");
+
+  // Szótár a méretekhez tartozó darabszámokról
+  var optionsMap = {
+    "A/4": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250],
+    "A/5": [50, 100, 150, 200, 250, 500, 1000],
+    "A/6": [100, 250, 500, 1000, 2000],
+    "A/7": [250, 500, 1000, 2000, 5000]
+  };
+
+  // Alaphelyzetbe állítás
+  mennyisegSelect.innerHTML = "";
+
+  if (meret && optionsMap[meret]) {
+    mennyisegSelect.disabled = false;
+    
+    // Alapértelmezett opció
+    var defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.text = "-- Válassz mennyiséget --";
+    mennyisegSelect.appendChild(defaultOption);
+
+    // Darabszámok feltöltése
+    optionsMap[meret].forEach(function(count) {
+      var opt = document.createElement("option");
+      opt.value = count + " db";
+      opt.text = count + " db";
+      mennyisegSelect.appendChild(opt);
+    });
+  } else {
+    mennyisegSelect.disabled = true;
+    var defaultOption = document.createElement("option");
+    defaultOption.value = "";
+    defaultOption.text = "-- Először válassz méretet! --";
+    mennyisegSelect.appendChild(defaultOption);
+  }
+}
+  
   function toggleFoxpost() {
     var szallitas = document.getElementById("szallitas").value;
     var foxpostBox = document.getElementById("foxpost-section");

@@ -222,21 +222,27 @@
           </select>
         </div>
 
-        <!-- BIZTOSAN MŰKÖDŐ, BEÁGYAZOTT FOXPOST TÉRKÉP -->
-<div id="foxpost-section" style="display: none; background: #fff; border: 2px solid #e31837; padding: 15px; border-radius: 8px; margin-top: 15px;">
+        <!-- FOXPOST TÉRKÉP ÉS KIVÁLASZTÓ SZEKCIÓ -->
+<div id="foxpost-section" style="display: none; background: #ffffff; border: 2px solid #e31837; padding: 15px; border-radius: 8px; margin-top: 15px; box-sizing: border-box; width: 100%;">
   <label style="font-weight: bold; color: #d6102f; display: block; margin-bottom: 10px; font-size: 16px;">
     📍 Válassz Foxpost Automatát a Térképen:
   </label>
   
-  <!-- Ide kerül a kiválasztott automata neve -->
-  <input type="text" id="foxpost-name" name="Foxpost Automata" readonly placeholder="Kattints egy automatára a térképen..." style="width: 100%; padding: 12px; border: 2px solid #28a745; border-radius: 5px; margin-bottom: 15px; font-weight: bold; font-size: 15px; background-color: #f0fff4; color: #155724; box-sizing: border-radius;">
+  <!-- Zöld beviteli mező (kijavított méretezéssel, nem lóg túl) -->
+  <input type="text" id="foxpost-name" name="Foxpost Automata" readonly placeholder="Még nincs automata kiválasztva..." style="width: 100%; box-sizing: border-box; padding: 12px; border: 2px solid #28a745; border-radius: 6px; margin-bottom: 12px; font-weight: bold; font-size: 14px; background-color: #f0fff4; color: #155724;">
 
-  <!-- Közvetlenül beágyazott Foxpost Térkép iframe -->
-  <iframe id="foxpost-map-frame" src="https://cdn.foxpost.hu/apt-finder/v1/app/" style="width: 100%; height: 500px; border: 1px solid #ccc; border-radius: 6px;"></iframe>
+  <!-- Automata kiválasztását megerősítő gomb (alapértelmezetten rejtve, kiválasztáskor jelenik meg) -->
+  <button type="button" id="confirm-foxpost-btn" onclick="confirmFoxpostSelection()" style="display: none; width: 100%; box-sizing: border-box; background-color: #28a745; color: white; border: none; padding: 14px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-bottom: 15px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    ✅ Ezt a Foxpost automatát választom (Megerősítés)
+  </button>
+
+  <!-- Beágyazott Foxpost Térkép -->
+  <div id="map-wrapper" style="width: 100%; box-sizing: border-box;">
+    <iframe id="foxpost-map-frame" src="https://cdn.foxpost.hu/apt-finder/v1/app/" style="width: 100%; height: 480px; border: 1px solid #ccc; border-radius: 6px; display: block;"></iframe>
+  </div>
 </div>
 
 <script>
-  // Szállítási mód váltásakor megjelenítjük/elrejtjük a térképet
   function toggleFoxpost() {
     var szallitas = document.getElementById("szallitas").value;
     var foxpostBox = document.getElementById("foxpost-section");
@@ -252,7 +258,7 @@
     }
   }
 
-  // Fogadjuk a kiválasztott automata adatait az iframe-ből (postMessage)
+  // Térképes kattintás figyelése
   window.addEventListener("message", function(event) {
     if (event.origin.includes("foxpost.hu")) {
       try {
@@ -261,22 +267,41 @@
           var targetName = data.name || data.place.name;
           var targetAddress = data.address || (data.place ? data.place.address : "");
           
+          // Beírjuk a kiválasztott automatát
           document.getElementById("foxpost-name").value = targetName + " (" + targetAddress + ")";
+          
+          // Megjelenítjük a zöld megerősítő gombot
+          var confirmBtn = document.getElementById("confirm-foxpost-btn");
+          confirmBtn.style.display = "block";
+          confirmBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       } catch (e) {
-        // Ha nem JSON érkezne, figyelmen kívül hagyjuk
+        // Figyelmen kívül hagyjuk, ha nem JSON adat érkezik
       }
     }
   }, false);
 
-  // Űrlap elküldése
+  // Gomb megnyomásakor összecsukjuk a térképet, hogy ne foglalja a helyet
+  function confirmFoxpostSelection() {
+    var mapWrapper = document.getElementById("map-wrapper");
+    var confirmBtn = document.getElementById("confirm-foxpost-btn");
+    
+    mapWrapper.style.display = "none"; // Térkép elrejtése
+    confirmBtn.innerText = "🔄 Automata módosítása (Térkép megnyitása)";
+    confirmBtn.style.backgroundColor = "#0d6efd"; // Kék színre vált, ha módosítani akarja
+    confirmBtn.onclick = function() {
+      mapWrapper.style.display = "block";
+      confirmBtn.style.display = "none";
+    };
+  }
+
   function handleFormSubmit(event) {
     event.preventDefault();
     var form = event.target;
     var formData = new FormData(form);
 
     document.getElementById("sum-nev").innerText = document.getElementById("nev").value;
-    document.getElementById("sum-email").innerText = document.getElementById("sum-email") ? document.getElementById("email").value : '';
+    document.getElementById("sum-email").innerText = document.getElementById("email").value;
     document.getElementById("sum-meret").innerText = document.getElementById("meret").value;
     document.getElementById("sum-mennyiseg").innerText = document.getElementById("mennyiseg").value;
     document.getElementById("sum-szallitas").innerText = document.getElementById("szallitas").value;
@@ -284,8 +309,10 @@
 
     var foxpostVal = document.getElementById("foxpost-name").value;
     if (foxpostVal) {
-      if (document.getElementById("sum-foxpost-row")) document.getElementById("sum-foxpost-row").style.display = "block";
-      if (document.getElementById("sum-foxpost")) document.getElementById("sum-foxpost").innerText = foxpostVal;
+      document.getElementById("sum-foxpost-row").style.display = "block";
+      document.getElementById("sum-foxpost").innerText = foxpostVal;
+    } else {
+      document.getElementById("sum-foxpost-row").style.display = "none";
     }
 
     fetch(form.action, {

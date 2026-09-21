@@ -174,25 +174,37 @@
   <a href="tel:+36209236130"><i class="fas fa-phone"></i> +36 20 923 6130</a>
   <a href="mailto:fortepressnyomda@gmail.com"><i class="fas fa-envelope"></i> fortepressnyomda@gmail.com</a>
 </nav>
-
+  
 <div class="content-container">
   <div class="content-inner">
     <h2 class="page-title">Színes szórólapok INGYENES kiszállítással megrendelése</h2>
 
-    <div class="highlight-text-yellow">
-      A megrendelt szórólapok ára tartalmazza a gyártást megelőző telefonos adategyeztetést, az EPR-díjat, az ÁFA-t és a Foxpost csomagautomatába történő ingyenes kiszállítást! A szórólapokat 2-5 munkanapon belül veheti át.
-    </div>
+      <div class="highlight-text-yellow">
+        A megrendelt szórólapok ára tartalmazza a gyártást megelőző telefonos adategyeztetést, az EPR-díjat, az ÁFA-t és a Foxpost csomagautomatába történő ingyenes kiszállítást! A szórólapokat 2-5 munkanapon belül veheti át.
+      </div>
 
-    <div class="form-box">
-      <!-- Cseréld ki a Formspree hivatkozásodat az action-ben! -->
+      <div class="form-box">
+        <!-- Cseréld ki a Formspree hivatkozásodat az action-ben! -->
       <form id="orderForm" action="https://formspree.io/f/MINDEN_EMAIL_CIMED" method="POST" onsubmit="handleFormSubmit(event)">
         
-        <div class="form-group">
-          <label for="meret">Szórólap mérete és típusa *</label>
-          <select id="meret" name="Méret" required>
-            <option value="">-- Válassz típust --</option>
-            <option value="A/5 - 150g növelt térfogatú műnyomó (Egyoldalas)">A/5 méret (4+0 - egyoldalon színes)</option>
-            <option value="A/5 - 150g növelt térfogatú műnyomó (Kétoldalas)">A/5 méret (4+4 - mindkét oldalon színes)</option>
+      <div class="form-group">
+        <label for="meret">Méret *</label>
+        <select id="meret" name="Méret" required>
+          <option value="">-- Válassz méretet --</option>
+          <option value="A/4">A/4</option>
+          <option value="A/5">A/5</option>
+          <option value="A/6">A/6</option>
+          <option value="A/7">A/7</option>
+        </select>
+      </div>
+
+      <!-- ÚJ: Színnyomat (4+0 / 4+4) választó mező -->
+      <div class="form-group">
+        <label for="szin">Nyomtatás (Oldalak) *</label>
+        <select id="szin" name="Nyomtatás (Színnyomat)" required>
+          <option value="">-- Válassz nyomtatási módot --</option>
+          <option value="4+0 (Egyoldalas színes)">4+0 (Egyoldalas színes)</option>
+          <option value="4+4 (Kétoldalas színes)">4+4 (Kétoldalas színes)</option>
           </select>
         </div>
 

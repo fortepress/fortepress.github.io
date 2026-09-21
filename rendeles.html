@@ -246,22 +246,41 @@
 
   <!-- iframe helymeghatározás engedélyezéssel -->
   <div id="map-wrapper" style="width: 100%; box-sizing: border-box;">
-    <iframe id="foxpost-map-frame" src="https://cdn.foxpost.hu/apt-finder/v1/app/" allow="geolocation" style="width: 100%; height: 1100px; border: 1px solid #ccc; border-radius: 6px; display: block;"></iframe>
+    <iframe id="foxpost-map-frame" src="https://cdn.foxpost.hu/apt-finder/v1/app/" allow="geolocation *" style="width: 100%; height: 1100px; border: 1px solid #ccc; border-radius: 6px; display: block;"></iframe>
   </div>
 </div>
 
 <script>
   function useMyLocation() {
   if (navigator.geolocation) {
+    // Visszajelzés a felhasználónak
+    var btn = event.currentTarget;
+    var originalText = btn.innerHTML;
+    btn.innerHTML = "⏳ Keresés...";
+
     navigator.geolocation.getCurrentPosition(function(position) {
       var lat = position.coords.latitude;
       var lng = position.coords.longitude;
-      
-      // Frissítjük az iframe-et a felhasználó koordinátáival
       var iframe = document.getElementById("foxpost-map-frame");
-      iframe.src = "https://cdn.foxpost.hu/apt-finder/v1/app/?lat=" + lat + "&lng=" + lng;
+
+      // 1. Átküldjük a pozíciót az iframe-nek postMessage üzenetként (ha a Foxpost widget fogadja)
+      iframe.contentWindow.postMessage(JSON.stringify({
+        action: "setCoordinates",
+        lat: lat,
+        lng: lng
+      }), "*");
+
+      // 2. Frissítjük az iframe-et a Foxpost által elfogadott paraméterezéssel
+      iframe.src = "https://cdn.foxpost.hu/apt-finder/v1/app/#/map?lat=" + lat + "&lng=" + lng;
+
+      btn.innerHTML = originalText;
     }, function(error) {
-      alert("A helymeghatározás nem érhető el vagy le van tiltva a böngészőben.");
+      btn.innerHTML = originalText;
+      alert("Nem sikerült lekérni a helyadataidat. Kérjük, engedélyezd a helymeghatározást a böngésződben!");
+    }, {
+      enableHighAccuracy: true,
+      timeout: 10000,
+      maximumAge: 0
     });
   } else {
     alert("A böngésződ nem támogatja a GPS helymeghatározást.");

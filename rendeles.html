@@ -159,8 +159,8 @@
     }
   </style>
 
-  <!-- Foxpost Widget Hivatalos Script -->
-  <script src="https://cdn.foxpost.hu/apt-widget/v1/apt-widget.js"></script>
+  <!-- Hivatalos Foxpost V2 Loader (minden böngészővel kompatibilis) -->
+  <script src="https://cdn.foxpost.hu/apt-widget/v2/apt-widget.js"></script>
 </head>
 <body>
 
@@ -222,12 +222,94 @@
           </select>
         </div>
 
-        <!-- Foxpost választó doboz -->
-        <div id="foxpost-section" class="foxpost-box" style="display: none;">
-          <label for="foxpost-name" style="font-weight: bold; display: block; margin-bottom: 5px;">Kiválasztott Foxpost Automata *</label>
-          <input type="text" id="foxpost-name" name="Foxpost Automata" readonly placeholder="Kattints az alábbi gombra a választáshoz">
-          <button type="button" class="btn-foxpost" onclick="openFoxpostWidget()">📍 Automata kiválasztása a térképen</button>
-        </div>
+        <!-- ÚJ, STABIL FOXPOST VÁLASZTÓ DOBOZ -->
+        <div id="foxpost-section" class="foxpost-box" style="display: none; background: #f8f9fa; border: 2px solid #e31837; padding: 15px; border-radius: 8px; margin-top: 15px;">
+          <label style="font-weight: bold; color: #d6102f; display: block; margin-bottom: 8px;">
+          📍 Válassz Foxpost Automatát a Térképen:
+          </label>
+  
+  <input type="text" id="foxpost-name" name="Foxpost Automata" readonly placeholder="Még nincs automata kiválasztva..." style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 10px; font-weight: bold; background-color: #fff;">
+  
+  <!-- Hivatalos Foxpost iframe gomb gép -->
+  <button type="button" class="btn-foxpost" id="foxpost-trigger-btn" onclick="triggerFoxpost()" style="background-color: #e31837; color: white; border: none; padding: 12px 20px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; width: 100%;">
+    🗺️ Térkép megnyitása és Automata Kiválasztása
+  </button>
+</div>
+
+<script>
+  function toggleFoxpost() {
+    var szallitas = document.getElementById("szallitas").value;
+    var foxpostBox = document.getElementById("foxpost-section");
+    var foxpostInput = document.getElementById("foxpost-name");
+
+    if (szallitas.includes("Foxpost")) {
+      foxpostBox.style.display = "block";
+      foxpostInput.required = true;
+    } else {
+      foxpostBox.style.display = "none";
+      foxpostInput.required = false;
+      foxpostInput.value = "";
+    }
+  }
+
+  // BIZTOSAN MŰKÖDŐ TÉRKÉP MEGNYITÁS
+  function triggerFoxpost() {
+    if (window.Foxpost && typeof window.Foxpost.aptWidget === 'function') {
+      window.Foxpost.aptWidget({
+        onSelect: function(place) {
+          document.getElementById("foxpost-name").value = place.name + " - " + place.address;
+        }
+      });
+    } else {
+      // Ha nem töltődne be a cdn, megnyitjuk a Foxpost hivatalos keresőjét új ablakban biztonsági tartalékként
+      alert("A térkép betöltése folyamatban... Ha nem jelenik meg, kérjük frissítsd az oldalt!");
+      location.reload();
+    }
+  }
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    var form = event.target;
+    var formData = new FormData(form);
+
+    document.getElementById("sum-nev").innerText = document.getElementById("nev").value;
+    document.getElementById("sum-email").innerText = document.getElementById("email").value;
+    document.getElementById("sum-meret").innerText = document.getElementById("meret").value;
+    document.getElementById("sum-mennyiseg").innerText = document.getElementById("mennyiseg").value;
+    document.getElementById("sum-szallitas").innerText = document.getElementById("szallitas").value;
+    document.getElementById("sum-fizetes").innerText = document.getElementById("fizetes").value;
+
+    var foxpostVal = document.getElementById("foxpost-name").value;
+    if (foxpostVal) {
+      document.getElementById("sum-foxpost-row").style.display = "block";
+      document.getElementById("sum-foxpost").innerText = foxpostVal;
+    } else {
+      document.getElementById("sum-foxpost-row").style.display = "none";
+    }
+
+    fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        form.style.display = "none";
+        document.getElementById("summary-card").style.display = "block";
+
+        var fizetes = document.getElementById("fizetes").value;
+        if (fizetes.includes("Stripe")) {
+          setTimeout(function() {
+            window.location.href = "https://buy.stripe.com/A_TE_STRIPE_LINKED";
+          }, 3000);
+        }
+      } else {
+        alert("Hiba történt a megrendelés elküldésekor.");
+      }
+    }).catch(error => {
+      alert("Hálózati hiba történt.");
+    });
+  }
+</script>
 
         <div class="form-group" style="margin-top: 15px;">
           <label for="fizetes">Fizetési mód *</label>

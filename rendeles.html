@@ -189,7 +189,7 @@
         
       <div class="form-group">
         <label for="meret">Méret *</label>
-        <select id="meret" name="Méret" required>
+        <select id="meret" name="Méret" onchange="updateQuantities()" required>
           <option value="">-- Válassz méretet --</option>
           <option value="A/4">A/4</option>
           <option value="A/5">A/5</option>
@@ -262,46 +262,49 @@
 </div>
 
 <script>
-function updateQuantities() {
-  var meret = document.getElementById("meret").value;
-  var mennyisegSelect = document.getElementById("mennyiseg");
+  // 1. Dinamikus Mennyiség feltöltés a kiválasztott Méret alapján
+  function updateQuantities() {
+    var meret = document.getElementById("meret").value;
+    var mennyisegSelect = document.getElementById("mennyiseg");
 
-  // Szótár a méretekhez tartozó darabszámokról
-  var optionsMap = {
-    "A/4": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250],
-    "A/5": [50, 100, 150, 200, 250, 500, 1000],
-    "A/6": [100, 250, 500, 1000, 2000],
-    "A/7": [250, 500, 1000, 2000, 5000]
-  };
+    // Méretekhez tartozó darabszám opciók
+    var optionsMap = {
+      "A/4": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250],
+      "A/5": [50, 100, 150, 200, 250, 500, 1000],
+      "A/6": [100, 250, 500, 1000, 2000],
+      "A/7": [250, 500, 1000, 2000, 5000]
+    };
 
-  // Alaphelyzetbe állítás
-  mennyisegSelect.innerHTML = "";
+    // Mező ürítése
+    mennyisegSelect.innerHTML = "";
 
-  if (meret && optionsMap[meret]) {
-    mennyisegSelect.disabled = false;
-    
-    // Alapértelmezett opció
-    var defaultOption = document.createElement("option");
-    defaultOption.value = "";
-    defaultOption.text = "-- Válassz mennyiséget --";
-    mennyisegSelect.appendChild(defaultOption);
+    if (meret && optionsMap[meret]) {
+      // Engedélyezzük a választást
+      mennyisegSelect.disabled = false;
+      
+      var defaultOpt = document.createElement("option");
+      defaultOpt.value = "";
+      defaultOpt.text = "-- Válassz mennyiséget --";
+      mennyisegSelect.appendChild(defaultOpt);
 
-    // Darabszámok feltöltése
-    optionsMap[meret].forEach(function(count) {
-      var opt = document.createElement("option");
-      opt.value = count + " db";
-      opt.text = count + " db";
-      mennyisegSelect.appendChild(opt);
-    });
-  } else {
-    mennyisegSelect.disabled = true;
-    var defaultOption = document.createElement("option");
-    defaultOption.value = "";
-    defaultOption.text = "-- Először válassz méretet! --";
-    mennyisegSelect.appendChild(defaultOption);
+      // Betöltjük a megadott darabszámokat
+      optionsMap[meret].forEach(function(count) {
+        var opt = document.createElement("option");
+        opt.value = count + " db";
+        opt.text = count + " db";
+        mennyisegSelect.appendChild(opt);
+      });
+    } else {
+      // Ha nincs méret kiválasztva, lezárjuk
+      mennyisegSelect.disabled = true;
+      var defaultOpt = document.createElement("option");
+      defaultOpt.value = "";
+      defaultOpt.text = "-- Először válassz méretet! --";
+      mennyisegSelect.appendChild(defaultOpt);
+    }
   }
-}
-  
+
+  // 2. Foxpost szekció ki/be kapcsolása
   function toggleFoxpost() {
     var szallitas = document.getElementById("szallitas").value;
     var foxpostBox = document.getElementById("foxpost-section");
@@ -311,7 +314,7 @@ function updateQuantities() {
       foxpostBox.style.display = "block";
       foxpostInput.required = true;
       
-      // Automatikusan az Átvevőhely kereső tetejéhez görgeti a képernyőt
+      // Automatikusan a keresőhöz görgeti a képernyőt
       setTimeout(function() {
         foxpostBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 100);
@@ -322,7 +325,7 @@ function updateQuantities() {
     }
   }
 
-  // Térképes és listás kattintás figyelése (PostMessage)
+  // 3. Térképes és listás kattintás figyelése (Foxpost postMessage)
   window.addEventListener("message", function(event) {
     if (event.origin.includes("foxpost.hu")) {
       try {
@@ -339,14 +342,13 @@ function updateQuantities() {
           confirmBtn.innerText = "✅ Ezt a Foxpost automatát választom (Megerősítés)";
           confirmBtn.onclick = confirmFoxpostSelection;
           
-          // Ráfordul a megerősítő gombra, amint kiválasztott egy automatát
           confirmBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       } catch (e) {}
     }
   }, false);
 
-  // Összecsukjuk a térképes felületet megerősítéskor, de újra megnyithatóvá tesszük
+  // 4. Foxpost választás megerősítése és a térkép összecsukása
   function confirmFoxpostSelection() {
     var mapWrapper = document.getElementById("map-wrapper");
     var confirmBtn = document.getElementById("confirm-foxpost-btn");
@@ -362,7 +364,7 @@ function updateQuantities() {
     };
   }
 
-  // Űrlap elküldése és az Összegző kártya megjelenítése
+  // 5. Form beküldése és Összegző Kártya megjelenítése
   function handleFormSubmit(event) {
     event.preventDefault();
     var form = event.target;
@@ -371,6 +373,12 @@ function updateQuantities() {
     document.getElementById("sum-nev").innerText = document.getElementById("nev").value;
     document.getElementById("sum-email").innerText = document.getElementById("email").value;
     document.getElementById("sum-meret").innerText = document.getElementById("meret").value;
+    
+    // Színnyomat hozzáadása az összegzőhöz (ha van sum-szin elem a HTML-ben)
+    if (document.getElementById("sum-szin") && document.getElementById("szin")) {
+      document.getElementById("sum-szin").innerText = document.getElementById("szin").value;
+    }
+
     document.getElementById("sum-mennyiseg").innerText = document.getElementById("mennyiseg").value;
     document.getElementById("sum-szallitas").innerText = document.getElementById("szallitas").value;
     document.getElementById("sum-fizetes").innerText = document.getElementById("fizetes").value;

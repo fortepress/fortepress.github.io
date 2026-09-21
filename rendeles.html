@@ -243,45 +243,46 @@
 </div>
 
 <script>
-  // Szállítási mód választásakor fut le
   function toggleFoxpost() {
-  var szallitas = document.getElementById("szallitas").value;
-  var foxpostBox = document.getElementById("foxpost-section");
-  var foxpostInput = document.getElementById("foxpost-name");
-  var contentInner = document.querySelector(".content-inner");
-  var formBox = document.querySelector(".form-box");
+    var szallitas = document.getElementById("szallitas").value;
+    var foxpostBox = document.getElementById("foxpost-section");
+    var foxpostInput = document.getElementById("foxpost-name");
+    var mapFrame = document.getElementById("foxpost-map-frame");
 
-  if (szallitas.includes("Foxpost")) {
-    foxpostBox.style.display = "block";
-    foxpostInput.required = true;
-    
-    // Kiszélesítjük mind a külső, mind a belső fehér dobozt 1200px-re
-    if (contentInner) {
-      contentInner.style.setProperty("max-width", "1200px", "important");
-      contentInner.style.transition = "all 0.4s ease-in-out";
-    }
-    if (formBox) {
-      formBox.style.setProperty("max-width", "100%", "important");
-    }
-    
-    // Finom odagördítés a térképhez
-    setTimeout(function() {
-      foxpostBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 150);
+    if (szallitas.includes("Foxpost")) {
+      foxpostBox.style.display = "block";
+      foxpostInput.required = true;
+      
+      // KINAGYÍTÁS: Áttesszük teljes képernyős overlay módba
+      foxpostBox.style.position = "fixed";
+      foxpostBox.style.top = "0";
+      foxpostBox.style.left = "0";
+      foxpostBox.style.width = "100vw";
+      foxpostBox.style.height = "100vh";
+      foxpostBox.style.zIndex = "99999";
+      foxpostBox.style.backgroundColor = "rgba(0,0,0,0.85)";
+      foxpostBox.style.padding = "20px";
+      foxpostBox.style.boxSizing = "border-box";
+      foxpostBox.style.overflowY = "auto";
 
-  } else {
-    foxpostBox.style.display = "none";
-    foxpostInput.required = false;
-    foxpostInput.value = "";
-    
-    // Visszaállítjuk az eredeti 800px-es szélességet
-    if (contentInner) {
-      contentInner.style.setProperty("max-width", "800px", "important");
+      // A belső térkép magasabb lesz a kényelmes böngészéshez
+      if (mapFrame) {
+        mapFrame.style.height = "calc(100vh - 180px)";
+      }
+
+    } else {
+      foxpostBox.style.display = "none";
+      foxpostInput.required = false;
+      foxpostInput.value = "";
+      
+      // Visszaállítjuk az eredeti pozíciót
+      foxpostBox.style.position = "static";
+      foxpostBox.style.width = "100%";
+      foxpostBox.style.height = "auto";
     }
   }
-}
 
-  // Térképes kattintás figyelése (Bárhányszor módosítható)
+  // Térképes kattintás figyelése
   window.addEventListener("message", function(event) {
     if (event.origin.includes("foxpost.hu")) {
       try {
@@ -290,45 +291,45 @@
           var targetName = data.name || data.place.name;
           var targetAddress = data.address || (data.place ? data.place.address : "");
           
-          // Beírjuk a kijelölt automata adatait a zöld mezőbe
           document.getElementById("foxpost-name").value = targetName + " (" + targetAddress + ")";
           
           var confirmBtn = document.getElementById("confirm-foxpost-btn");
-          
-          // Alaphelyzetbe állítjuk a zöld gombot új választáskor
           confirmBtn.style.display = "block";
           confirmBtn.style.backgroundColor = "#28a745";
           confirmBtn.innerText = "✅ Ezt a Foxpost automatát választom (Megerősítés)";
           
-          // Újra rákötjük az összecsukó funkciót
           confirmBtn.onclick = confirmFoxpostSelection;
-          
-          // Odagördítjük a képernyőt a megerősítő gombra
           confirmBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-      } catch (e) {
-        // Figyelmen kívül hagyjuk, ha nem JSON adat érkezne
-      }
+      } catch (e) {}
     }
   }, false);
 
-  // Megerősítő gomb megnyomásakor összecsukjuk a térképet
+  // Amikor a megrendelő ráklikkel a megerősítésre, BEZÁRJUK a nagy ablakot
   function confirmFoxpostSelection() {
+    var foxpostBox = document.getElementById("foxpost-section");
     var mapWrapper = document.getElementById("map-wrapper");
     var confirmBtn = document.getElementById("confirm-foxpost-btn");
     
-    mapWrapper.style.display = "none"; // Térkép elrejtése
-    confirmBtn.innerText = "🔄 Másik automata választása (Térkép megnyitása)";
-    confirmBtn.style.backgroundColor = "#0d6efd"; // Kék színre vált
+    // Bezárjuk a teljes képernyős nagyítást és visszatesszük az űrlapba
+    foxpostBox.style.position = "static";
+    foxpostBox.style.width = "100%";
+    foxpostBox.style.height = "auto";
+    foxpostBox.style.backgroundColor = "#ffffff";
+    foxpostBox.style.padding = "15px";
+
+    mapWrapper.style.display = "none"; // Elrejtjük a térképet
+    confirmBtn.innerText = "🔄 Másik automata választása (Térkép kinagyítása)";
+    confirmBtn.style.backgroundColor = "#0d6efd";
     
-    // Ha rákattint a kék gombra, újra megnyitjuk a térképet
+    // Ha módosítani akar, újra kinagyítjuk a kijelzőt
     confirmBtn.onclick = function() {
       mapWrapper.style.display = "block";
       confirmBtn.style.display = "none";
+      toggleFoxpost();
     };
   }
 
-  // Űrlap elküldése és az Összegző kártya megjelenítése
   function handleFormSubmit(event) {
     event.preventDefault();
     var form = event.target;

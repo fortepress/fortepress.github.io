@@ -243,22 +243,41 @@
 </div>
 
 <script>
+  // Szállítási mód választásakor fut le
   function toggleFoxpost() {
     var szallitas = document.getElementById("szallitas").value;
     var foxpostBox = document.getElementById("foxpost-section");
     var foxpostInput = document.getElementById("foxpost-name");
+    var contentInner = document.querySelector(".content-inner");
 
     if (szallitas.includes("Foxpost")) {
       foxpostBox.style.display = "block";
       foxpostInput.required = true;
+      
+      // Megnagyobbítjuk a tároló dobozt (800px-ről 1100px-re) a kényelmes térképhez
+      if (contentInner) {
+        contentInner.style.maxWidth = "1100px";
+        contentInner.style.transition = "max-width 0.4s ease-in-out";
+      }
+      
+      // Odagördítjük a képernyőt a térképhez
+      setTimeout(function() {
+        foxpostBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 100);
+
     } else {
       foxpostBox.style.display = "none";
       foxpostInput.required = false;
       foxpostInput.value = "";
+      
+      // Visszaállítjuk a normál szélességet
+      if (contentInner) {
+        contentInner.style.maxWidth = "800px";
+      }
     }
   }
 
-  // Térképes kattintás figyelése (BÁRHÁNYINYSZOR MÓDOSÍTHATÓ)
+  // Térképes kattintás figyelése (Bárhányszor módosítható)
   window.addEventListener("message", function(event) {
     if (event.origin.includes("foxpost.hu")) {
       try {
@@ -267,24 +286,24 @@
           var targetName = data.name || data.place.name;
           var targetAddress = data.address || (data.place ? data.place.address : "");
           
-          // Frissítjük a kijelölt automata nevét
+          // Beírjuk a kijelölt automata adatait a zöld mezőbe
           document.getElementById("foxpost-name").value = targetName + " (" + targetAddress + ")";
           
           var confirmBtn = document.getElementById("confirm-foxpost-btn");
           
-          // Alaphelyzetbe állítjuk a gombot, ha korábban már össze lett volna csukva
+          // Alaphelyzetbe állítjuk a zöld gombot új választáskor
           confirmBtn.style.display = "block";
           confirmBtn.style.backgroundColor = "#28a745";
           confirmBtn.innerText = "✅ Ezt a Foxpost automatát választom (Megerősítés)";
           
-          // Újra beállítjuk az összecsukó funkciót
+          // Újra rákötjük az összecsukó funkciót
           confirmBtn.onclick = confirmFoxpostSelection;
           
-          // Odagörgetjük a kijelzőt a gombra
+          // Odagördítjük a képernyőt a megerősítő gombra
           confirmBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       } catch (e) {
-        // Figyelmen kívül hagyjuk, ha nem JSON adat érkezik
+        // Figyelmen kívül hagyjuk, ha nem JSON adat érkezne
       }
     }
   }, false);
@@ -296,15 +315,16 @@
     
     mapWrapper.style.display = "none"; // Térkép elrejtése
     confirmBtn.innerText = "🔄 Másik automata választása (Térkép megnyitása)";
-    confirmBtn.style.backgroundColor = "#0d6efd"; // Kékre vált
+    confirmBtn.style.backgroundColor = "#0d6efd"; // Kék színre vált
     
-    // Ha erre rákattint, újra kinyitjuk a térképet
+    // Ha rákattint a kék gombra, újra megnyitjuk a térképet
     confirmBtn.onclick = function() {
       mapWrapper.style.display = "block";
-      confirmBtn.style.display = "none"; // Elrejtjük a kék gombot, amíg újat nem választ
+      confirmBtn.style.display = "none";
     };
   }
 
+  // Űrlap elküldése és az Összegző kártya megjelenítése
   function handleFormSubmit(event) {
     event.preventDefault();
     var form = event.target;

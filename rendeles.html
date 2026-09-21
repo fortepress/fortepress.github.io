@@ -83,6 +83,9 @@
   <!-- Formspree végpont a te egyedi azonosítóddal -->
   <form id="order-form" action="https://formspree.io/f/xeaogaro" method="POST" onsubmit="handleFormSubmit(event)">
     
+    <!-- Rejtett megerősítő mező a Formspree spamszűrő átlépéséhez -->
+    <input type="text" name="_gotcha" style="display:none !important">
+
     <!-- ================= 1. OLDAL / LÉPÉS ================= -->
     <div id="step-1-section">
       <h2>1. Termék és Szállítási adatok</h2>
@@ -163,31 +166,73 @@
 
       <!-- Tovább gomb a 2. oldalra -->
       <button type="button" id="to-step-2-btn" onclick="goToStep2()" class="submit-btn" style="background-color: #0d6efd;" disabled>
-        Tovább a Személyes Adatokhoz ➔
+        Tovább a Megrendelői Adatokhoz ➔
       </button>
     </div>
 
 
     <!-- ================= 2. OLDAL / LÉPÉS ================= -->
     <div id="step-2-section" style="display: none;">
-      <h2>2. Megrendelői adatok és Összegzés</h2>
+      <h2>2. Megrendelői és Számlázási adatok</h2>
 
-      <!-- Személyes adatok -->
+      <!-- Vásárló típusa kiválasztása -->
       <div class="form-group">
-        <label for="nev">Megrendelő / Cég Neve *</label>
-        <input type="text" id="nev" name="Név" placeholder="Kovács János / Minta Kft.">
+        <label>Vásárló típusa *</label>
+        <div style="display: flex; gap: 20px; margin-top: 8px; margin-bottom: 15px;">
+          <label style="font-weight: normal; cursor: pointer;">
+            <input type="radio" name="Vásárló típusa" value="Magánszemély" checked onchange="toggleCustomerType()"> Magánszemély
+          </label>
+          <label style="font-weight: normal; cursor: pointer;">
+            <input type="radio" name="Vásárló típusa" value="Cég / Egyéni vállalkozó" onchange="toggleCustomerType()"> Cég / Egyéni vállalkozó
+          </label>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="email">E-mail cím *</label>
-        <input type="email" id="email" name="_replyto" placeholder="minta@email.hu">
-        <input type="hidden" name="_subject" value="Új megrendelés érkezett - Digitális Szórólap">
+      <!-- MAGÁNSZEMÉLY MEZŐK -->
+      <div id="private-person-fields">
+        <div class="form-group">
+          <label for="nev">Teljes Név *</label>
+          <input type="text" id="nev" name="Név" placeholder="Kovács János">
+        </div>
+        <div class="form-group">
+          <label for="email">E-mail cím *</label>
+          <input type="email" id="email" name="_replyto" placeholder="minta@email.hu">
+        </div>
+        <div class="form-group">
+          <label for="telefon">Telefonszám *</label>
+          <input type="tel" id="telefon" name="Telefonszám" placeholder="+36 20 123 4567">
+        </div>
+        <div class="form-group">
+          <label for="szamlazas-cim-magan">Számlázási cím (Irányítószám, Város, Utca, Házszám) *</label>
+          <input type="text" id="szamlazas-cim-magan" name="Számlázási cím" placeholder="1051 Budapest, Fő utca 1.">
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="telefon">Telefonszám *</label>
-        <input type="tel" id="telefon" name="Telefonszám" placeholder="+36 20 123 4567">
+      <!-- CÉGES MEZŐK (Alapértelmezetten rejtve) -->
+      <div id="company-fields" style="display: none;">
+        <div class="form-group">
+          <label for="cegnev">Cég / Vállalkozás Neve *</label>
+          <input type="text" id="cegnev" name="Cégnév" placeholder="Minta Kft.">
+        </div>
+        <div class="form-group">
+          <label for="adoszam">Adószám *</label>
+          <input type="text" id="adoszam" name="Adószám" placeholder="12345678-2-41">
+        </div>
+        <div class="form-group">
+          <label for="ceg-email">Céges e-mail cím *</label>
+          <input type="email" id="ceg-email" name="Céges e-mail" placeholder="iroda@mintakft.hu">
+        </div>
+        <div class="form-group">
+          <label for="ceg-telefon">Céges telefonszám *</label>
+          <input type="tel" id="ceg-telefon" name="Céges telefonszám" placeholder="+36 1 234 5678">
+        </div>
+        <div class="form-group">
+          <label for="szamlazas-cim-ceg">Cég székhelye / Számlázási cím *</label>
+          <input type="text" id="szamlazas-cim-ceg" name="Cég számlázási cím" placeholder="1051 Budapest, Fő utca 1.">
+        </div>
       </div>
+
+      <input type="hidden" name="_subject" value="Új megrendelés érkezett - Digitális Szórólap">
 
       <!-- Élő Összegzés -->
       <div style="background: #f8f9fa; border: 1px solid #dee2e6; border-left: 5px solid #0d6efd; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
@@ -212,14 +257,14 @@
 
   </form>
 
-  <!-- Sikeres beküldés utáni visszaigazoló kártya -->
+  <!-- Sikeres beküldés utáni visszaigazoló kártya (Átutalás esetén) -->
   <div id="summary-card" class="summary-card">
     <h2 style="color: #28a745; border-bottom: none;">🎉 Köszönjük a megrendelést!</h2>
     <p style="font-size: 16px; line-height: 1.5; color: #155724; background-color: #d4edda; border: 1px solid #c3e6cb; padding: 12px; border-radius: 6px;">
       A megrendelésedet sikeresen rögzítettük. <strong>Munkatársunk a megadott elérhetőségek alapján hamarosan felveszi veled a kapcsolatot!</strong>
     </p>
     <hr style="border: 0; border-top: 1px solid #c3e6cb; margin: 15px 0;">
-    <p><strong>Név:</strong> <span id="sum-nev"></span></p>
+    <p><strong>Név / Cégnév:</strong> <span id="sum-nev"></span></p>
     <p><strong>E-mail:</strong> <span id="sum-email"></span></p>
     <p><strong>Rendelt termék:</strong> <span id="sum-meret"></span> szórólap (<span id="sum-mennyiseg"></span>)</p>
     <p><strong>Szállítás:</strong> <span id="sum-szallitas"></span></p>
@@ -347,6 +392,43 @@
     }
   }
 
+  function toggleCustomerType() {
+    var isCompany = document.querySelector('input[name="Vásárló típusa"]:checked').value === "Cég / Egyéni vállalkozó";
+    
+    var privateDiv = document.getElementById("private-person-fields");
+    var companyDiv = document.getElementById("company-fields");
+
+    if (isCompany) {
+      privateDiv.style.display = "none";
+      companyDiv.style.display = "block";
+
+      document.getElementById("nev").required = false;
+      document.getElementById("email").required = false;
+      document.getElementById("telefon").required = false;
+      document.getElementById("szamlazas-cim-magan").required = false;
+
+      document.getElementById("cegnev").required = true;
+      document.getElementById("adoszam").required = true;
+      document.getElementById("ceg-email").required = true;
+      document.getElementById("ceg-telefon").required = true;
+      document.getElementById("szamlazas-cim-ceg").required = true;
+    } else {
+      privateDiv.style.display = "block";
+      companyDiv.style.display = "none";
+
+      document.getElementById("nev").required = true;
+      document.getElementById("email").required = true;
+      document.getElementById("telefon").required = true;
+      document.getElementById("szamlazas-cim-magan").required = true;
+
+      document.getElementById("cegnev").required = false;
+      document.getElementById("adoszam").required = false;
+      document.getElementById("ceg-email").required = false;
+      document.getElementById("ceg-telefon").required = false;
+      document.getElementById("szamlazas-cim-ceg").required = false;
+    }
+  }
+
   function goToStep2() {
     var step1Inputs = document.querySelectorAll("#step-1-section [required]");
     for (var i = 0; i < step1Inputs.length; i++) {
@@ -359,13 +441,7 @@
     document.getElementById("step-1-section").style.display = "none";
     document.getElementById("step-2-section").style.display = "block";
 
-    document.getElementById("nev").required = true;
-    document.getElementById("email").required = true;
-    document.getElementById("telefon").required = true;
-
-    for (var i = 0; i < step1Inputs.length; i++) {
-      step1Inputs[i].required = false;
-    }
+    toggleCustomerType();
 
     document.getElementById("preview-meret").innerText = document.getElementById("meret").value;
     document.getElementById("preview-szin").innerText = document.getElementById("szin").value;
@@ -436,15 +512,16 @@
   function handleFormSubmit(event) {
     event.preventDefault();
 
-    // Feloldjuk az összes disabled mezőt
     var disabledElements = document.querySelectorAll("#order-form :disabled");
     disabledElements.forEach(function(el) {
       el.disabled = false;
     });
 
     var submitBtn = document.getElementById("submit-final-btn");
+    var fizetesiMod = document.getElementById("fizetes").value;
+
     submitBtn.disabled = true;
-    submitBtn.innerText = "Küldés folyamatban...";
+    submitBtn.innerText = "Megrendelés feldolgozása...";
 
     var form = event.target;
     var formData = new FormData(form);
@@ -455,16 +532,35 @@
       headers: { 'Accept': 'application/json' }
     }).then(response => {
       if (response.ok) {
-        form.style.display = "none";
+        
+        // Ha online bankkártyás fizetést választott
+        if (fizetesiMod.includes("Online bankkártyás")) {
+          submitBtn.innerText = "Átirányítás a fizetési felületre...";
+          
+          // Itt cserélheted ki a saját Stripe fizetési linkedre!
+          var stripeUrl = "https://buy.stripe.com/A_TE_VALODI_STRIPE_LINKED";
+          
+          setTimeout(function() {
+            window.location.href = stripeUrl;
+          }, 1000);
 
-        document.getElementById("sum-nev").innerText = document.getElementById("nev").value;
-        document.getElementById("sum-email").innerText = document.getElementById("email").value;
-        document.getElementById("sum-meret").innerText = document.getElementById("meret").value;
-        document.getElementById("sum-mennyiseg").innerText = document.getElementById("mennyiseg").value;
-        document.getElementById("sum-szallitas").innerText = document.getElementById("szallitas").value;
-        document.getElementById("sum-fizetes").innerText = document.getElementById("fizetes").value;
+        // Ha banki átutalást választott
+        } else {
+          form.style.display = "none";
 
-        document.getElementById("summary-card").style.display = "block";
+          var isCompany = document.querySelector('input[name="Vásárló típusa"]:checked').value === "Cég / Egyéni vállalkozó";
+          
+          document.getElementById("sum-nev").innerText = isCompany ? document.getElementById("cegnev").value : document.getElementById("nev").value;
+          document.getElementById("sum-email").innerText = isCompany ? document.getElementById("ceg-email").value : document.getElementById("email").value;
+          document.getElementById("sum-meret").innerText = document.getElementById("meret").value;
+          document.getElementById("sum-mennyiseg").innerText = document.getElementById("mennyiseg").value;
+          document.getElementById("sum-szallitas").innerText = document.getElementById("szallitas").value;
+          document.getElementById("sum-fizetes").innerText = document.getElementById("fizetes").value;
+
+          document.getElementById("summary-card").style.display = "block";
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
       } else {
         alert("Hiba történt a megrendelés elküldésekor. Kérjük próbáld újra!");
         submitBtn.disabled = false;

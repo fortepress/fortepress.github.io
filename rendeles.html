@@ -258,7 +258,7 @@
     }
   }
 
-  // Térképes kattintás figyelése
+  // Térképes kattintás figyelése (BÁRHÁNYINYSZOR MÓDOSÍTHATÓ)
   window.addEventListener("message", function(event) {
     if (event.origin.includes("foxpost.hu")) {
       try {
@@ -267,12 +267,20 @@
           var targetName = data.name || data.place.name;
           var targetAddress = data.address || (data.place ? data.place.address : "");
           
-          // Beírjuk a kiválasztott automatát
+          // Frissítjük a kijelölt automata nevét
           document.getElementById("foxpost-name").value = targetName + " (" + targetAddress + ")";
           
-          // Megjelenítjük a zöld megerősítő gombot
           var confirmBtn = document.getElementById("confirm-foxpost-btn");
+          
+          // Alaphelyzetbe állítjuk a gombot, ha korábban már össze lett volna csukva
           confirmBtn.style.display = "block";
+          confirmBtn.style.backgroundColor = "#28a745";
+          confirmBtn.innerText = "✅ Ezt a Foxpost automatát választom (Megerősítés)";
+          
+          // Újra beállítjuk az összecsukó funkciót
+          confirmBtn.onclick = confirmFoxpostSelection;
+          
+          // Odagörgetjük a kijelzőt a gombra
           confirmBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       } catch (e) {
@@ -281,17 +289,19 @@
     }
   }, false);
 
-  // Gomb megnyomásakor összecsukjuk a térképet, hogy ne foglalja a helyet
+  // Megerősítő gomb megnyomásakor összecsukjuk a térképet
   function confirmFoxpostSelection() {
     var mapWrapper = document.getElementById("map-wrapper");
     var confirmBtn = document.getElementById("confirm-foxpost-btn");
     
     mapWrapper.style.display = "none"; // Térkép elrejtése
-    confirmBtn.innerText = "🔄 Automata módosítása (Térkép megnyitása)";
-    confirmBtn.style.backgroundColor = "#0d6efd"; // Kék színre vált, ha módosítani akarja
+    confirmBtn.innerText = "🔄 Másik automata választása (Térkép megnyitása)";
+    confirmBtn.style.backgroundColor = "#0d6efd"; // Kékre vált
+    
+    // Ha erre rákattint, újra kinyitjuk a térképet
     confirmBtn.onclick = function() {
       mapWrapper.style.display = "block";
-      confirmBtn.style.display = "none";
+      confirmBtn.style.display = "none"; // Elrejtjük a kék gombot, amíg újat nem választ
     };
   }
 

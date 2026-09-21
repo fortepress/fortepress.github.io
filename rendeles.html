@@ -80,8 +80,8 @@
 
 <div class="container">
 
-  <!-- FIGYELEM: Cseréld ki a Formspree URL-t a saját ID-dra (pl. https://formspree.io/f/xyzzabyz) -->
-  <form id="order-form" action="https://formspree.io/f/Mentesitve" method="POST" onsubmit="handleFormSubmit(event)">
+  <!-- A te egyedi Formspree címe beillesztve! -->
+  <form id="order-form" action="https://formspree.io/f/xeaogaro" method="POST" onsubmit="handleFormSubmit(event)">
     
     <!-- ================= 1. OLDAL / LÉPÉS ================= -->
     <div id="step-1-section">
@@ -227,7 +227,6 @@
 </div>
 
 <script>
-  // 1. LÉPÉS: Méret nyitja a Nyomtatást
   function step1_MeretSelected() {
     var meret = document.getElementById("meret").value;
     var szinSelect = document.getElementById("szin");
@@ -240,7 +239,6 @@
     }
   }
 
-  // 2. LÉPÉS: Nyomtatás nyitja és feltölti a Mennyiséget
   function step2_SzinSelected() {
     var szin = document.getElementById("szin").value;
     var meret = document.getElementById("meret").value;
@@ -273,7 +271,6 @@
     }
   }
 
-  // 3. LÉPÉS: Mennyiség nyitja a WeTransfer mezőt
   function step3_MennyisegSelected() {
     var mennyiseg = document.getElementById("mennyiseg").value;
     var wetransferInput = document.getElementById("wetransfer-link");
@@ -285,7 +282,6 @@
     }
   }
 
-  // 4. LÉPÉS: WeTransfer link megadása nyitja a Szállítást
   function step4_WetransferFilled() {
     var wetransfer = document.getElementById("wetransfer-link").value;
     var szallitasSelect = document.getElementById("szallitas");
@@ -298,7 +294,6 @@
     }
   }
 
-  // 5. LÉPÉS: Szállítás nyitja a Fizetést
   function step5_SzallitasSelected() {
     toggleFoxpost();
     var szallitas = document.getElementById("szallitas").value;
@@ -312,7 +307,6 @@
     }
   }
 
-  // 6. LÉPÉS: Fizetés nyitja a "Tovább" gombot
   function step6_FizetesSelected() {
     var fizetes = document.getElementById("fizetes").value;
     var toStep2Btn = document.getElementById("to-step-2-btn");
@@ -324,7 +318,6 @@
     }
   }
 
-  // Visszalépésnél lezárás
   function resetFromStep(step) {
     if (step <= 1) {
       document.getElementById("szin").disabled = true;
@@ -352,9 +345,7 @@
     }
   }
 
-  // Átlépés a 2. oldalra
   function goToStep2() {
-    // Ellenőrizzük, hogy az 1. oldal mezői ki vannak-e töltve
     var step1Inputs = document.querySelectorAll("#step-1-section [required]");
     for (var i = 0; i < step1Inputs.length; i++) {
       if (!step1Inputs[i].checkValidity()) {
@@ -366,17 +357,14 @@
     document.getElementById("step-1-section").style.display = "none";
     document.getElementById("step-2-section").style.display = "block";
 
-    // Beállítjuk a 2. oldal mezőit kötelezőre
     document.getElementById("nev").required = true;
     document.getElementById("email").required = true;
     document.getElementById("telefon").required = true;
 
-    // Levesszük a required-et az 1. oldal rejtett mezőiről, hogy a böngésző ne blokkolja a küldést
     for (var i = 0; i < step1Inputs.length; i++) {
       step1Inputs[i].required = false;
     }
 
-    // Adatok áttöltése az összegzőbe
     document.getElementById("preview-meret").innerText = document.getElementById("meret").value;
     document.getElementById("preview-szin").innerText = document.getElementById("szin").value;
     document.getElementById("preview-mennyiseg").innerText = document.getElementById("mennyiseg").value;
@@ -387,12 +375,10 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Visszalépés az 1. oldalra
   function backToStep1() {
     document.getElementById("step-2-section").style.display = "none";
     document.getElementById("step-1-section").style.display = "block";
 
-    // Visszatesszük a required attribútumokat
     document.getElementById("meret").required = true;
     document.getElementById("szin").required = true;
     document.getElementById("mennyiseg").required = true;
@@ -401,7 +387,6 @@
     document.getElementById("fizetes").required = true;
   }
 
-  // Foxpost kezelése
   function toggleFoxpost() {
     var szallitas = document.getElementById("szallitas").value;
     var foxpostBox = document.getElementById("foxpost-section");
@@ -446,10 +431,15 @@
     };
   }
 
-  // Form elküldése
   function handleFormSubmit(event) {
     event.preventDefault();
-    
+
+    // Feloldjuk az összes disabled mezőt, hogy elküldje a böngésző az adatokat
+    var disabledElements = document.querySelectorAll("#order-form :disabled");
+    disabledElements.forEach(function(el) {
+      el.disabled = false;
+    });
+
     var submitBtn = document.getElementById("submit-final-btn");
     submitBtn.disabled = true;
     submitBtn.innerText = "Küldés folyamatban...";
@@ -464,7 +454,7 @@
     }).then(response => {
       if (response.ok) {
         form.style.display = "none";
-        
+
         document.getElementById("sum-nev").innerText = document.getElementById("nev").value;
         document.getElementById("sum-email").innerText = document.getElementById("email").value;
         document.getElementById("sum-meret").innerText = document.getElementById("meret").value;
@@ -481,7 +471,7 @@
           }, 3000);
         }
       } else {
-        alert("Hiba történt a küldés során. Kérjük ellenőrizd a Formspree azonosítódat!");
+        alert("Hiba történt a megrendelés elküldésekor. Kérjük próbáld újra!");
         submitBtn.disabled = false;
         submitBtn.innerText = "Megrendelés Véglegesítése";
       }

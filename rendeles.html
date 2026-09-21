@@ -297,11 +297,26 @@
   }
 
   function openFoxpostWidget() {
-    Foxpost.aptWidget({
-      onSelect: function(place) {
-        document.getElementById("foxpost-name").value = place.name + " (" + place.address + ")";
-      }
-    });
+    // Ellenőrizzük, hogy a Foxpost widget script betöltődött-e
+    if (typeof Foxpost !== 'undefined' && Foxpost.aptWidget) {
+      Foxpost.aptWidget({
+        onSelect: function(place) {
+          document.getElementById("foxpost-name").value = place.name + " (" + place.address + ")";
+        }
+      });
+    } else {
+      // Biztonsági pót-betöltés, ha a fejléces script blokkolva lenne
+      var script = document.createElement('script');
+      script.src = "https://cdn.foxpost.hu/apt-widget/v1/apt-widget.js";
+      script.onload = function() {
+        Foxpost.aptWidget({
+          onSelect: function(place) {
+            document.getElementById("foxpost-name").value = place.name + " (" + place.address + ")";
+          }
+        });
+      };
+      document.body.appendChild(script);
+    }
   }
 
   function handleFormSubmit(event) {
@@ -347,6 +362,3 @@
     });
   }
 </script>
-
-</body>
-</html>

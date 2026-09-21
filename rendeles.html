@@ -257,7 +257,7 @@
 
   </form>
 
-  <!-- Sikeres beküldés utáni visszaigazoló kártya (Átutalás esetén) -->
+  <!-- Sikeres beküldés utáni visszaigazoló kártya -->
   <div id="summary-card" class="summary-card">
     <h2 style="color: #28a745; border-bottom: none;">🎉 Köszönjük a megrendelést!</h2>
     <p style="font-size: 16px; line-height: 1.5; color: #155724; background-color: #d4edda; border: 1px solid #c3e6cb; padding: 12px; border-radius: 6px;">
@@ -269,6 +269,11 @@
     <p><strong>Rendelt termék:</strong> <span id="sum-meret"></span> szórólap (<span id="sum-mennyiseg"></span>)</p>
     <p><strong>Szállítás:</strong> <span id="sum-szallitas"></span></p>
     <p><strong>Fizetési mód:</strong> <span id="sum-fizetes"></span></p>
+
+    <!-- Új gomb: Vissza a főoldalra / Új megrendelés -->
+    <button type="button" onclick="resetToHomepage()" class="submit-btn" style="background-color: #0d6efd; margin-top: 20px;">
+      🏠 Vissza a főoldalra / Új megrendelés
+    </button>
   </div>
 
 </div>
@@ -518,10 +523,8 @@
     });
 
     var submitBtn = document.getElementById("submit-final-btn");
-    var fizetesiMod = document.getElementById("fizetes").value;
-
     submitBtn.disabled = true;
-    submitBtn.innerText = "Megrendelés feldolgozása...";
+    submitBtn.innerText = "Megrendelés küldése...";
 
     var form = event.target;
     var formData = new FormData(form);
@@ -532,35 +535,19 @@
       headers: { 'Accept': 'application/json' }
     }).then(response => {
       if (response.ok) {
+        form.style.display = "none";
+
+        var isCompany = document.querySelector('input[name="Vásárló típusa"]:checked').value === "Cég / Egyéni vállalkozó";
         
-        // Ha online bankkártyás fizetést választott
-        if (fizetesiMod.includes("Online bankkártyás")) {
-          submitBtn.innerText = "Átirányítás a fizetési felületre...";
-          
-          // Itt cserélheted ki a saját Stripe fizetési linkedre!
-          var stripeUrl = "https://buy.stripe.com/A_TE_VALODI_STRIPE_LINKED";
-          
-          setTimeout(function() {
-            window.location.href = stripeUrl;
-          }, 1000);
+        document.getElementById("sum-nev").innerText = isCompany ? document.getElementById("cegnev").value : document.getElementById("nev").value;
+        document.getElementById("sum-email").innerText = isCompany ? document.getElementById("ceg-email").value : document.getElementById("email").value;
+        document.getElementById("sum-meret").innerText = document.getElementById("meret").value;
+        document.getElementById("sum-mennyiseg").innerText = document.getElementById("mennyiseg").value;
+        document.getElementById("sum-szallitas").innerText = document.getElementById("szallitas").value;
+        document.getElementById("sum-fizetes").innerText = document.getElementById("fizetes").value;
 
-        // Ha banki átutalást választott
-        } else {
-          form.style.display = "none";
-
-          var isCompany = document.querySelector('input[name="Vásárló típusa"]:checked').value === "Cég / Egyéni vállalkozó";
-          
-          document.getElementById("sum-nev").innerText = isCompany ? document.getElementById("cegnev").value : document.getElementById("nev").value;
-          document.getElementById("sum-email").innerText = isCompany ? document.getElementById("ceg-email").value : document.getElementById("email").value;
-          document.getElementById("sum-meret").innerText = document.getElementById("meret").value;
-          document.getElementById("sum-mennyiseg").innerText = document.getElementById("mennyiseg").value;
-          document.getElementById("sum-szallitas").innerText = document.getElementById("szallitas").value;
-          document.getElementById("sum-fizetes").innerText = document.getElementById("fizetes").value;
-
-          document.getElementById("summary-card").style.display = "block";
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
+        document.getElementById("summary-card").style.display = "block";
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         alert("Hiba történt a megrendelés elküldésekor. Kérjük próbáld újra!");
         submitBtn.disabled = false;
@@ -571,6 +558,24 @@
       submitBtn.disabled = false;
       submitBtn.innerText = "Megrendelés Véglegesítése";
     });
+  }
+
+  // Funkció a főoldalra való visszalépéshez
+  function resetToHomepage() {
+    var form = document.getElementById("order-form");
+    form.reset();
+    resetFromStep(1);
+
+    document.getElementById("summary-card").style.display = "none";
+    document.getElementById("step-2-section").style.display = "none";
+    document.getElementById("step-1-section").style.display = "block";
+    form.style.display = "block";
+
+    var submitBtn = document.getElementById("submit-final-btn");
+    submitBtn.disabled = false;
+    submitBtn.innerText = "Megrendelés Véglegesítése";
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 </script>
 

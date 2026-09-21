@@ -245,37 +245,41 @@
 <script>
   // Szállítási mód választásakor fut le
   function toggleFoxpost() {
-    var szallitas = document.getElementById("szallitas").value;
-    var foxpostBox = document.getElementById("foxpost-section");
-    var foxpostInput = document.getElementById("foxpost-name");
-    var contentInner = document.querySelector(".content-inner");
+  var szallitas = document.getElementById("szallitas").value;
+  var foxpostBox = document.getElementById("foxpost-section");
+  var foxpostInput = document.getElementById("foxpost-name");
+  var contentInner = document.querySelector(".content-inner");
+  var formBox = document.querySelector(".form-box");
 
-    if (szallitas.includes("Foxpost")) {
-      foxpostBox.style.display = "block";
-      foxpostInput.required = true;
-      
-      // Megnagyobbítjuk a tároló dobozt (800px-ről 1100px-re) a kényelmes térképhez
-      if (contentInner) {
-        contentInner.style.maxWidth = "1100px";
-        contentInner.style.transition = "max-width 0.4s ease-in-out";
-      }
-      
-      // Odagördítjük a képernyőt a térképhez
-      setTimeout(function() {
-        foxpostBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100);
+  if (szallitas.includes("Foxpost")) {
+    foxpostBox.style.display = "block";
+    foxpostInput.required = true;
+    
+    // Kiszélesítjük mind a külső, mind a belső fehér dobozt 1200px-re
+    if (contentInner) {
+      contentInner.style.setProperty("max-width", "1200px", "important");
+      contentInner.style.transition = "all 0.4s ease-in-out";
+    }
+    if (formBox) {
+      formBox.style.setProperty("max-width", "100%", "important");
+    }
+    
+    // Finom odagördítés a térképhez
+    setTimeout(function() {
+      foxpostBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 150);
 
-    } else {
-      foxpostBox.style.display = "none";
-      foxpostInput.required = false;
-      foxpostInput.value = "";
-      
-      // Visszaállítjuk a normál szélességet
-      if (contentInner) {
-        contentInner.style.maxWidth = "800px";
-      }
+  } else {
+    foxpostBox.style.display = "none";
+    foxpostInput.required = false;
+    foxpostInput.value = "";
+    
+    // Visszaállítjuk az eredeti 800px-es szélességet
+    if (contentInner) {
+      contentInner.style.setProperty("max-width", "800px", "important");
     }
   }
+}
 
   // Térképes kattintás figyelése (Bárhányszor módosítható)
   window.addEventListener("message", function(event) {

@@ -39,7 +39,7 @@
       padding: 12px;
       border: 1px solid #ccc;
       border-radius: 6px;
-      box-sizing: border-border-box;
+      box-sizing: border-box;
       font-size: 15px;
     }
     select:disabled, input:disabled {
@@ -80,6 +80,7 @@
 
 <div class="container">
 
+  <!-- FIGYELEM: Cseréld ki a Formspree URL-t a saját ID-dra (pl. https://formspree.io/f/xyzzabyz) -->
   <form id="order-form" action="https://formspree.io/f/Mentesitve" method="POST" onsubmit="handleFormSubmit(event)">
     
     <!-- ================= 1. OLDAL / LÉPÉS ================= -->
@@ -174,19 +175,18 @@
       <!-- Személyes adatok -->
       <div class="form-group">
         <label for="nev">Megrendelő / Cég Neve *</label>
-        <input type="text" id="nev" name="Név" placeholder="Kovács János / Minta Kft." required>
+        <input type="text" id="nev" name="Név" placeholder="Kovács János / Minta Kft.">
       </div>
 
       <div class="form-group">
         <label for="email">E-mail cím (ide küldjük a visszaigazolást) *</label>
-        <!-- _replyto attribútum garantálja a Formspree automatikus válaszlevelet -->
-        <input type="email" id="email" name="_replyto" placeholder="minta@email.hu" required>
+        <input type="email" id="email" name="_replyto" placeholder="minta@email.hu">
         <input type="hidden" name="_subject" value="Sikeres megrendelés - Digitális Szórólap">
       </div>
 
       <div class="form-group">
         <label for="telefon">Telefonszám *</label>
-        <input type="tel" id="telefon" name="Telefonszám" placeholder="+36 20 123 4567" required>
+        <input type="tel" id="telefon" name="Telefonszám" placeholder="+36 20 123 4567">
       </div>
 
       <!-- Élő Összegzés -->
@@ -195,6 +195,7 @@
         <p style="margin: 5px 0;"><strong>Választott méret:</strong> <span id="preview-meret">-</span></p>
         <p style="margin: 5px 0;"><strong>Nyomtatás:</strong> <span id="preview-szin">-</span></p>
         <p style="margin: 5px 0;"><strong>Mennyiség:</strong> <span id="preview-mennyiseg">-</span></p>
+        <p style="margin: 5px 0;"><strong>Grafika:</strong> <span id="preview-wetransfer">-</span></p>
         <p style="margin: 5px 0;"><strong>Szállítás:</strong> <span id="preview-szallitas">-</span></p>
         <p style="margin: 5px 0;"><strong>Fizetés:</strong> <span id="preview-fizetes">-</span></p>
       </div>
@@ -203,7 +204,7 @@
         <button type="button" onclick="backToStep1()" style="width: 35%; background-color: #6c757d; color: white; border: none; padding: 15px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer;">
           ⬅ Vissza
         </button>
-        <button type="submit" class="submit-btn" style="width: 65%;">
+        <button type="submit" id="submit-final-btn" class="submit-btn" style="width: 65%;">
           Megrendelés Véglegesítése
         </button>
       </div>
@@ -323,7 +324,7 @@
     }
   }
 
-  // Visszalépésnél vagy törlésnél a későbbi mezők lezárása
+  // Visszalépésnél lezárás
   function resetFromStep(step) {
     if (step <= 1) {
       document.getElementById("szin").disabled = true;
@@ -351,15 +352,35 @@
     }
   }
 
-  // Átlépés a 2. oldalra (Személyes adatok & Összegzés)
+  // Átlépés a 2. oldalra
   function goToStep2() {
+    // Ellenőrizzük, hogy az 1. oldal mezői ki vannak-e töltve
+    var step1Inputs = document.querySelectorAll("#step-1-section [required]");
+    for (var i = 0; i < step1Inputs.length; i++) {
+      if (!step1Inputs[i].checkValidity()) {
+        step1Inputs[i].reportValidity();
+        return;
+      }
+    }
+
     document.getElementById("step-1-section").style.display = "none";
     document.getElementById("step-2-section").style.display = "block";
 
-    // Adatok áttöltése az összegző kártyába
+    // Beállítjuk a 2. oldal mezőit kötelezőre
+    document.getElementById("nev").required = true;
+    document.getElementById("email").required = true;
+    document.getElementById("telefon").required = true;
+
+    // Levesszük a required-et az 1. oldal rejtett mezőiről, hogy a böngésző ne blokkolja a küldést
+    for (var i = 0; i < step1Inputs.length; i++) {
+      step1Inputs[i].required = false;
+    }
+
+    // Adatok áttöltése az összegzőbe
     document.getElementById("preview-meret").innerText = document.getElementById("meret").value;
     document.getElementById("preview-szin").innerText = document.getElementById("szin").value;
     document.getElementById("preview-mennyiseg").innerText = document.getElementById("mennyiseg").value;
+    document.getElementById("preview-wetransfer").innerText = document.getElementById("wetransfer-link").value;
     document.getElementById("preview-szallitas").innerText = document.getElementById("szallitas").value;
     document.getElementById("preview-fizetes").innerText = document.getElementById("fizetes").value;
     
@@ -370,9 +391,17 @@
   function backToStep1() {
     document.getElementById("step-2-section").style.display = "none";
     document.getElementById("step-1-section").style.display = "block";
+
+    // Visszatesszük a required attribútumokat
+    document.getElementById("meret").required = true;
+    document.getElementById("szin").required = true;
+    document.getElementById("mennyiseg").required = true;
+    document.getElementById("wetransfer-link").required = true;
+    document.getElementById("szallitas").required = true;
+    document.getElementById("fizetes").required = true;
   }
 
-  // Foxpost térkép kezelése
+  // Foxpost kezelése
   function toggleFoxpost() {
     var szallitas = document.getElementById("szallitas").value;
     var foxpostBox = document.getElementById("foxpost-section");
@@ -380,18 +409,15 @@
 
     if (szallitas.includes("Foxpost")) {
       foxpostBox.style.display = "block";
-      foxpostInput.required = true;
       setTimeout(function() {
         foxpostBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 100);
     } else {
       foxpostBox.style.display = "none";
-      foxpostInput.required = false;
       foxpostInput.value = "";
     }
   }
 
-  // Foxpost Automata választás figyelése
   window.addEventListener("message", function(event) {
     if (event.origin.includes("foxpost.hu")) {
       try {
@@ -423,6 +449,11 @@
   // Form elküldése
   function handleFormSubmit(event) {
     event.preventDefault();
+    
+    var submitBtn = document.getElementById("submit-final-btn");
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Küldés folyamatban...";
+
     var form = event.target;
     var formData = new FormData(form);
 
@@ -450,10 +481,14 @@
           }, 3000);
         }
       } else {
-        alert("Hiba történt a megrendelés elküldésekor. Kérjük próbáld újra!");
+        alert("Hiba történt a küldés során. Kérjük ellenőrizd a Formspree azonosítódat!");
+        submitBtn.disabled = false;
+        submitBtn.innerText = "Megrendelés Véglegesítése";
       }
     }).catch(error => {
       alert("Hálózati hiba történt.");
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Megrendelés Véglegesítése";
     });
   }
 </script>

@@ -222,12 +222,20 @@
           </select>
         </div>
 
-        <!-- FOXPOST TÉRKÉP ÉS KIVÁLASZTÓ SZEKCIÓ -->
+        <<!-- FOXPOST TÉRKÉP ÉS KIVÁLASZTÓ SZEKCIÓ -->
 <div id="foxpost-section" style="display: none; background: #ffffff; border: 2px solid #e31837; padding: 15px; border-radius: 8px; margin-top: 15px; margin-bottom: 20px; box-sizing: border-box; width: 100%;">
-  <label style="font-weight: bold; color: #d6102f; display: block; margin-bottom: 10px; font-size: 16px;">
-    📍 Válassz Foxpost Automatát a Térképen vagy a Keresőből:
-  </label>
   
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+    <label style="font-weight: bold; color: #d6102f; font-size: 16px; margin: 0;">
+      📍 Válassz Foxpost Automatát:
+    </label>
+    
+    <!-- GPS ikon gomb -->
+    <button type="button" onclick="useMyLocation()" style="background-color: #e31837; color: white; border: none; padding: 8px 12px; border-radius: 6px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 13px;">
+      🎯 Közelemben lévők (GPS)
+    </button>
+  </div>
+
   <!-- Zöld beviteli mező -->
   <input type="text" id="foxpost-name" name="Foxpost Automata" readonly placeholder="Még nincs automata kiválasztva..." style="width: 100%; box-sizing: border-box; padding: 12px; border: 2px solid #28a745; border-radius: 6px; margin-bottom: 12px; font-weight: bold; font-size: 14px; background-color: #f0fff4; color: #155724;">
 
@@ -236,13 +244,30 @@
     ✅ Ezt a Foxpost automatát választom (Megerősítés)
   </button>
 
-  <!-- ITT VAN AZ IFRAME: -->
+  <!-- iframe helymeghatározás engedélyezéssel -->
   <div id="map-wrapper" style="width: 100%; box-sizing: border-box;">
     <iframe id="foxpost-map-frame" src="https://cdn.foxpost.hu/apt-finder/v1/app/" allow="geolocation" style="width: 100%; height: 1100px; border: 1px solid #ccc; border-radius: 6px; display: block;"></iframe>
   </div>
 </div>
 
 <script>
+  function useMyLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var lat = position.coords.latitude;
+      var lng = position.coords.longitude;
+      
+      // Frissítjük az iframe-et a felhasználó koordinátáival
+      var iframe = document.getElementById("foxpost-map-frame");
+      iframe.src = "https://cdn.foxpost.hu/apt-finder/v1/app/?lat=" + lat + "&lng=" + lng;
+    }, function(error) {
+      alert("A helymeghatározás nem érhető el vagy le van tiltva a böngészőben.");
+    });
+  } else {
+    alert("A böngésződ nem támogatja a GPS helymeghatározást.");
+  }
+}
+  
   function toggleFoxpost() {
   var szallitas = document.getElementById("szallitas").value;
   var foxpostBox = document.getElementById("foxpost-section");

@@ -222,21 +222,21 @@
           </select>
         </div>
 
-        <!-- ÚJ, STABIL FOXPOST VÁLASZTÓ DOBOZ -->
-        <div id="foxpost-section" class="foxpost-box" style="display: none; background: #f8f9fa; border: 2px solid #e31837; padding: 15px; border-radius: 8px; margin-top: 15px;">
-          <label style="font-weight: bold; color: #d6102f; display: block; margin-bottom: 8px;">
-          📍 Válassz Foxpost Automatát a Térképen:
-          </label>
+        <!-- BIZTOSAN MŰKÖDŐ, BEÁGYAZOTT FOXPOST TÉRKÉP -->
+<div id="foxpost-section" style="display: none; background: #fff; border: 2px solid #e31837; padding: 15px; border-radius: 8px; margin-top: 15px;">
+  <label style="font-weight: bold; color: #d6102f; display: block; margin-bottom: 10px; font-size: 16px;">
+    📍 Válassz Foxpost Automatát a Térképen:
+  </label>
   
-  <input type="text" id="foxpost-name" name="Foxpost Automata" readonly placeholder="Még nincs automata kiválasztva..." style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; margin-bottom: 10px; font-weight: bold; background-color: #fff;">
-  
-  <!-- Hivatalos Foxpost iframe gomb gép -->
-  <button type="button" class="btn-foxpost" id="foxpost-trigger-btn" onclick="triggerFoxpost()" style="background-color: #e31837; color: white; border: none; padding: 12px 20px; font-size: 15px; font-weight: bold; border-radius: 6px; cursor: pointer; width: 100%;">
-    🗺️ Térkép megnyitása és Automata Kiválasztása
-  </button>
+  <!-- Ide kerül a kiválasztott automata neve -->
+  <input type="text" id="foxpost-name" name="Foxpost Automata" readonly placeholder="Kattints egy automatára a térképen..." style="width: 100%; padding: 12px; border: 2px solid #28a745; border-radius: 5px; margin-bottom: 15px; font-weight: bold; font-size: 15px; background-color: #f0fff4; color: #155724; box-sizing: border-radius;">
+
+  <!-- Közvetlenül beágyazott Foxpost Térkép iframe -->
+  <iframe id="foxpost-map-frame" src="https://cdn.foxpost.hu/apt-finder/v1/app/" style="width: 100%; height: 500px; border: 1px solid #ccc; border-radius: 6px;"></iframe>
 </div>
 
 <script>
+  // Szállítási mód váltásakor megjelenítjük/elrejtjük a térképet
   function toggleFoxpost() {
     var szallitas = document.getElementById("szallitas").value;
     var foxpostBox = document.getElementById("foxpost-section");
@@ -252,28 +252,31 @@
     }
   }
 
-  // BIZTOSAN MŰKÖDŐ TÉRKÉP MEGNYITÁS
-  function triggerFoxpost() {
-    if (window.Foxpost && typeof window.Foxpost.aptWidget === 'function') {
-      window.Foxpost.aptWidget({
-        onSelect: function(place) {
-          document.getElementById("foxpost-name").value = place.name + " - " + place.address;
+  // Fogadjuk a kiválasztott automata adatait az iframe-ből (postMessage)
+  window.addEventListener("message", function(event) {
+    if (event.origin.includes("foxpost.hu")) {
+      try {
+        var data = typeof event.data === "string" ? JSON.parse(event.data) : event.data;
+        if (data && (data.name || data.place)) {
+          var targetName = data.name || data.place.name;
+          var targetAddress = data.address || (data.place ? data.place.address : "");
+          
+          document.getElementById("foxpost-name").value = targetName + " (" + targetAddress + ")";
         }
-      });
-    } else {
-      // Ha nem töltődne be a cdn, megnyitjuk a Foxpost hivatalos keresőjét új ablakban biztonsági tartalékként
-      alert("A térkép betöltése folyamatban... Ha nem jelenik meg, kérjük frissítsd az oldalt!");
-      location.reload();
+      } catch (e) {
+        // Ha nem JSON érkezne, figyelmen kívül hagyjuk
+      }
     }
-  }
+  }, false);
 
+  // Űrlap elküldése
   function handleFormSubmit(event) {
     event.preventDefault();
     var form = event.target;
     var formData = new FormData(form);
 
     document.getElementById("sum-nev").innerText = document.getElementById("nev").value;
-    document.getElementById("sum-email").innerText = document.getElementById("email").value;
+    document.getElementById("sum-email").innerText = document.getElementById("sum-email") ? document.getElementById("email").value : '';
     document.getElementById("sum-meret").innerText = document.getElementById("meret").value;
     document.getElementById("sum-mennyiseg").innerText = document.getElementById("mennyiseg").value;
     document.getElementById("sum-szallitas").innerText = document.getElementById("szallitas").value;
@@ -281,10 +284,8 @@
 
     var foxpostVal = document.getElementById("foxpost-name").value;
     if (foxpostVal) {
-      document.getElementById("sum-foxpost-row").style.display = "block";
-      document.getElementById("sum-foxpost").innerText = foxpostVal;
-    } else {
-      document.getElementById("sum-foxpost-row").style.display = "none";
+      if (document.getElementById("sum-foxpost-row")) document.getElementById("sum-foxpost-row").style.display = "block";
+      if (document.getElementById("sum-foxpost")) document.getElementById("sum-foxpost").innerText = foxpostVal;
     }
 
     fetch(form.action, {

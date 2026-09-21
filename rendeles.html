@@ -1,195 +1,95 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <link rel="icon" type="image/x-icon" href="https://www.fortepress.hu/logo.ico">
-  <link rel="shortcut icon" href="/logo.ico" type="image/x-icon">
-  <link rel="icon" type="image/png" sizes="32x32" href="/logo-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/logo-16x16.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Digitális Szórólap Megrendelés | Forte-Press Bt.</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  
+  <title>Digitális Szórólap Megrendelés</title>
   <style>
-    html { font-size: 16px; }
-    @media (max-width: 768px) { html { font-size: 14px; } }
-    @media (max-width: 480px) { html { font-size: 12px; } }
-
-    body { margin: 0; font-family: Arial, sans-serif; background-color: #f0f0f0; }
-
-    header {
-      background-image: url('szórólap.jpg');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      padding: 40px 0;
-      text-align: center;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+      color: #333;
     }
-
-    nav {
-      background-color: #004080;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 15px 20px;
-      color: white;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    nav a { color: white; text-decoration: none; font-weight: bold; }
-    nav a:hover { color: #ffcc00; }
-
-    .content-container {
-      padding: 40px 20px;
-      background-image: url('szorolap-nyomtatas.jpg');
-      background-size: cover;
-      background-position: center;
-      min-height: 80vh;
-      position: relative;
-    }
-
-    .content-container::before {
-      content: "";
-      background: rgba(0, 0, 0, 0.5);
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      z-index: 1;
-    }
-
-    .content-inner {
-      position: relative;
-      z-index: 2;
-      background-color: rgba(0,0,0,0.6);
-      padding: 30px;
-      border-radius: 10px;
-      max-width: 800px;
-      margin: auto;
-      color: white;
-    }
-
-    .page-title { text-align: center; color: white; margin-top: 0; }
-
-    .highlight-text-yellow {
-      color: black;
-      font-size: 15px;
-      background-color: #ffff00;
-      border: 1px solid #ffeeba;
-      padding: 12px;
-      border-radius: 8px;
-      margin-bottom: 25px;
-      line-height: 1.5;
-    }
-
-    .form-box {
-      background-color: rgba(255, 255, 255, 0.95);
+    .container {
+      max-width: 650px;
+      margin: 0 auto;
+      background: #ffffff;
       padding: 25px;
-      border-radius: 10px;
-      color: #333333;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
-
-    .form-group { margin-bottom: 18px; text-align: left; }
-    .form-group label { display: block; font-weight: bold; margin-bottom: 6px; color: #000; }
-    .form-group input[type="text"],
-    .form-group input[type="email"],
-    .form-group input[type="tel"],
-    .form-group input[type="number"],
-    .form-group select {
+    h2 {
+      margin-top: 0;
+      color: #111;
+      border-bottom: 2px solid #0d6efd;
+      padding-bottom: 8px;
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+    select, input[type="text"], input[type="email"], input[type="tel"], input[type="url"] {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       border: 1px solid #ccc;
       border-radius: 6px;
-      box-sizing: border-box;
+      box-sizing: border-border-box;
       font-size: 15px;
     }
-
-    .foxpost-box {
-      background-color: #f8f9fa;
-      border: 1px solid #dee2e6;
-      padding: 15px;
-      border-radius: 6px;
-      margin-top: 10px;
+    select:disabled, input:disabled {
+      background-color: #e9ecef;
+      cursor: not-allowed;
+      opacity: 0.7;
     }
-
-    .btn-foxpost {
-      background-color: #e31837;
-      color: white;
-      border: none;
-      padding: 10px 16px;
-      font-weight: bold;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 8px;
-    }
-    .btn-foxpost:hover { background-color: #c4122d; }
-
-    .btn-submit {
+    .submit-btn {
       width: 100%;
       background-color: #28a745;
       color: white;
       border: none;
-      padding: 14px;
-      font-size: 18px;
+      padding: 15px;
+      font-size: 17px;
       font-weight: bold;
       border-radius: 6px;
       cursor: pointer;
-      margin-top: 15px;
+      transition: background-color 0.2s ease;
     }
-    .btn-submit:hover { background-color: #218838; }
-
-    /* Összegző kártya */
-    #summary-card {
+    .submit-btn:disabled {
+      background-color: #adb5bd;
+      cursor: not-allowed;
+    }
+    .submit-btn:hover:not(:disabled) {
+      background-color: #218838;
+    }
+    .summary-card {
       display: none;
-      background-color: #ffffff;
+      background: #e8f5e9;
       border: 2px solid #28a745;
-      padding: 25px;
-      border-radius: 8px;
-      color: #333;
-      text-align: left;
-    }
-    #summary-card h3 { color: #28a745; margin-top: 0; }
-    .summary-item { margin-bottom: 10px; font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 6px; }
-
-    footer {
-      background-color: #002b5e;
-      color: white;
-      text-align: center;
       padding: 20px;
+      border-radius: 8px;
+      margin-top: 20px;
     }
   </style>
-
-  <!-- Hivatalos Foxpost V2 Loader (minden böngészővel kompatibilis) -->
-  <script src="https://cdn.foxpost.hu/apt-widget/v2/apt-widget.js"></script>
 </head>
 <body>
 
-<header>
-  <h1>Forte-Press Bt.</h1>
-  <p>Szórólap megrendelő felület</p>
-</header>
+<div class="container">
 
-<nav>
-  <a href="index.html"><i class="fas fa-home"></i> Vissza a főoldalra</a>
-  <a href="tel:+36209236130"><i class="fas fa-phone"></i> +36 20 923 6130</a>
-  <a href="mailto:fortepressnyomda@gmail.com"><i class="fas fa-envelope"></i> fortepressnyomda@gmail.com</a>
-</nav>
-  
-<div class="content-container">
-  <div class="content-inner">
-    <h2 class="page-title">Színes szórólapok INGYENES kiszállítással megrendelése</h2>
+  <form id="order-form" action="https://formspree.io/f/Mentesitve" method="POST" onsubmit="handleFormSubmit(event)">
+    
+    <!-- ================= 1. OLDAL / LÉPÉS ================= -->
+    <div id="step-1-section">
+      <h2>1. Termék és Szállítási adatok</h2>
 
-      <div class="highlight-text-yellow">
-        A megrendelt szórólapok ára tartalmazza a gyártást megelőző telefonos adategyeztetést, az EPR-díjat, az ÁFA-t és a Foxpost csomagautomatába történő ingyenes kiszállítást! A szórólapokat 2-5 munkanapon belül veheti át.
-      </div>
-
-      <div class="form-box">
-        <!-- Cseréld ki a Formspree hivatkozásodat az action-ben! -->
-      <form id="orderForm" action="https://formspree.io/f/MINDEN_EMAIL_CIMED" method="POST" onsubmit="handleFormSubmit(event)">
-        
+      <!-- 1. Méret -->
       <div class="form-group">
-        <label for="meret">Méret *</label>
-        <select id="meret" name="Méret" onchange="updateQuantities()" required>
+        <label for="meret">1. Méret *</label>
+        <select id="meret" name="Méret" onchange="step1_MeretSelected()" required>
           <option value="">-- Válassz méretet --</option>
           <option value="A/4">A/4</option>
           <option value="A/5">A/5</option>
@@ -198,79 +98,169 @@
         </select>
       </div>
 
+      <!-- 2. Nyomtatás -->
       <div class="form-group">
-        <label for="mennyiseg">Mennyiség (db) *</label>
-        <select id="mennyiseg" name="Mennyiség" disabled required>
+        <label for="szin">2. Nyomtatás (Oldalak) *</label>
+        <select id="szin" name="Nyomtatás" onchange="step2_SzinSelected()" disabled required>
           <option value="">-- Először válassz méretet! --</option>
+          <option value="4+0 (Egyoldalas színes)">4+0 (Egyoldalas színes)</option>
+          <option value="4+4 (Kétoldalas színes)">4+4 (Kétoldalas színes)</option>
         </select>
       </div>
 
-      <!-- ÚJ: Színnyomat (4+0 / 4+4) választó mező -->
+      <!-- 3. Mennyiség -->
       <div class="form-group">
-        <label for="szin">Nyomtatás (Oldalak) *</label>
-        <select id="szin" name="Nyomtatás (Színnyomat)" required>
-          <option value="">-- Válassz nyomtatási módot --</option>
-          <option value="4+0 (Egyoldalas színes)">4+0 (Egyoldalas színes)</option>
-          <option value="4+4 (Kétoldalas színes)">4+4 (Kétoldalas színes)</option>
-          </select>
+        <label for="mennyiseg">3. Mennyiség (db) *</label>
+        <select id="mennyiseg" name="Mennyiség" onchange="step3_MennyisegSelected()" disabled required>
+          <option value="">-- Először válassz nyomtatási módot! --</option>
+        </select>
+      </div>
+
+      <!-- 4. Grafika csatolása (WeTransfer) -->
+      <div class="form-group">
+        <label for="wetransfer-link">4. Grafika csatolása (WeTransfer link) *</label>
+        <input type="url" id="wetransfer-link" name="WeTransfer Link" placeholder="https://we.tl/t-XXXXXX" oninput="step4_WetransferFilled()" disabled required>
+        <small style="color: #666; display: block; margin-top: 4px;">
+          Töltsd fel a grafikát a <a href="https://wetransfer.com" target="_blank" style="color: #0d6efd;">WeTransfer.com</a>-ra és másold ide a megosztási linket.
+        </small>
+      </div>
+
+      <!-- 5. Szállítási mód -->
+      <div class="form-group">
+        <label for="szallitas">5. Szállítási mód *</label>
+        <select id="szallitas" name="Szállítási mód" onchange="step5_SzallitasSelected()" disabled required>
+          <option value="">-- Először add meg a WeTransfer linket! --</option>
+          <option value="Foxpost csomagautomata (Ingyenes)">Foxpost csomagautomata (Ingyenes)</option>
+          <option value="Személyes átvétel">Személyes átvétel</option>
+          <option value="Házhozszállítás">Házhozszállítás</option>
+        </select>
+      </div>
+
+      <!-- Foxpost térkép szekció -->
+      <div id="foxpost-section" style="display: none; background: #ffffff; border: 2px solid #e31837; padding: 15px; border-radius: 8px; margin-top: 15px; margin-bottom: 20px; box-sizing: border-box; width: 100%;">
+        <label style="font-weight: bold; color: #d6102f; display: block; margin-bottom: 10px; font-size: 16px;">
+          📍 Válassz Foxpost Automatát a Térképen vagy a Keresőből:
+        </label>
+        <input type="text" id="foxpost-name" name="Foxpost Automata" readonly placeholder="Még nincs automata kiválasztva..." style="width: 100%; box-sizing: border-box; padding: 12px; border: 2px solid #28a745; border-radius: 6px; margin-bottom: 12px; font-weight: bold; font-size: 14px; background-color: #f0fff4; color: #155724;">
+        <button type="button" id="confirm-foxpost-btn" style="display: none; width: 100%; box-sizing: border-box; background-color: #28a745; color: white; border: none; padding: 14px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-bottom: 15px; text-align: center;">
+          ✅ Ezt a Foxpost automatát választom (Megerősítés)
+        </button>
+        <div id="map-wrapper" style="width: 100%; box-sizing: border-box;">
+          <iframe id="foxpost-map-frame" src="https://cdn.foxpost.hu/apt-finder/v1/app/" style="width: 100%; height: 600px; border: 1px solid #ccc; border-radius: 6px; display: block;"></iframe>
         </div>
+      </div>
 
-        <div class="form-group">
-          <label for="szallitas">Szállítási mód *</label>
-          <select id="szallitas" name="Szállítási mód" onchange="toggleFoxpost()" required>
-            <option value="">-- Válassz szállítási módot --</option>
-            <option value="Foxpost csomagautomata">Foxpost csomagautomata (Ingyenes)</option>
-            <option value="Személyes átvétel">Személyes átvétel (1144 Bp., Zalán u. 77.)</option>
-          </select>
-        </div>
+      <!-- 6. Fizetési mód -->
+      <div class="form-group">
+        <label for="fizetes">6. Fizetési mód *</label>
+        <select id="fizetes" name="Fizetési mód" onchange="step6_FizetesSelected()" disabled required>
+          <option value="">-- Először válassz szállítási módot! --</option>
+          <option value="Online bankkártyás fizetés (Stripe)">Online bankkártyás fizetés (Stripe)</option>
+          <option value="Banki átutalás">Banki átutalás</option>
+        </select>
+      </div>
 
-        <!-- FOXPOST TÉRKÉP ÉS KIVÁLASZTÓ SZEKCIÓ -->
-<div id="foxpost-section" style="display: none; background: #ffffff; border: 2px solid #e31837; padding: 15px; border-radius: 8px; margin-top: 15px; margin-bottom: 20px; box-sizing: border-box; width: 100%;">
-  <label style="font-weight: bold; color: #d6102f; display: block; margin-bottom: 10px; font-size: 16px;">
-    📍 Válassz Foxpost Automatát a Térképen vagy a Keresőből:
-  </label>
-  
-  <!-- Zöld beviteli mező -->
-  <input type="text" id="foxpost-name" name="Foxpost Automata" readonly placeholder="Még nincs automata kiválasztva..." style="width: 100%; box-sizing: border-box; padding: 12px; border: 2px solid #28a745; border-radius: 6px; margin-bottom: 12px; font-weight: bold; font-size: 14px; background-color: #f0fff4; color: #155724;">
+      <!-- Tovább gomb a 2. oldalra -->
+      <button type="button" id="to-step-2-btn" onclick="goToStep2()" class="submit-btn" style="background-color: #0d6efd;" disabled>
+        Tovább a Személyes Adatokhoz ➔
+      </button>
+    </div>
 
-  <!-- Megerősítő gomb -->
-  <button type="button" id="confirm-foxpost-btn" style="display: none; width: 100%; box-sizing: border-box; background-color: #28a745; color: white; border: none; padding: 14px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-bottom: 15px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
-    ✅ Ezt a Foxpost automatát választom (Megerősítés)
-  </button>
 
-  <!-- Magasított Foxpost keret (1100px) -->
-  <div id="map-wrapper" style="width: 100%; box-sizing: border-box;">
-    <iframe id="foxpost-map-frame" src="https://cdn.foxpost.hu/apt-finder/v1/app/" style="width: 100%; height: 1100px; border: 1px solid #ccc; border-radius: 6px; display: block;"></iframe>
+    <!-- ================= 2. OLDAL / LÉPÉS ================= -->
+    <div id="step-2-section" style="display: none;">
+      <h2>2. Megrendelői adatok és Összegzés</h2>
+
+      <!-- Személyes adatok -->
+      <div class="form-group">
+        <label for="nev">Megrendelő / Cég Neve *</label>
+        <input type="text" id="nev" name="Név" placeholder="Kovács János / Minta Kft." required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail cím (ide küldjük a visszaigazolást) *</label>
+        <!-- _replyto attribútum garantálja a Formspree automatikus válaszlevelet -->
+        <input type="email" id="email" name="_replyto" placeholder="minta@email.hu" required>
+        <input type="hidden" name="_subject" value="Sikeres megrendelés - Digitális Szórólap">
+      </div>
+
+      <div class="form-group">
+        <label for="telefon">Telefonszám *</label>
+        <input type="tel" id="telefon" name="Telefonszám" placeholder="+36 20 123 4567" required>
+      </div>
+
+      <!-- Élő Összegzés -->
+      <div style="background: #f8f9fa; border: 1px solid #dee2e6; border-left: 5px solid #0d6efd; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
+        <h3 style="margin-top: 0; color: #333;">💳 Rendelés összegzése</h3>
+        <p style="margin: 5px 0;"><strong>Választott méret:</strong> <span id="preview-meret">-</span></p>
+        <p style="margin: 5px 0;"><strong>Nyomtatás:</strong> <span id="preview-szin">-</span></p>
+        <p style="margin: 5px 0;"><strong>Mennyiség:</strong> <span id="preview-mennyiseg">-</span></p>
+        <p style="margin: 5px 0;"><strong>Szállítás:</strong> <span id="preview-szallitas">-</span></p>
+        <p style="margin: 5px 0;"><strong>Fizetés:</strong> <span id="preview-fizetes">-</span></p>
+      </div>
+
+      <div style="display: flex; gap: 10px;">
+        <button type="button" onclick="backToStep1()" style="width: 35%; background-color: #6c757d; color: white; border: none; padding: 15px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer;">
+          ⬅ Vissza
+        </button>
+        <button type="submit" class="submit-btn" style="width: 65%;">
+          Megrendelés Véglegesítése
+        </button>
+      </div>
+    </div>
+
+  </form>
+
+  <!-- Sikeres beküldés utáni visszaigazoló kártya -->
+  <div id="summary-card" class="summary-card">
+    <h2 style="color: #28a745; border-bottom: none;">🎉 Köszönjük a megrendelést!</h2>
+    <p>A megrendelésedet sikeresen rögzítettük. Egy visszaigazoló e-mailt is elküldtünk a megadott címre.</p>
+    <hr style="border: 0; border-top: 1px solid #c3e6cb; margin: 15px 0;">
+    <p><strong>Név:</strong> <span id="sum-nev"></span></p>
+    <p><strong>E-mail:</strong> <span id="sum-email"></span></p>
+    <p><strong>Rendelt termék:</strong> <span id="sum-meret"></span> szórólap (<span id="sum-mennyiseg"></span>)</p>
+    <p><strong>Szállítás:</strong> <span id="sum-szallitas"></span></p>
+    <p><strong>Fizetési mód:</strong> <span id="sum-fizetes"></span></p>
   </div>
+
 </div>
 
 <script>
-  // 1. Dinamikus Mennyiség feltöltés a kiválasztott Méret alapján
-  function updateQuantities() {
+  // 1. LÉPÉS: Méret nyitja a Nyomtatást
+  function step1_MeretSelected() {
+    var meret = document.getElementById("meret").value;
+    var szinSelect = document.getElementById("szin");
+
+    if (meret) {
+      szinSelect.disabled = false;
+      szinSelect.options[0].text = "-- Válassz nyomtatási módot --";
+    } else {
+      resetFromStep(1);
+    }
+  }
+
+  // 2. LÉPÉS: Nyomtatás nyitja és feltölti a Mennyiséget
+  function step2_SzinSelected() {
+    var szin = document.getElementById("szin").value;
     var meret = document.getElementById("meret").value;
     var mennyisegSelect = document.getElementById("mennyiseg");
 
-    // Méretekhez tartozó darabszám opciók
-    var optionsMap = {
-      "A/4": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250],
-      "A/5": [50, 100, 150, 200, 250, 500],
-      "A/6": [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000],
-      "A/7": [200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800, 2000]
-    };
-
-    // Mező ürítése
-    mennyisegSelect.innerHTML = "";
-
-    if (meret && optionsMap[meret]) {
-      // Engedélyezzük a választást
+    if (szin && meret) {
       mennyisegSelect.disabled = false;
       
+      var optionsMap = {
+        "A/4": [25, 50, 75, 100, 125, 150, 175, 200, 225, 250],
+        "A/5": [50, 100, 150, 200, 250, 500, 1000],
+        "A/6": [100, 250, 500, 1000, 2000],
+        "A/7": [250, 500, 1000, 2000, 5000]
+      };
+
+      mennyisegSelect.innerHTML = "";
       var defaultOpt = document.createElement("option");
       defaultOpt.value = "";
       defaultOpt.text = "-- Válassz mennyiséget --";
       mennyisegSelect.appendChild(defaultOpt);
 
-      // Betöltjük a megadott darabszámokat
       optionsMap[meret].forEach(function(count) {
         var opt = document.createElement("option");
         opt.value = count + " db";
@@ -278,16 +268,111 @@
         mennyisegSelect.appendChild(opt);
       });
     } else {
-      // Ha nincs méret kiválasztva, lezárjuk
-      mennyisegSelect.disabled = true;
-      var defaultOpt = document.createElement("option");
-      defaultOpt.value = "";
-      defaultOpt.text = "-- Először válassz méretet! --";
-      mennyisegSelect.appendChild(defaultOpt);
+      resetFromStep(2);
     }
   }
 
-  // 2. Foxpost szekció ki/be kapcsolása
+  // 3. LÉPÉS: Mennyiség nyitja a WeTransfer mezőt
+  function step3_MennyisegSelected() {
+    var mennyiseg = document.getElementById("mennyiseg").value;
+    var wetransferInput = document.getElementById("wetransfer-link");
+
+    if (mennyiseg) {
+      wetransferInput.disabled = false;
+    } else {
+      resetFromStep(3);
+    }
+  }
+
+  // 4. LÉPÉS: WeTransfer link megadása nyitja a Szállítást
+  function step4_WetransferFilled() {
+    var wetransfer = document.getElementById("wetransfer-link").value;
+    var szallitasSelect = document.getElementById("szallitas");
+
+    if (wetransfer.trim().length > 5) {
+      szallitasSelect.disabled = false;
+      szallitasSelect.options[0].text = "-- Válassz szállítási módot --";
+    } else {
+      resetFromStep(4);
+    }
+  }
+
+  // 5. LÉPÉS: Szállítás nyitja a Fizetést
+  function step5_SzallitasSelected() {
+    toggleFoxpost();
+    var szallitas = document.getElementById("szallitas").value;
+    var fizetesSelect = document.getElementById("fizetes");
+
+    if (szallitas) {
+      fizetesSelect.disabled = false;
+      fizetesSelect.options[0].text = "-- Válassz fizetési módot --";
+    } else {
+      resetFromStep(5);
+    }
+  }
+
+  // 6. LÉPÉS: Fizetés nyitja a "Tovább" gombot
+  function step6_FizetesSelected() {
+    var fizetes = document.getElementById("fizetes").value;
+    var toStep2Btn = document.getElementById("to-step-2-btn");
+
+    if (fizetes) {
+      toStep2Btn.disabled = false;
+    } else {
+      resetFromStep(6);
+    }
+  }
+
+  // Visszalépésnél vagy törlésnél a későbbi mezők lezárása
+  function resetFromStep(step) {
+    if (step <= 1) {
+      document.getElementById("szin").disabled = true;
+      document.getElementById("szin").selectedIndex = 0;
+    }
+    if (step <= 2) {
+      document.getElementById("mennyiseg").disabled = true;
+      document.getElementById("mennyiseg").innerHTML = '<option value="">-- Először válassz nyomtatási módot! --</option>';
+    }
+    if (step <= 3) {
+      document.getElementById("wetransfer-link").disabled = true;
+      document.getElementById("wetransfer-link").value = "";
+    }
+    if (step <= 4) {
+      document.getElementById("szallitas").disabled = true;
+      document.getElementById("szallitas").selectedIndex = 0;
+      document.getElementById("foxpost-section").style.display = "none";
+    }
+    if (step <= 5) {
+      document.getElementById("fizetes").disabled = true;
+      document.getElementById("fizetes").selectedIndex = 0;
+    }
+    if (step <= 6) {
+      document.getElementById("to-step-2-btn").disabled = true;
+    }
+  }
+
+  // Átlépés a 2. oldalra (Személyes adatok & Összegzés)
+  function goToStep2() {
+    document.getElementById("step-1-section").style.display = "none";
+    document.getElementById("step-2-section").style.display = "block";
+
+    // Adatok áttöltése az összegző kártyába
+    document.getElementById("preview-meret").innerText = document.getElementById("meret").value;
+    document.getElementById("preview-szin").innerText = document.getElementById("szin").value;
+    document.getElementById("preview-mennyiseg").innerText = document.getElementById("mennyiseg").value;
+    document.getElementById("preview-szallitas").innerText = document.getElementById("szallitas").value;
+    document.getElementById("preview-fizetes").innerText = document.getElementById("fizetes").value;
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Visszalépés az 1. oldalra
+  function backToStep1() {
+    document.getElementById("step-2-section").style.display = "none";
+    document.getElementById("step-1-section").style.display = "block";
+  }
+
+  // Foxpost térkép kezelése
   function toggleFoxpost() {
     var szallitas = document.getElementById("szallitas").value;
     var foxpostBox = document.getElementById("foxpost-section");
@@ -296,8 +381,6 @@
     if (szallitas.includes("Foxpost")) {
       foxpostBox.style.display = "block";
       foxpostInput.required = true;
-      
-      // Automatikusan a keresőhöz görgeti a képernyőt
       setTimeout(function() {
         foxpostBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 100);
@@ -308,7 +391,7 @@
     }
   }
 
-  // 3. Térképes és listás kattintás figyelése (Foxpost postMessage)
+  // Foxpost Automata választás figyelése
   window.addEventListener("message", function(event) {
     if (event.origin.includes("foxpost.hu")) {
       try {
@@ -316,63 +399,32 @@
         if (data && (data.name || data.place)) {
           var targetName = data.name || data.place.name;
           var targetAddress = data.address || (data.place ? data.place.address : "");
-          
           document.getElementById("foxpost-name").value = targetName + " (" + targetAddress + ")";
-          
           var confirmBtn = document.getElementById("confirm-foxpost-btn");
           confirmBtn.style.display = "block";
-          confirmBtn.style.backgroundColor = "#28a745";
           confirmBtn.innerText = "✅ Ezt a Foxpost automatát választom (Megerősítés)";
           confirmBtn.onclick = confirmFoxpostSelection;
-          
-          confirmBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       } catch (e) {}
     }
   }, false);
 
-  // 4. Foxpost választás megerősítése és a térkép összecsukása
   function confirmFoxpostSelection() {
     var mapWrapper = document.getElementById("map-wrapper");
     var confirmBtn = document.getElementById("confirm-foxpost-btn");
-    
     mapWrapper.style.display = "none";
-    confirmBtn.innerText = "🔄 Másik automata választása (Kereső megnyitása)";
-    confirmBtn.style.backgroundColor = "#0d6efd";
-    
+    confirmBtn.innerText = "🔄 Másik automata választása";
     confirmBtn.onclick = function() {
       mapWrapper.style.display = "block";
       confirmBtn.style.display = "none";
-      document.getElementById("foxpost-section").scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
   }
 
-  // 5. Form beküldése és Összegző Kártya megjelenítése
+  // Form elküldése
   function handleFormSubmit(event) {
     event.preventDefault();
     var form = event.target;
     var formData = new FormData(form);
-
-    document.getElementById("sum-nev").innerText = document.getElementById("nev").value;
-    document.getElementById("sum-email").innerText = document.getElementById("email").value;
-    document.getElementById("sum-meret").innerText = document.getElementById("meret").value;
-    
-    // Színnyomat hozzáadása az összegzőhöz (ha van sum-szin elem a HTML-ben)
-    if (document.getElementById("sum-szin") && document.getElementById("szin")) {
-      document.getElementById("sum-szin").innerText = document.getElementById("szin").value;
-    }
-
-    document.getElementById("sum-mennyiseg").innerText = document.getElementById("mennyiseg").value;
-    document.getElementById("sum-szallitas").innerText = document.getElementById("szallitas").value;
-    document.getElementById("sum-fizetes").innerText = document.getElementById("fizetes").value;
-
-    var foxpostVal = document.getElementById("foxpost-name").value;
-    if (foxpostVal) {
-      document.getElementById("sum-foxpost-row").style.display = "block";
-      document.getElementById("sum-foxpost").innerText = foxpostVal;
-    } else {
-      document.getElementById("sum-foxpost-row").style.display = "none";
-    }
 
     fetch(form.action, {
       method: form.method,
@@ -381,141 +433,14 @@
     }).then(response => {
       if (response.ok) {
         form.style.display = "none";
-        document.getElementById("summary-card").style.display = "block";
-
-        var fizetes = document.getElementById("fizetes").value;
-        if (fizetes.includes("Stripe")) {
-          setTimeout(function() {
-            window.location.href = "https://buy.stripe.com/A_TE_STRIPE_LINKED";
-          }, 3000);
-        }
-      } else {
-        alert("Hiba történt a megrendelés elküldésekor.");
-      }
-    }).catch(error => {
-      alert("Hálózati hiba történt.");
-    });
-  }
-</script>
-
         
-        <div class="form-group" style="margin-top: 15px;">
-          <label for="fizetes">Fizetési mód *</label>
-          <select id="fizetes" name="Fizetési mód" required>
-            <option value="">-- Válassz fizetési módot --</option>
-            <option value="Online bankkártya (Stripe)">Online bankkártya (Stripe / Apple Pay / Google Pay)</option>
-            <option value="Banki átutalás">Banki átutalás (Díjbekérő alapján)</option>
-            <option value="Utánvét">Utánvét az átvételnél</option>
-          </select>
-        </div>
+        document.getElementById("sum-nev").innerText = document.getElementById("nev").value;
+        document.getElementById("sum-email").innerText = document.getElementById("email").value;
+        document.getElementById("sum-meret").innerText = document.getElementById("meret").value;
+        document.getElementById("sum-mennyiseg").innerText = document.getElementById("mennyiseg").value;
+        document.getElementById("sum-szallitas").innerText = document.getElementById("szallitas").value;
+        document.getElementById("sum-fizetes").innerText = document.getElementById("fizetes").value;
 
-        <div class="form-group">
-          <label for="nev">Megrendelő / Cég Neve *</label>
-          <input type="text" id="nev" name="Név" placeholder="Kovács János / Minta Kft." required>
-        </div>
-
-        <div class="form-group">
-          <label for="email">E-mail cím *</label>
-          <input type="email" id="email" name="Email" placeholder="minta@email.hu" required>
-        </div>
-
-        <div class="form-group">
-          <label for="telefon">Telefonszám *</label>
-          <input type="tel" id="telefon" name="Telefonszám" placeholder="+36 20 123 4567" required>
-        </div>
-
-        <button type="submit" class="btn-submit">Megrendelés elküldése</button>
-      </form>
-
-      <!-- Beküldés után megjelenő Összegző Kártya -->
-      <div id="summary-card">
-        <h3><i class="fas fa-check-circle"></i> Köszönjük a megrendelésedet!</h3>
-        <p>A megrendelés részleteit elküldük a megadott e-mail címre.</p>
-        <hr>
-        <div class="summary-item"><strong>Név:</strong> <span id="sum-nev"></span></div>
-        <div class="summary-item"><strong>E-mail:</strong> <span id="sum-email"></span></div>
-        <div class="summary-item"><strong>Termék:</strong> <span id="sum-meret"></span></div>
-        <div class="summary-item"><strong>Mennyiség:</strong> <span id="sum-mennyiseg"></span></div>
-        <div class="summary-item"><strong>Szállítás:</strong> <span id="sum-szallitas"></span></div>
-        <div id="sum-foxpost-row" class="summary-item" style="display: none;"><strong>Kiválasztott Automata:</strong> <span id="sum-foxpost"></span></div>
-        <div class="summary-item"><strong>Fizetési mód:</strong> <span id="sum-fizetes"></span></div>
-        <br>
-        <a href="index.html" style="display: inline-block; background-color: #004080; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Vissza a főoldalra</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<footer>
-  © 2026 Forte-Press Bt. Minden jog fenntartva.
-</footer>
-
-<script>
-  function toggleFoxpost() {
-    var szallitas = document.getElementById("szallitas").value;
-    var foxpostBox = document.getElementById("foxpost-section");
-    var foxpostInput = document.getElementById("foxpost-name");
-
-    if (szallitas.includes("Foxpost")) {
-      foxpostBox.style.display = "block";
-      foxpostInput.required = true;
-    } else {
-      foxpostBox.style.display = "none";
-      foxpostInput.required = false;
-      foxpostInput.value = "";
-    }
-  }
-
-  function openFoxpostWidget() {
-    // Ellenőrizzük, hogy a Foxpost widget script betöltődött-e
-    if (typeof Foxpost !== 'undefined' && Foxpost.aptWidget) {
-      Foxpost.aptWidget({
-        onSelect: function(place) {
-          document.getElementById("foxpost-name").value = place.name + " (" + place.address + ")";
-        }
-      });
-    } else {
-      // Biztonsági pót-betöltés, ha a fejléces script blokkolva lenne
-      var script = document.createElement('script');
-      script.src = "https://cdn.foxpost.hu/apt-widget/v1/apt-widget.js";
-      script.onload = function() {
-        Foxpost.aptWidget({
-          onSelect: function(place) {
-            document.getElementById("foxpost-name").value = place.name + " (" + place.address + ")";
-          }
-        });
-      };
-      document.body.appendChild(script);
-    }
-  }
-
-  function handleFormSubmit(event) {
-    event.preventDefault();
-    var form = event.target;
-    var formData = new FormData(form);
-
-    document.getElementById("sum-nev").innerText = document.getElementById("nev").value;
-    document.getElementById("sum-email").innerText = document.getElementById("email").value;
-    document.getElementById("sum-meret").innerText = document.getElementById("meret").value;
-    document.getElementById("sum-mennyiseg").innerText = document.getElementById("mennyiseg").value;
-    document.getElementById("sum-szallitas").innerText = document.getElementById("szallitas").value;
-    document.getElementById("sum-fizetes").innerText = document.getElementById("fizetes").value;
-
-    var foxpostVal = document.getElementById("foxpost-name").value;
-    if (foxpostVal) {
-      document.getElementById("sum-foxpost-row").style.display = "block";
-      document.getElementById("sum-foxpost").innerText = foxpostVal;
-    } else {
-      document.getElementById("sum-foxpost-row").style.display = "none";
-    }
-
-    fetch(form.action, {
-      method: form.method,
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    }).then(response => {
-      if (response.ok) {
-        form.style.display = "none";
         document.getElementById("summary-card").style.display = "block";
 
         var fizetes = document.getElementById("fizetes").value;
@@ -525,10 +450,13 @@
           }, 3000);
         }
       } else {
-        alert("Hiba történt a megrendelés elküldésekor.");
+        alert("Hiba történt a megrendelés elküldésekor. Kérjük próbáld újra!");
       }
     }).catch(error => {
       alert("Hálózati hiba történt.");
     });
   }
 </script>
+
+</body>
+</html>
